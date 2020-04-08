@@ -1,0 +1,3 @@
+[run]
+source = bsptools/
+omit = bsptools/__init__.py
