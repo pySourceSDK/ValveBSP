@@ -5,7 +5,7 @@ from bsptools import *
 from bsptools.parser import *
 
 
-class ParseVtxTestCase(unittest.TestCase):
+class ParseBspTestCase(unittest.TestCase):
     def setUp(self):
         return
 
@@ -13,4 +13,7 @@ class ParseVtxTestCase(unittest.TestCase):
         return
 
     def test_struct_bsp(self):
+        with open('/mnt/archive/releases/cp_vanguard_a2.bsp', "rb") as f:
+            results = bsp_t.parse_stream(f)
+            print(results.lump_1)
         self.assertTrue(True)
