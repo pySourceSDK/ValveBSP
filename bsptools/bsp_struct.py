@@ -117,6 +117,35 @@ dedge_t = Struct(
     'v' / Int16ul[2]
 )
 
+emittype_t = Enum(
+    Int32sl,
+    emit_surface=0,
+    emit_point=1,
+    emit_spotlight=2,
+    emit_skylight=3,
+    emit_quakelight=4,
+    emit_skyambient=5
+)
+
+dworldlight_t = Struct(
+    'origin' / Vector,
+    'intensity' / Vector,
+    'normal' / Vector,
+    'cluster' / Int32sl,
+    'type' / emittype_t,
+    'style' / Int32sl,
+    'stopdot' / Float32l,
+    'stopdot2' / Float32l,
+    'exponent' / Float32l,
+    'radius' / Float32l,
+    'constant_attn' / Float32l,
+    'linear_attn' / Float32l,
+    'quadratic_attn' / Float32l,
+    'flags' / Int32sl,
+    'texinfo' / Int32sl,  # lump 2
+    'owner' / Int32sl,  # lump 0
+)
+
 
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
@@ -151,5 +180,8 @@ bsp_t = Struct(
                         dedge_t[this.lump_t[12].filelen // dedge_t.sizeof()]),
     'lump_13' / Pointer(this.lump_t[13].fileofs,
                         Int32sl[this.lump_t[13].filelen // Int32sl.sizeof()]),
-
+    'lump_14' / Pointer(this.lump_t[14].fileofs,
+                        Int32sl[this.lump_t[14].filelen // Int32sl.sizeof()]),
+    'lump_15' / Pointer(this.lump_t[15].fileofs,
+                        dworldlight_t[this.lump_t[15].filelen // dworldlight_t.sizeof()]),
 )
