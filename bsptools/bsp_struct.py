@@ -113,6 +113,11 @@ dfaceid_t = Struct(
     'hammerfaceid' / Int16ul
 )
 
+dedge_t = Struct(
+    'v' / Int16ul[2]
+)
+
+
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
@@ -142,4 +147,9 @@ bsp_t = Struct(
 
     'lump_11' / Pointer(this.lump_t[11].fileofs,
                         dfaceid_t[this.lump_t[11].filelen // dfaceid_t.sizeof()]),
+    'lump_12' / Pointer(this.lump_t[12].fileofs,
+                        dedge_t[this.lump_t[12].filelen // dedge_t.sizeof()]),
+    'lump_13' / Pointer(this.lump_t[13].fileofs,
+                        Int32sl[this.lump_t[13].filelen // Int32sl.sizeof()]),
+
 )
