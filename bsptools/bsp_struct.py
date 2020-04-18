@@ -109,6 +109,10 @@ doccluder_t = Struct(
     'vertexIndices' / Int32sl[this.vertexIndexCount],
 )
 
+dfaceid_t = Struct(
+    'hammerfaceid' / Int16ul
+)
+
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
@@ -136,4 +140,6 @@ bsp_t = Struct(
     # 'lump_9' / Pointer(this.lump_t[9].fileofs,
     #                   [this.lump_t[9].filelen // ColorRGBExp32.sizeof()]),
 
+    'lump_11' / Pointer(this.lump_t[11].fileofs,
+                        dfaceid_t[this.lump_t[11].filelen // dfaceid_t.sizeof()]),
 )
