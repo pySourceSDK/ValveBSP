@@ -146,6 +146,31 @@ dworldlight_t = Struct(
     'owner' / Int32sl,  # lump 0
 )
 
+dbrush_t = Struct(
+    'firstside' / Int32sl,
+    'numsides' / Int32sl,
+    'contents' / Int32sl,
+)
+
+dbrushside_t = Struct(
+    'planenum' / Int32ul,
+    'texinfo' / Int32sl,
+    'dispinfo' / Int32sl,
+    'bevel' / Int32sl
+)
+
+darea_t = Struct(
+    'numareaportals' / Int32sl,
+    'firstareaportal' / Int32sl
+)
+
+dareaportal_t = Struct(
+    'm_PortalKey' / Int16ul,
+    'otherarea' / Int16ul,
+    'm_FirstClipPortalVert' / Int16ul,
+    'm_nClipPortalVerts' / Int16ul,
+    'planenum' / Int32sl
+)
 
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
@@ -188,5 +213,12 @@ bsp_t = Struct(
                         Int16ul[this.lump_t[16].filelen // Int16ul.sizeof()]),
     'lump_17' / Pointer(this.lump_t[17].fileofs,
                         Int16ul[this.lump_t[17].filelen // Int16ul.sizeof()]),
-
+    'lump_18' / Pointer(this.lump_t[18].fileofs,
+                        dbrush_t[this.lump_t[18].filelen // dbrush_t.sizeof()]),
+    'lump_19' / Pointer(this.lump_t[19].fileofs,
+                        dbrushside_t[this.lump_t[19].filelen // dbrushside_t.sizeof()]),
+    'lump_20' / Pointer(this.lump_t[20].fileofs,
+                        darea_t[this.lump_t[20].filelen // darea_t.sizeof()]),
+    'lump_21' / Pointer(this.lump_t[21].fileofs,
+                        dareaportal_t[this.lump_t[21].filelen // dareaportal_t.sizeof()]),
 )
