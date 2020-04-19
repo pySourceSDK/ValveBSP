@@ -184,4 +184,9 @@ bsp_t = Struct(
                         Int32sl[this.lump_t[14].filelen // Int32sl.sizeof()]),
     'lump_15' / Pointer(this.lump_t[15].fileofs,
                         dworldlight_t[this.lump_t[15].filelen // dworldlight_t.sizeof()]),
+    'lump_16' / Pointer(this.lump_t[16].fileofs,
+                        Int16ul[this.lump_t[16].filelen // Int16ul.sizeof()]),
+    'lump_17' / Pointer(this.lump_t[17].fileofs,
+                        Int16ul[this.lump_t[17].filelen // Int16ul.sizeof()]),
+
 )
