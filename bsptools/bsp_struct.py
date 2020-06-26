@@ -83,6 +83,9 @@ ColorRGBExp32 = Struct(
     'b' / Byte,
     'exponent' / Byte
 )
+CompressedLightCube = Struct(
+    'm_color' / ColorRGBExp32[6]
+)
 
 doccluderdata_t = Struct(
     'flags' / Int32sl,
@@ -172,53 +175,155 @@ dareaportal_t = Struct(
     'planenum' / Int32sl
 )
 
+dleafambientlighting_t = Struct(
+    'cube' / CompressedLightCube,
+    'x' / Byte,
+    'y' / Byte,
+    'z' / Byte,
+    'pad' / Byte
+)
+dleafambientindex_t = Struct(  # matches dleaf_t
+    'ambientSampleCount' / Int16ul,
+    'firstAmbientSample' / Int16ul
+)
+
+dcubemapsample_t = Struct(
+    'origin' / Int32sl[3],
+    'size' / Int32sl
+)
+
+
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
     'lump_t' / lump_t[HEADER_LUMPS],
     'mapRevision' / Int32sl,
 
+    # 1 Entities
     # 'lump_0' / TODO
 
     'lump_1' / Pointer(this.lump_t[1].fileofs,
                        dplane_t[this.lump_t[1].filelen // dplane_t.sizeof()]),
+    # 2 Planes
     'lump_2' / Pointer(this.lump_t[2].fileofs,
                        dtexdata_t[this.lump_t[2].filelen // dtexdata_t.sizeof()]),
+    # 3 Vertexes
     'lump_3' / Pointer(this.lump_t[3].fileofs,
                        Vector[this.lump_t[3].filelen // Vector.sizeof()]),
+    # 4 Visibility
     # 'lump_4' / TODO
 
+    # 5 Nodes
     'lump_5' / Pointer(this.lump_t[5].fileofs,
                        dnode_t[this.lump_t[5].filelen // dnode_t.sizeof()]),
+    # 6 Texture
     'lump_6' / Pointer(this.lump_t[6].fileofs,
                        texinfo_t[this.lump_t[6].filelen // texinfo_t.sizeof()]),
+    # 7 Faces
     'lump_7' / Pointer(this.lump_t[7].fileofs,
                        dface_t[this.lump_t[7].filelen // dface_t.sizeof()]),
+    # 8 Lightmaps
     'lump_8' / Pointer(this.lump_t[8].fileofs,
                        ColorRGBExp32[this.lump_t[8].filelen // ColorRGBExp32.sizeof()]),
-    # 'lump_9' / Pointer(this.lump_t[9].fileofs,
-    #                   [this.lump_t[9].filelen // ColorRGBExp32.sizeof()]),
+    # 9 Occlusion
+    'lump_9' / Pointer(this.lump_t[9].fileofs,
+                       [this.lump_t[9].filelen // ColorRGBExp32.sizeof()]),
+    # 10 leafs
+    # 'lump_10' / TODO
 
+    # 11 FaceIds
     'lump_11' / Pointer(this.lump_t[11].fileofs,
                         dfaceid_t[this.lump_t[11].filelen // dfaceid_t.sizeof()]),
+    # 12 Edges
     'lump_12' / Pointer(this.lump_t[12].fileofs,
                         dedge_t[this.lump_t[12].filelen // dedge_t.sizeof()]),
+    # 13 Surfedges
     'lump_13' / Pointer(this.lump_t[13].fileofs,
                         Int32sl[this.lump_t[13].filelen // Int32sl.sizeof()]),
+    # 14 Models
     'lump_14' / Pointer(this.lump_t[14].fileofs,
                         Int32sl[this.lump_t[14].filelen // Int32sl.sizeof()]),
+    # 15 Worldlights
     'lump_15' / Pointer(this.lump_t[15].fileofs,
                         dworldlight_t[this.lump_t[15].filelen // dworldlight_t.sizeof()]),
+    # 16 Leaf Faces
     'lump_16' / Pointer(this.lump_t[16].fileofs,
                         Int16ul[this.lump_t[16].filelen // Int16ul.sizeof()]),
+    # 17 Leaf Brushes
     'lump_17' / Pointer(this.lump_t[17].fileofs,
                         Int16ul[this.lump_t[17].filelen // Int16ul.sizeof()]),
+    # 18 Brushes
     'lump_18' / Pointer(this.lump_t[18].fileofs,
                         dbrush_t[this.lump_t[18].filelen // dbrush_t.sizeof()]),
+    # 19 Brush Sides
     'lump_19' / Pointer(this.lump_t[19].fileofs,
                         dbrushside_t[this.lump_t[19].filelen // dbrushside_t.sizeof()]),
+    # 20 Areas
     'lump_20' / Pointer(this.lump_t[20].fileofs,
                         darea_t[this.lump_t[20].filelen // darea_t.sizeof()]),
+    # 21 Areaportals
     'lump_21' / Pointer(this.lump_t[21].fileofs,
                         dareaportal_t[this.lump_t[21].filelen // dareaportal_t.sizeof()]),
+
+    # 22 portals
+    # 23 unused
+    # 24 unused
+    # 25 unused
+    # 26 Disp Info
+    # 27 Original Faces
+    # 28 Phys Disp
+    # 29 Phys Collide
+    # 30 Vert Normals
+    # 31 Vert Normal Indices
+    # 32 unused
+    # 33 Disp Verts
+    # 34 Disp Lightmap Sample Pos
+    # 35 Game Lump
+    # 36 Leaf Water Data
+    # 37 Primitives
+    # 38 Prim Verts
+    # 39 Prim Indices
+    # 40 PakFile
+    # 41 Clip Portal Verts
+
+    # 42 Cubemaps
+    'lump_42' / Pointer(this.lump_t[42].fileofs,
+                        dcubemapsample_t[this.lump_t[42].filelen // dcubemapsample_t.sizeof()]),
+
+    # 43 Texture String Data
+    # 44 Texture String Table
+    # 45 Overlays
+    # 46 Leaf Min Dist to Water
+    # 47 Face Macro Texture Info
+    # 48 Disp Triangles
+    # 49 Phys Collide Surface
+    # 50 Water Overlays
+
+
+    # 51 Leaf Ambient Index HDR
+    'lump_51' / Pointer(this.lump_t[51].fileofs,
+                        dleafambientindex_t[this.lump_t[52].filelen // dleafambientindex_t.sizeof()]),
+    # 52 Leaf Ambient Index
+    'lump_52' / Pointer(this.lump_t[52].fileofs,
+                        dleafambientindex_t[this.lump_t[53].filelen // dleafambientindex_t.sizeof()]),
+    # 53 Lightmaps HDR
+    'lump_53' / Pointer(this.lump_t[53].fileofs,
+                        ColorRGBExp32[this.lump_t[53].filelen // ColorRGBExp32.sizeof()]),
+    # 54 Worldlights HDR
+    'lump_54' / Pointer(this.lump_t[54].fileofs,
+                        dworldlight_t[this.lump_t[54].filelen // dworldlight_t.sizeof()]),
+    # 55 Leaf Ambient Samples HDR
+    'lump_55' / Pointer(this.lump_t[55].fileofs,
+                        dleafambientlighting_t[this.lump_t[55].filelen // dleafambientlighting_t.sizeof()]),
+    # 56 Leaf Ambient Samples
+    'lump_56' / Pointer(this.lump_t[56].fileofs,
+                        dleafambientlighting_t[this.lump_t[56].filelen // dleafambientlighting_t.sizeof()]),
+
+    # 57 XZIP PakFile
+    # 58 Faces HDR
+    # 59 Map Flags
+    # 60 Overlay Fades
+    # 61 Overlay System Levels
+    # 62 Phys Level
+    # 63 Disp Multiblend
 )
