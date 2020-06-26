@@ -34,7 +34,6 @@ dtexdata_t = Struct(
 )
 
 dvis_t = Struct(
-
     'numclusters' / Int32sl,
     'bitofs' / Int32sl[8][2]
 )
@@ -103,7 +102,6 @@ doccluderpolydata_t = Struct(
 )
 
 doccluder_t = Struct(
-
     'count' / Int32sl,
     'data' / doccluderdata_t[this.count],
     'polyDataCount' / Int32sl,
@@ -186,7 +184,6 @@ dleafambientindex_t = Struct(  # matches dleaf_t
     'ambientSampleCount' / Int16ul,
     'firstAmbientSample' / Int16ul
 )
-
 dcubemapsample_t = Struct(
     'origin' / Int32sl[3],
     'size' / Int32sl
@@ -289,9 +286,13 @@ bsp_t = Struct(
     # 42 Cubemaps
     'lump_42' / Pointer(this.lump_t[42].fileofs,
                         dcubemapsample_t[this.lump_t[42].filelen // dcubemapsample_t.sizeof()]),
-
-    # 43 Texture String Data
     # 44 Texture String Table
+    'lump_44' / Pointer(this.lump_t[44].fileofs,
+                        Int32sl[this.lump_t[44].filelen // Int32sl.sizeof()]),
+    # 43 Texture String Data
+    'lump_43' / Pointer(this.lump_t[43].fileofs,
+                        RepeatUntil(lambda x, lst, ctx: len(lst) + \
+                                    1 >= len(ctx.lump_44) - 1, CString("ascii"))),
     # 45 Overlays
     # 46 Leaf Min Dist to Water
     # 47 Face Macro Texture Info
