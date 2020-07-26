@@ -1,8 +1,7 @@
 import os
 import unittest
 
-from bsptools import *
-from bsptools.parser import *
+from bsptools.bsp import *
 
 
 class ParseBspTestCase(unittest.TestCase):
@@ -16,4 +15,5 @@ class ParseBspTestCase(unittest.TestCase):
         with open('/mnt/archive/releases/cp_vanguard_a2.bsp', "rb") as f:
             results = bsp_t.parse_stream(f)
             print(results.lump_1)
+        print(bsp[58])
         self.assertTrue(True)
