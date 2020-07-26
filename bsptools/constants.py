@@ -6,3 +6,5 @@ from future import standard_library
 standard_library.install_aliases()
 
 HEADER_LUMPS = 64
+OVERLAY_BSP_FACE_COUNT = 64
+WATEROVERLAY_BSP_FACE_COUNT = 256

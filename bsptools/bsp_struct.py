@@ -191,6 +191,30 @@ dcubemapsample_t = Struct(
 dflagslump_t = Struct(
     'mLevelFalgs' / Int32ul,
 )
+
+doverlay_t = Struct(
+    'nId' / Int32sl,
+    'nTexInfo' / Int16sl,
+    'm_nFaceCountAndRenderOrder' / Int16ul,
+    'aFaces' / Int32sl[OVERLAY_BSP_FACE_COUNT],
+    'flU' / Float32l[2],
+    'flV' / Float32l[2],
+    'vecUVPoints' / Vector[4],
+    'vecOrigin' / Vector,
+    'vecBasisNormal' / Vector
+)
+dwateroverlay_t = Struct(
+    'nId' / Int32sl,
+    'nTexInfo' / Int16sl,
+    'm_nFaceCountAndRenderOrder' / Int16ul,
+    'aFaces' / Int32sl[OVERLAY_BSP_FACE_COUNT],
+    'flU' / Float32l[2],
+    'flV' / Float32l[2],
+    'vecUVPoints' / Vector[4],
+    'vecOrigin' / Vector,
+    'vecBasisNormal' / Vector
+)
+
 doverlayfade_t = Struct(
     'flFadeDistMinSq' / Float32l,
     'flFadeDistMaxSq' / Float32l
@@ -302,14 +326,17 @@ bsp_t = Struct(
     'lump_44' / Lazy(Pointer(this.lump_t[44].fileofs,
                              Int32sl[this.lump_t[44].filelen // Int32sl.sizeof()])),
 
-
     # 45 Overlays
+    'lump_45' / Lazy(Pointer(this.lump_t[45].fileofs,
+                             doverlay_t[this.lump_t[45].filelen // doverlay_t.sizeof()])),
+
     # 46 Leaf Min Dist to Water
     # 47 Face Macro Texture Info
     # 48 Disp Triangles
     # 49 Phys Collide Surface
     # 50 Water Overlays
-
+    'lump_50' / Lazy(Pointer(this.lump_t[50].fileofs,
+                             dwateroverlay_t[this.lump_t[50].filelen // dwateroverlay_t.sizeof()])),
     # 51 Leaf Ambient Index HDR
     'lump_51' / Lazy(Pointer(this.lump_t[51].fileofs,
                              dleafambientindex_t[this.lump_t[52].filelen // dleafambientindex_t.sizeof()])),
