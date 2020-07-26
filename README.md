@@ -18,7 +18,7 @@ Bsp-tools is a Python library for parsing .bsp files for the Source Engine. It p
 | 7  | :heavy_check_mark:   | 23 | :white_check_mark:   | 39 | :x:                  | 55 | :heavy_check_mark: |
 | 8  | :heavy_check_mark:   | 24 | :white_check_mark:   | 40 | :x:                  | 56 | :heavy_check_mark: |
 | 9  | :x:                  | 25 | :white_check_mark:   | 41 | :x:                  | 57 | :no_good:          |
-| 10 | :x:                  | 26 | :x:                  | 42 | :heavy_check_mark:   | 58 | :heavy_check_mark: |
+| 10 | :heavy_check_mark:   | 26 | :x:                  | 42 | :heavy_check_mark:   | 58 | :heavy_check_mark: |
 | 11 | :heavy_check_mark:   | 27 | :x:                  | 43 | :heavy_check_mark:   | 59 | :heavy_check_mark: |
 | 12 | :heavy_check_mark:   | 28 | :x:                  | 44 | :heavy_check_mark:   | 60 | :heavy_check_mark: |
 | 13 | :heavy_check_mark:   | 29 | :x:                  | 45 | :heavy_check_mark    | 61 | :x:                |

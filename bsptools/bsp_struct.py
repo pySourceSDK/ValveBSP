@@ -172,7 +172,23 @@ dareaportal_t = Struct(
     'm_nClipPortalVerts' / Int16ul,
     'planenum' / Int32sl
 )
+dleaf_t = Struct(
+    'contents' / Int32sl,
+    'cluster' / Int16sl,
 
+    'area' / Int16sl,
+    'flags' / Int16sl,
+
+    'mins' / Int16sl[3],
+    'maxs' / Int16sl[3],
+
+    'firstleafface' / Int16ul,
+    'numleaffaces' / Int16ul,
+
+    'firstleafbrush' / Int16ul,
+    'numleafbrushes' / Int16ul,
+    'leafWaterDataID' / Int16sl
+)
 dleafambientlighting_t = Struct(
     'cube' / CompressedLightCube,
     'x' / Byte,
@@ -258,7 +274,8 @@ bsp_t = Struct(
     #                   [this.lump_t[9].filelen // ColorRGBExp32.sizeof()])),
 
     # 10 leafs
-    # 'lump_10' / TODO
+    'lump_10' / Lazy(Pointer(this.lump_t[10].fileofs,
+                             dleaf_t[this.lump_t[10].filelen // dleaf_t.sizeof()])),
 
     # 11 FaceIds
     'lump_11' / Lazy(Pointer(this.lump_t[11].fileofs,
