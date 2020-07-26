@@ -82,6 +82,7 @@ ColorRGBExp32 = Struct(
     'b' / Byte,
     'exponent' / Byte
 )
+
 CompressedLightCube = Struct(
     'm_color' / ColorRGBExp32[6]
 )
@@ -172,6 +173,7 @@ dareaportal_t = Struct(
     'm_nClipPortalVerts' / Int16ul,
     'planenum' / Int32sl
 )
+
 dleaf_t = Struct(
     'contents' / Int32sl,
     'cluster' / Int16sl,
@@ -189,6 +191,7 @@ dleaf_t = Struct(
     'numleafbrushes' / Int16ul,
     'leafWaterDataID' / Int16sl
 )
+
 dleafambientlighting_t = Struct(
     'cube' / CompressedLightCube,
     'x' / Byte,
@@ -196,14 +199,17 @@ dleafambientlighting_t = Struct(
     'z' / Byte,
     'pad' / Byte
 )
+
 dleafambientindex_t = Struct(  # matches dleaf_t
     'ambientSampleCount' / Int16ul,
     'firstAmbientSample' / Int16ul
 )
+
 dcubemapsample_t = Struct(
     'origin' / Int32sl[3],
     'size' / Int32sl
 )
+
 dflagslump_t = Struct(
     'mLevelFalgs' / Int32ul,
 )
@@ -219,6 +225,7 @@ doverlay_t = Struct(
     'vecOrigin' / Vector,
     'vecBasisNormal' / Vector
 )
+
 dwateroverlay_t = Struct(
     'nId' / Int32sl,
     'nTexInfo' / Int16sl,
@@ -316,10 +323,16 @@ bsp_t = Struct(
     # 25 unused
     # 26 Disp Info
     # 27 Original Faces
+    'lump_27' / Lazy(Pointer(this.lump_t[27].fileofs,
+                             dface_t[this.lump_t[27].filelen // dface_t.sizeof()])),
     # 28 Phys Disp
     # 29 Phys Collide
     # 30 Vert Normals
+    'lump_30' / Lazy(Pointer(this.lump_t[30].fileofs,
+                             Vector[this.lump_t[30].filelen // Vector.sizeof()])),
     # 31 Vert Normal Indices
+    'lump_31' / Lazy(Pointer(this.lump_t[31].fileofs,
+                             Int16ul[this.lump_t[31].filelen // Int16ul.sizeof()])),
     # 32 unused
     # 33 Disp Verts
     # 34 Disp Lightmap Sample Pos
