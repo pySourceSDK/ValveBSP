@@ -1,0 +1,26 @@
+# Bsp-tools
+
+Bsp-tools is a Python library for parsing .bsp files for the Source Engine. It provides provides access to lump data.
+
+### Currently supported lumps
+
+:x: (29) Unsupported :heavy_check_mark: (29) Supported :white_check_mark: (5) Unused :no_good: (1) will not support
+
+| Lump # | Status | Lump # | Status | Lump # | Status | Lump # | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | :heavy_check_mark:   | 16 | :heavy_check_mark:   | 32 | :white_check_mark:   | 48 | :x:                |
+| 1 | :heavy_check_mark:   | 17 | :heavy_check_mark:   | 33 | :x:                  | 49 | :x:                |
+| 2 | :heavy_check_mark:   | 18 | :heavy_check_mark:   | 34 | :x:                  | 50 | :x:                |
+| 3 | :heavy_check_mark:   | 19 | :heavy_check_mark:   | 35 | :x:                  | 51 | :heavy_check_mark: |
+| 4 | :x:                  | 20 | :heavy_check_mark:   | 36 | :x:                  | 52 | :heavy_check_mark: |
+| 5 | :heavy_check_mark:   | 21 | :heavy_check_mark:   | 37 | :x:                  | 53 | :heavy_check_mark: |
+| 6 | :heavy_check_mark:   | 22 | :white_check_mark:   | 38 | :x:                  | 54 | :heavy_check_mark: |
+| 7 | :heavy_check_mark:   | 23 | :white_check_mark:   | 39 | :x:                  | 55 | :heavy_check_mark: |
+| 8 | :heavy_check_mark:   | 24 | :white_check_mark:   | 40 | :x:                  | 56 | :heavy_check_mark: |
+| 9 | :x:                  | 25 | :white_check_mark:   | 41 | :x:                  | 57 | :no_good:          |
+| 10 | :x:                 | 26 | :x:                  | 42 | :heavy_check_mark:   | 58 | :heavy_check_mark: |
+| 11 | :heavy_check_mark:  | 27 | :x:                  | 43 | :heavy_check_mark:   | 59 | :x:                |
+| 12 | :heavy_check_mark:  | 28 | :x:                  | 44 | :heavy_check_mark:   | 60 | :x:                |
+| 13 | :heavy_check_mark:  | 29 | :x:                  | 45 | :x:                  | 61 | :x:                |
+| 14 | :heavy_check_mark:  | 30 | :x:                  | 46 | :x:                  | 62 | :x:                |
+| 15 | :heavy_check_mark:  | 31 | :x:                  | 47 | :x:                  | 63 | :x:                |
