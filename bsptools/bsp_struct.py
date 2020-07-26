@@ -324,9 +324,12 @@ bsp_t = Struct(
 
     # 57 XZIP PakFile
     # 58 Faces HDR
+    'lump_58' / Lazy(Pointer(this.lump_t[58].fileofs,
+                             dface_t[this.lump_t[58].filelen // dface_t.sizeof()])),
     # 59 Map Flags
     # 60 Overlay Fades
     # 61 Overlay System Levels
     # 62 Phys Level
     # 63 Disp Multiblend
+
 )

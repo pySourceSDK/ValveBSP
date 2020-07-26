@@ -12,8 +12,6 @@ class ParseBspTestCase(unittest.TestCase):
         return
 
     def test_struct_bsp(self):
-        with open('/mnt/archive/releases/cp_vanguard_a2.bsp', "rb") as f:
-            results = bsp_t.parse_stream(f)
-            print(results.lump_1)
+        bsp = Bsp('/mnt/archive/releases/cp_vanguard_b7.bsp')
         print(bsp[58])
         self.assertTrue(True)
