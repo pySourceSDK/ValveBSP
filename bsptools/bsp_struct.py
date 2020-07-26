@@ -188,7 +188,13 @@ dcubemapsample_t = Struct(
     'origin' / Int32sl[3],
     'size' / Int32sl
 )
-
+dflagslump_t = Struct(
+    'mLevelFalgs' / Int32ul,
+)
+doverlayfade_t = Struct(
+    'flFadeDistMinSq' / Float32l,
+    'flFadeDistMaxSq' / Float32l
+)
 
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
@@ -287,6 +293,7 @@ bsp_t = Struct(
     # 42 Cubemaps
     'lump_42' / Lazy(Pointer(this.lump_t[42].fileofs,
                              dcubemapsample_t[this.lump_t[42].filelen // dcubemapsample_t.sizeof()])),
+
     # 43 Texture String Data
     'lump_43' / Lazy(Pointer(this.lump_t[43].fileofs,
                              RepeatUntil(lambda x, lst, ctx: len(lst) >=
@@ -327,7 +334,12 @@ bsp_t = Struct(
     'lump_58' / Lazy(Pointer(this.lump_t[58].fileofs,
                              dface_t[this.lump_t[58].filelen // dface_t.sizeof()])),
     # 59 Map Flags
+    'lump_59' / Lazy(Pointer(this.lump_t[59].fileofs,
+                             'mLevelFalgs' / Int32ul)),
     # 60 Overlay Fades
+    'lump_60' / Lazy(Pointer(this.lump_t[60].fileofs,
+                             doverlayfade_t[this.lump_t[60].filelen // doverlayfade_t.sizeof()])),
+
     # 61 Overlay System Levels
     # 62 Phys Level
     # 63 Disp Multiblend

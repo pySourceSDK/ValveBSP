@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from builtins import range
 from builtins import str
 from builtins import open
 from future import standard_library
@@ -34,6 +35,8 @@ class Bsp(object):
             self.mapRevision = self.construct['mapRevision']
 
     def __getitem__(self, index):
+        if index not in range(64):
+            raise IndexError("list index out of range")
         if self.lumps[index]:
             return self.lumps[index]
         elif self.construct:
