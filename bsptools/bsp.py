@@ -12,8 +12,8 @@ standard_library.install_aliases()
 from bsptools.bsp_struct import *  # NOQA: #402
 
 
-LUMPS_UNSUPORTED = [4, 9, 26, 28, 29, 33, 34, 35, 36, 37, 38,
-                    39, 40, 41, 48, 49, 61, 62, 63]
+LUMPS_UNSUPORTED = [4, 35, 36, 37, 38,
+                    39, 40, 41, 49, 61, 62, 63]
 LUMPS_UNUSED = [22, 23, 24, 25, 32]
 
 

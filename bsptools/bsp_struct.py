@@ -243,6 +243,77 @@ doverlayfade_t = Struct(
     'flFadeDistMaxSq' / Float32l
 )
 
+NeighborSpan = Enum(
+    Int8sl,
+    CORNER_TO_CORNER=0,
+    CORNER_TO_MIDPOINT=1,
+    MIDPOINT_TO_CORNER=2
+)
+
+NeighborOrientation = Enum(
+    Int8sl,
+    ORIENTATION_CCW_0=0,
+    ORIENTATION_CCW_90=1,
+    ORIENTATION_CCW_180=2,
+    ORIENTATION_CCW_270=3
+)
+
+
+CDispSubNeighbor = Struct(
+    # 'm_iNeighbor' / Int16ul,
+    # 'm_NeighborOrientation' / NeighborOrientation,
+    # 'm_Span' / NeighborSpan,
+    # 'm_NeighborSpan' / NeighborSpan
+    # The fields seem to be misordered, this is my best guess
+    'm_Span' / NeighborSpan,
+    'm_NeighborSpan' / NeighborSpan,
+    'm_iNeighbor' / Int16ul,
+    'padding' / Padding(1),
+    'm_NeighborOrientation' / NeighborOrientation,
+)
+
+CDispNeighbor = Struct(
+    'm_SubNeighbors' / CDispSubNeighbor[2],
+)
+
+CDispCornerNeighbors = Struct(
+    'm_Neighbors' / Int16ul[MAX_DISP_CORNER_NEIGHBORS],
+    'm_nNeighbors' / Int8ul
+)
+
+ddispinfo_t = Struct(
+    'startPosition' / Vector,
+    'm_iDispVertStart' / Int32sl,
+    'm_iDispTriStart'/Int32sl,
+
+    'power' / Int32sl,
+    'minTess'/Int32sl,
+    'smoothingAngle' / Float32l,
+    'contents'/Int32sl,
+
+    'm_iMapFace' / Int16ul,
+
+    'm_iLightmapAlphaStart' / Int32sl,
+    'm_iLightmapSamplePositionStart' / Int32sl,
+
+    'm_EdgeNeighbors' / CDispNeighbor[4],
+    'm_CornerNeighbors' / CDispCornerNeighbors[4],
+
+    Padding(6),
+
+    'm_AllowedVerts' / Int32ul[ALLOWEDVERTS_SIZE],
+)
+
+CDispVert = Struct(
+    'm_vVector' / Vector,
+    'm_flDist' / Float32l,
+    'm_flAlpha' / Float32l,
+)
+
+CDispTri = Struct(
+    'm_uiTags' / Int16ul
+)
+
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
@@ -276,14 +347,12 @@ bsp_t = Struct(
     # 8 Lightmaps
     'lump_8' / Lazy(Pointer(this.lump_t[8].fileofs,
                             ColorRGBExp32[this.lump_t[8].filelen // ColorRGBExp32.sizeof()])),
-    # 9 Occlusion / TODO (not ready)
-    # 'lump_9' / Lazy(Pointer(this.lump_t[9].fileofs,
-    #                   [this.lump_t[9].filelen // ColorRGBExp32.sizeof()])),
+    # 9 Occlusion
+    'lump_9' / Lazy(Pointer(this.lump_t[9].fileofs, doccluder_t)),
 
     # 10 leafs
     'lump_10' / Lazy(Pointer(this.lump_t[10].fileofs,
                              dleaf_t[this.lump_t[10].filelen // dleaf_t.sizeof()])),
-
     # 11 FaceIds
     'lump_11' / Lazy(Pointer(this.lump_t[11].fileofs,
                              dfaceid_t[this.lump_t[11].filelen // dfaceid_t.sizeof()])),
@@ -322,11 +391,17 @@ bsp_t = Struct(
     # 24 unused
     # 25 unused
     # 26 Disp Info
+    'lump_26' / Lazy(Pointer(this.lump_t[26].fileofs,
+                             ddispinfo_t[this.lump_t[26].filelen // ddispinfo_t.sizeof()])),
     # 27 Original Faces
     'lump_27' / Lazy(Pointer(this.lump_t[27].fileofs,
                              dface_t[this.lump_t[27].filelen // dface_t.sizeof()])),
     # 28 Phys Disp
+    'lump_28' / Lazy(Pointer(this.lump_t[28].fileofs,
+                             Byte[this.lump_t[28].filelen // Byte.sizeof()])),
     # 29 Phys Collide
+    'lump_29' / Lazy(Pointer(this.lump_t[29].fileofs,
+                             Byte[this.lump_t[29].filelen // Byte.sizeof()])),
     # 30 Vert Normals
     'lump_30' / Lazy(Pointer(this.lump_t[30].fileofs,
                              Vector[this.lump_t[30].filelen // Vector.sizeof()])),
@@ -335,7 +410,11 @@ bsp_t = Struct(
                              Int16ul[this.lump_t[31].filelen // Int16ul.sizeof()])),
     # 32 unused
     # 33 Disp Verts
+    'lump_33' / Lazy(Pointer(this.lump_t[33].fileofs,
+                             CDispVert[this.lump_t[33].filelen // CDispVert.sizeof()])),
     # 34 Disp Lightmap Sample Pos
+    'lump_34' / Lazy(Pointer(this.lump_t[34].fileofs,
+                             Int8ul[this.lump_t[34].filelen // Int8ul.sizeof()])),
     # 35 Game Lump
     # 36 Leaf Water Data
     # 37 Primitives
@@ -343,7 +422,6 @@ bsp_t = Struct(
     # 39 Prim Indices
     # 40 PakFile
     # 41 Clip Portal Verts
-
     # 42 Cubemaps
     'lump_42' / Lazy(Pointer(this.lump_t[42].fileofs,
                              dcubemapsample_t[this.lump_t[42].filelen // dcubemapsample_t.sizeof()])),
@@ -366,7 +444,10 @@ bsp_t = Struct(
     'lump_47' / Lazy(Pointer(this.lump_t[47].fileofs,
                              Int16ul[this.lump_t[47].filelen // Int16ul.sizeof()])),
     # 48 Disp Triangles
+    'lump_48' / Lazy(Pointer(this.lump_t[48].fileofs,
+                             CDispTri[this.lump_t[48].filelen // CDispTri.sizeof()])),
     # 49 Phys Collide Surface
+
     # 50 Water Overlays
     'lump_50' / Lazy(Pointer(this.lump_t[50].fileofs,
                              dwateroverlay_t[this.lump_t[50].filelen // dwateroverlay_t.sizeof()])),
@@ -388,8 +469,8 @@ bsp_t = Struct(
     # 56 Leaf Ambient Samples
     'lump_56' / Lazy(Pointer(this.lump_t[56].fileofs,
                              dleafambientlighting_t[this.lump_t[56].filelen // dleafambientlighting_t.sizeof()])),
-
     # 57 XZIP PakFile
+
     # 58 Faces HDR
     'lump_58' / Lazy(Pointer(this.lump_t[58].fileofs,
                              dface_t[this.lump_t[58].filelen // dface_t.sizeof()])),

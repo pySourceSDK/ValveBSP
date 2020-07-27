@@ -9,3 +9,20 @@ HEADER_LUMPS = 64
 OVERLAY_BSP_FACE_COUNT = 64
 WATEROVERLAY_BSP_FACE_COUNT = 256
 MAX_MAP_LEAFS = 65536
+
+MAX_MAP_DISP_POWER = 4
+
+
+def NUM_DISP_POWER_VERTS(power):
+    return (1 * (2 ** power) + 1) * (1 * (2 ** power) + 1)
+
+
+MAX_DISPVERTS = NUM_DISP_POWER_VERTS(4)
+
+
+def PAD_NUMBER(number, boundary):
+    return (number + boundary - 1) // boundary * boundary
+
+
+ALLOWEDVERTS_SIZE = PAD_NUMBER(MAX_DISPVERTS, 32) // 32
+MAX_DISP_CORNER_NEIGHBORS = 4
