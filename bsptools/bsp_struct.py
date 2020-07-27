@@ -359,9 +359,12 @@ bsp_t = Struct(
     # 45 Overlays
     'lump_45' / Lazy(Pointer(this.lump_t[45].fileofs,
                              doverlay_t[this.lump_t[45].filelen // doverlay_t.sizeof()])),
-
     # 46 Leaf Min Dist to Water
+    'lump_46' / Lazy(Pointer(this.lump_t[46].fileofs,
+                             Int16ul[this.lump_t[46].filelen // Int16ul.sizeof()])),
     # 47 Face Macro Texture Info
+    'lump_47' / Lazy(Pointer(this.lump_t[47].fileofs,
+                             Int16ul[this.lump_t[47].filelen // Int16ul.sizeof()])),
     # 48 Disp Triangles
     # 49 Phys Collide Surface
     # 50 Water Overlays

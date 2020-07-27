@@ -4,7 +4,7 @@ Bsp-tools is a Python library for parsing .bsp files for the Source Engine. It p
 
 ### Currently supported lumps
 
-:x: (21) Unsupported :heavy_check_mark: (37) Supported :white_check_mark: (5) Unused :no_good: (1) will not support
+:x: (19) Unsupported :heavy_check_mark: (39) Supported :white_check_mark: (5) Unused :no_good: (1) will not support
 
 | Lump # | Status             | Lump # | Status             | Lump # | Status             | Lump # | Status             |
 | ---    | ---                | ---    | ---                | ---    | ---                | ---    | ---                |
@@ -22,5 +22,5 @@ Bsp-tools is a Python library for parsing .bsp files for the Source Engine. It p
 | 11     | :heavy_check_mark: | 27     | :heavy_check_mark: | 43     | :heavy_check_mark: | 59     | :heavy_check_mark: |
 | 12     | :heavy_check_mark: | 28     | :x:                | 44     | :heavy_check_mark: | 60     | :heavy_check_mark: |
 | 13     | :heavy_check_mark: | 29     | :x:                | 45     | :heavy_check_mark: | 61     | :x:                |
-| 14     | :heavy_check_mark: | 30     | :heavy_check_mark: | 46     | :x:                | 62     | :x:                |
-| 15     | :heavy_check_mark: | 31     | :heavy_check_mark: | 47     | :x:                | 63     | :x:                |
+| 14     | :heavy_check_mark: | 30     | :heavy_check_mark: | 46     | :heavy_check_mark: | 62     | :x:                |
+| 15     | :heavy_check_mark: | 31     | :heavy_check_mark: | 47     | :heavy_check_mark: | 63     | :x:                |
