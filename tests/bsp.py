@@ -1,4 +1,5 @@
 import os
+import sys
 import unittest
 
 from bsptools.bsp import *
@@ -12,6 +13,8 @@ class ParseBspTestCase(unittest.TestCase):
         return
 
     def test_struct_bsp(self):
-        bsp = Bsp('/mnt/archive/releases/cp_vanguard_b7.bsp')
-        print(bsp[58])
+        bsp = Bsp('tests/data/testmap.bsp')
+        print(bsp[35])
+        print(bsp['prps'])
+
         self.assertTrue(True)

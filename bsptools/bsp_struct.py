@@ -340,6 +340,169 @@ dprimvert_t = Struct(
     'pos' / Vector
 )
 
+dgamelump_t = Struct(
+    'id' / PaddedString(4, "ascii"),
+    'flags' / Int16ul,
+    'version' / Int16ul,
+    'fileofs' / Int32sl,
+    'filelen' / Int32sl,
+)
+
+dgamelumpheader_t = Struct(
+    'lumpCount' / Int32sl,
+    'gamelump' / dgamelump_t[this.lumpCount],
+)
+
+StaticPropV6_t = Struct(
+    'm_Origin' / Vector,
+    'm_Angles' / QAngle,
+
+    'm_PropType' / Int16ul,
+    'm_FirstLeaf' / Int16ul,
+    'm_LeafCount' / Int16ul,
+    'm_Solid' / Int8ul,
+    'm_Flags' / Int32ul,
+    'm_Skin' / Int32sl,
+
+    'm_FadeMinDist' / Float32l,
+    'm_FadeMaxDist' / Float32l,
+    'm_LightingOrigin' / Vector,
+
+
+    'm_nMinDXLevel' / Int16ul,
+    'm_nMaxDXLevel' / Int16ul,
+    Padding(1),
+
+    #'m_Lighting' / Int32sl,
+)
+
+StaticPropV10_t = Struct(
+    'Origin' / Vector,
+    'Angles' / QAngle,
+
+    'PropType' / Int16ul,
+    'FirstLeaf' / Int16ul,
+    'LeafCount' / Int16ul,
+    'Solid' / Int8ul,
+    'Flags' / Int32ul,
+    'Skin' / Int32sl,
+
+    'FadeMinDist' / Float32l,
+    'FadeMaxDist' / Float32l,
+    'LightingOrigin' / Vector,
+
+    # v5+
+    'ForcedFadeScale' / Float32l,
+
+    # v6 only
+    #'m_nMinDXLevel' / Int16ul,
+    #'m_nMaxDXLevel' / Int16ul,
+
+    'MinCPULevel' / Int8ul,
+    'MaxCPULevel' / Int8ul,
+    'MinGPULevel' / Int8ul,
+    'MaxGPULevel' / Int8ul,
+
+    # v7
+    'DiffuseModulation' / color32,
+
+    # v9-10
+    'DisableX360' / Flag,
+)
+
+StaticPropDictLump_t = Struct(
+    'count' / Int32sl,
+    'names' / PaddedString(STATIC_PROP_NAME_LENGTH, 'ascii')[this.count]
+)
+StaticPropLeafDictLump_t = Struct(
+    'count' / Int32sl,
+    'leafs' / Int16ul[this.count]
+)
+StaticPropObjectDictLump_t = Struct(
+    'count' / Int32sl,
+    'object' / StaticPropV10_t[this.count]
+)
+StaticPropLightstylesDictLump_t = Struct(
+    'count' / Int32sl,
+    'lightstyles' / ColorRGBExp32[this.count]
+)
+
+StaticPropLump_t = Struct(
+    'dict_lump' / StaticPropDictLump_t,
+    'leaf_lump' / StaticPropLeafDictLump_t,
+    'object_lump' / StaticPropObjectDictLump_t,
+    'lightstyles_lump' / StaticPropLightstylesDictLump_t
+)
+
+DetailPropOrientation_t = Enum(
+    Int8ul,
+    DETAIL_PROP_ORIENT_NORMAL=0,
+    DETAIL_PROP_ORIENT_SCREEN_ALIGNED=1,
+    DETAIL_PROP_ORIENT_SCREEN_ALIGNED_VERTICAL=2,
+)
+
+DetailPropType_t = Enum(
+    Int8ul,
+    DETAIL_PROP_TYPE_MODEL=0,
+    DETAIL_PROP_TYPE_SPRITE=1,
+    DETAIL_PROP_TYPE_SHAPE_CROSS=2,
+    DETAIL_PROP_TYPE_SHAPE_TRI=3,
+)
+
+DetailSpriteLump_t = Struct(
+    'm_UL' / Vector2D,
+    'm_LR' / Vector2D,
+    'm_TexUL' / Vector2D,
+    'm_TexLR' / Vector2D,
+)
+DetailObjectLump_t = Struct(
+    'm_Origin' / Vector,
+    'm_Angles' / QAngle,
+    'm_DetailModel' / Int16ul,
+    'm_Leaf' / Int16ul,
+    'm_Lighting' / ColorRGBExp32,
+    'm_LightStyles' / Int32sl,
+    'm_LightStyleCount' / Int8ul,
+    'm_SwayAmount' / Int8ul,
+    'm_ShapeAngle' / Int8ul,
+    'm_ShapeSize' / Int8ul,
+    'm_Orientation' / DetailPropOrientation_t,
+    'm_Padding2' / Int8ul[3],
+    'm_Type' / DetailPropType_t,
+    'm_Padding3' / Int8ul[3],
+    'm_flScale' / Float32l
+)
+
+DetailPropDictLump_t = Struct(
+    'count' / Int32sl,
+    'names' / PaddedString(DETAIL_NAME_LENGTH, 'ascii')[this.count]
+)
+DetailSpriteDictLump_t = Struct(
+    'count' / Int32sl,
+    'sprites' / DetailSpriteLump_t[this.count]
+)
+DetailObjectDictLump_t = Struct(
+    'count' / Int32sl,
+    'objects' / DetailObjectLump_t[this.count]
+)
+
+DetailPropLump_t = Struct(
+    'dict_lump' / DetailPropDictLump_t,
+    'sprites_lump' / DetailSpriteDictLump_t,
+    'objects_lump' / DetailObjectDictLump_t,
+)
+
+
+DetailPropLightStyleLump_t = Struct(
+    'm_Lighting' / ColorRGBExp32,
+    'm_Style' / Int8ul,
+)
+DetailPropLightStylesLump_t = Struct(
+    'count' / Int32sl,
+    'styles' / DetailPropLightStyleLump_t[this.count]
+)
+
+
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
@@ -444,7 +607,7 @@ bsp_t = Struct(
     'lump_34' / Lazy(Pointer(this.lump_t[34].fileofs,
                              Int8ul[this.lump_t[34].filelen // Int8ul.sizeof()])),
     # 35 Game Lump
-
+    'lump_35' / Lazy(Pointer(this.lump_t[35].fileofs, dgamelumpheader_t)),
 
     # 36 Leaf Water Data
     'lump_36' / Lazy(Pointer(this.lump_t[36].fileofs,
