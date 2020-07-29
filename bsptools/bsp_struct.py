@@ -205,6 +205,12 @@ dleafambientindex_t = Struct(  # matches dleaf_t
     'firstAmbientSample' / Int16ul
 )
 
+dleafwaterdata_t = Struct(
+    'surfaceZ' / Float32l,
+    'minZ' / Float32l,
+    'surfaceTexInfoID' / Int16sl,
+)
+
 dcubemapsample_t = Struct(
     'origin' / Int32sl[3],
     'size' / Int32sl
@@ -314,6 +320,26 @@ CDispTri = Struct(
     'm_uiTags' / Int16ul
 )
 
+
+dprimitive_type = Enum(
+    Int8ul,
+    PRIM_TRILIST=0,
+    PRIM_TRISTRIP=1,
+)
+
+dprimitive_t = Struct(
+    'type' / dprimitive_type,
+    'firstIndex' / Int16ul,
+    'indexCount' / Int16ul,
+    'firstVert' / Int16ul,
+    'vertCount' / Int16ul,
+    Padding(1)
+)
+
+dprimvert_t = Struct(
+    'pos' / Vector
+)
+
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
@@ -409,6 +435,8 @@ bsp_t = Struct(
     'lump_31' / Lazy(Pointer(this.lump_t[31].fileofs,
                              Int16ul[this.lump_t[31].filelen // Int16ul.sizeof()])),
     # 32 unused
+
+
     # 33 Disp Verts
     'lump_33' / Lazy(Pointer(this.lump_t[33].fileofs,
                              CDispVert[this.lump_t[33].filelen // CDispVert.sizeof()])),
@@ -416,16 +444,29 @@ bsp_t = Struct(
     'lump_34' / Lazy(Pointer(this.lump_t[34].fileofs,
                              Int8ul[this.lump_t[34].filelen // Int8ul.sizeof()])),
     # 35 Game Lump
+
+
     # 36 Leaf Water Data
+    'lump_36' / Lazy(Pointer(this.lump_t[36].fileofs,
+                             dleafwaterdata_t[this.lump_t[36].filelen // dleafwaterdata_t.sizeof()])),
     # 37 Primitives
+    'lump_37' / Lazy(Pointer(this.lump_t[37].fileofs,
+                             dprimitive_t[this.lump_t[37].filelen // dprimitive_t.sizeof()])),
     # 38 Prim Verts
+    'lump_38' / Lazy(Pointer(this.lump_t[38].fileofs,
+                             dprimvert_t[this.lump_t[38].filelen // dprimvert_t.sizeof()])),
     # 39 Prim Indices
+    'lump_39' / Lazy(Pointer(this.lump_t[39].fileofs,
+                             Int16ul[this.lump_t[39].filelen // Int16ul.sizeof()])),
     # 40 PakFile
+    'lump_40' / Lazy(Pointer(this.lump_t[40].fileofs,
+                             Bytes(this.lump_t[40].filelen // Byte.sizeof()))),
     # 41 Clip Portal Verts
+    'lump_41' / Lazy(Pointer(this.lump_t[41].fileofs,
+                             Vector[this.lump_t[41].filelen // Vector.sizeof()])),
     # 42 Cubemaps
     'lump_42' / Lazy(Pointer(this.lump_t[42].fileofs,
                              dcubemapsample_t[this.lump_t[42].filelen // dcubemapsample_t.sizeof()])),
-
     # 43 Texture String Data
     'lump_43' / Lazy(Pointer(this.lump_t[43].fileofs,
                              RepeatUntil(lambda x, lst, ctx: len(lst) >=
@@ -433,7 +474,6 @@ bsp_t = Struct(
     # 44 Texture String Table
     'lump_44' / Lazy(Pointer(this.lump_t[44].fileofs,
                              Int32sl[this.lump_t[44].filelen // Int32sl.sizeof()])),
-
     # 45 Overlays
     'lump_45' / Lazy(Pointer(this.lump_t[45].fileofs,
                              doverlay_t[this.lump_t[45].filelen // doverlay_t.sizeof()])),

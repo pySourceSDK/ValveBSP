@@ -12,8 +12,7 @@ standard_library.install_aliases()
 from bsptools.bsp_struct import *  # NOQA: #402
 
 
-LUMPS_UNSUPORTED = [4, 35, 36, 37, 38,
-                    39, 40, 41, 49, 61, 62, 63]
+LUMPS_UNSUPORTED = [4, 35, 49, 61, 62, 63]
 LUMPS_UNUSED = [22, 23, 24, 25, 32]
 
 
@@ -46,11 +45,14 @@ class Bsp(object):
             raise IndexError("Lump ID not Supported")
         if index in LUMPS_UNUSED:
             raise IndexError("Lump ID is unused")
-        if self.lumps[index]:
-            return self.lumps[index]
-        elif self.construct:
-            self.lumps[index] = self.construct['lump_'+str(index)]()
-            return self.lumps[index]
 
-        else:
-            return None
+        if not self.lumps[index]:
+            if self.construct:
+                self.lumps[index] = self.construct['lump_'+str(index)]()
+            else:
+                return None
+
+        if index == 40:
+            return bytearray(self.lumps[index])
+
+        return self.lumps[index]
