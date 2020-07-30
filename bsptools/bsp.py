@@ -1,9 +1,8 @@
-
-
 from __future__ import unicode_literals
 from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from builtins import dict
 from builtins import object
 from builtins import range
 from builtins import str
@@ -18,15 +17,14 @@ from bsptools.bsp_struct import *  # NOQA: #402
 
 LUMPS_UNSUPORTED = [4, 49, 61, 62, 63]
 LUMPS_UNUSED = [22, 23, 24, 25, 32]
-
-GAMELUMP_IDS = {
-    'prps': StaticPropLump_t,
-    'prpd': DetailPropLump_t,
-    'tlpd': DetailPropLightStylesLump_t,
-    'hlpd': DetailPropLightStylesLump_t,
+GAMELUMP_SUPPORTED = {
+    'prps': dict([(10, StaticPropLump_t)]),
+    'prpd': dict([(4, DetailPropLump_t)]),
+    'tlpd': dict([(0, DetailPropLightStylesLump_t)]),
+    'hlpd': dict([(0, DetailPropLightStylesLump_t)])
 }
 
-LUMP_ENTITIES = 0  # NOQA: #221
+LUMP_ENTITIES = 0
 LUMP_PLANES = 1
 LUMP_TEXDATA = 2
 LUMP_VERTEXES = 3
@@ -126,8 +124,13 @@ class Bsp(MutableMapping):
             if index not in self.gamelumps:
                 gamelump = False
                 for lump in self[LUMP_GAME_LUMP].gamelump:
-                    if lump.id == index and index in GAMELUMP_IDS:
-                        gamelump = Pointer(lump.fileofs, GAMELUMP_IDS[index])
+                    if lump.id == index and \
+                       index in GAMELUMP_SUPPORTED:
+                        if lump.version not in GAMELUMP_SUPPORTED[index]:
+                            raise IndexError('Lump version not supported')
+
+                        gamelump = Pointer(
+                            lump.fileofs, GAMELUMP_SUPPORTED[index][lump.version])
                         continue
                 if not gamelump:
                     raise IndexError('Lump ID not Found')
