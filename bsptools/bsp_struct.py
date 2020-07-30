@@ -205,11 +205,11 @@ dleafambientindex_t = Struct(  # matches dleaf_t
     'firstAmbientSample' / Int16ul
 )
 
-dleafwaterdata_t = Struct(
+dleafwaterdata_t = Aligned(4, Struct(
     'surfaceZ' / Float32l,
     'minZ' / Float32l,
     'surfaceTexInfoID' / Int16sl,
-)
+))
 
 dcubemapsample_t = Struct(
     'origin' / Int32sl[3],
@@ -274,7 +274,8 @@ CDispSubNeighbor = Struct(
     'm_Span' / NeighborSpan,
     'm_NeighborSpan' / NeighborSpan,
     'm_iNeighbor' / Int16ul,
-    'padding' / Padding(1),
+    'padding' / Byte,
+
     'm_NeighborOrientation' / NeighborOrientation,
 )
 
@@ -303,9 +304,9 @@ ddispinfo_t = Struct(
     'm_iLightmapSamplePositionStart' / Int32sl,
 
     'm_EdgeNeighbors' / CDispNeighbor[4],
-    'm_CornerNeighbors' / CDispCornerNeighbors[4],
+    'm_CornerNeighbors' / CDispCornerNeighbors[4],  # 9x4=36=24
 
-    Padding(6),
+    'padding' / Bytes(6),
 
     'm_AllowedVerts' / Int32ul[ALLOWEDVERTS_SIZE],
 )
@@ -373,7 +374,7 @@ StaticPropV6_t = Struct(
     'm_nMaxDXLevel' / Int16ul,
     Padding(1),
 
-    #'m_Lighting' / Int32sl,
+    # 'm_Lighting' / Int32sl,
 )
 
 StaticPropV10_t = Struct(
@@ -395,8 +396,8 @@ StaticPropV10_t = Struct(
     'ForcedFadeScale' / Float32l,
 
     # v6 only
-    #'m_nMinDXLevel' / Int16ul,
-    #'m_nMaxDXLevel' / Int16ul,
+    # 'm_nMinDXLevel' / Int16ul,
+    # 'm_nMaxDXLevel' / Int16ul,
 
     'MinCPULevel' / Int8ul,
     'MaxCPULevel' / Int8ul,
@@ -503,189 +504,95 @@ DetailPropLightStylesLump_t = Struct(
 )
 
 
+def l_bytes(ctx, lump_id):
+    lump_info = ctx.lump_t[lump_id]
+    return Lazy(Pointer(lump_info.fileofs, Aligned(4, Bytes(lump_info.filelen))))
+
+
+def l_struct(ctx, lump_id, struct=None):
+    lump_info = ctx.lump_t[lump_id]
+    return Lazy(Pointer(lump_info.fileofs, struct))
+
+
+def l_array(ctx, lump_id, struct=None):
+    lump_info = ctx.lump_t[lump_id]
+    count = lump_info.filelen // struct.sizeof()
+    return Lazy(Pointer(lump_info.fileofs, struct[count]))
+
+
 bsp_t = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
     'lump_t' / lump_t[HEADER_LUMPS],
     'mapRevision' / Int32sl,
 
-    # 0 Entities
-    'lump_0' / Lazy(Pointer(this.lump_t[0].fileofs, CString("ascii"))),
-
-    # 1 Planes
-    'lump_1' / Lazy(Pointer(this.lump_t[1].fileofs,
-                            dplane_t[this.lump_t[1].filelen // dplane_t.sizeof()])),
-    # 2 Texture Data
-    'lump_2' / Lazy(Pointer(this.lump_t[2].fileofs,
-                            dtexdata_t[this.lump_t[2].filelen // dtexdata_t.sizeof()])),
-    # 3 Vertexes
-    'lump_3' / Lazy(Pointer(this.lump_t[3].fileofs,
-                            Vector[this.lump_t[3].filelen // Vector.sizeof()])),
-    # 4 Visibility
-    # 'lump_4' / TODO
-
-    # 5 Nodes
-    'lump_5' / Lazy(Pointer(this.lump_t[5].fileofs,
-                            dnode_t[this.lump_t[5].filelen // dnode_t.sizeof()])),
-    # 6 Texture Info
-    'lump_6' / Lazy(Pointer(this.lump_t[6].fileofs,
-                            texinfo_t[this.lump_t[6].filelen // texinfo_t.sizeof()])),
-    # 7 Faces
-    'lump_7' / Lazy(Pointer(this.lump_t[7].fileofs,
-                            dface_t[this.lump_t[7].filelen // dface_t.sizeof()])),
-    # 8 Lightmaps
-    'lump_8' / Lazy(Pointer(this.lump_t[8].fileofs,
-                            ColorRGBExp32[this.lump_t[8].filelen // ColorRGBExp32.sizeof()])),
-    # 9 Occlusion
-    'lump_9' / Lazy(Pointer(this.lump_t[9].fileofs, doccluder_t)),
-
-    # 10 leafs
-    'lump_10' / Lazy(Pointer(this.lump_t[10].fileofs,
-                             dleaf_t[this.lump_t[10].filelen // dleaf_t.sizeof()])),
-    # 11 FaceIds
-    'lump_11' / Lazy(Pointer(this.lump_t[11].fileofs,
-                             dfaceid_t[this.lump_t[11].filelen // dfaceid_t.sizeof()])),
-    # 12 Edges
-    'lump_12' / Lazy(Pointer(this.lump_t[12].fileofs,
-                             dedge_t[this.lump_t[12].filelen // dedge_t.sizeof()])),
-    # 13 Surfedges
-    'lump_13' / Lazy(Pointer(this.lump_t[13].fileofs,
-                             Int32sl[this.lump_t[13].filelen // Int32sl.sizeof()])),
-    # 14 Models
-    'lump_14' / Lazy(Pointer(this.lump_t[14].fileofs,
-                             Int32sl[this.lump_t[14].filelen // Int32sl.sizeof()])),
-    # 15 Worldlights
-    'lump_15' / Lazy(Pointer(this.lump_t[15].fileofs,
-                             dworldlight_t[this.lump_t[15].filelen // dworldlight_t.sizeof()])),
-    # 16 Leaf Faces
-    'lump_16' / Lazy(Pointer(this.lump_t[16].fileofs,
-                             Int16ul[this.lump_t[16].filelen // Int16ul.sizeof()])),
-    # 17 Leaf Brushes
-    'lump_17' / Lazy(Pointer(this.lump_t[17].fileofs,
-                             Int16ul[this.lump_t[17].filelen // Int16ul.sizeof()])),
-    # 18 Brushes
-    'lump_18' / Lazy(Pointer(this.lump_t[18].fileofs,
-                             dbrush_t[this.lump_t[18].filelen // dbrush_t.sizeof()])),
-    # 19 Brush Sides
-    'lump_19' / Lazy(Pointer(this.lump_t[19].fileofs,
-                             dbrushside_t[this.lump_t[19].filelen // dbrushside_t.sizeof()])),
-    # 20 Areas
-    'lump_20' / Lazy(Pointer(this.lump_t[20].fileofs,
-                             darea_t[this.lump_t[20].filelen // darea_t.sizeof()])),
-    # 21 Areaportals
-    'lump_21' / Lazy(Pointer(this.lump_t[21].fileofs,
-                             dareaportal_t[this.lump_t[21].filelen // dareaportal_t.sizeof()])),
-    # 22 unused
-    # 23 unused
-    # 24 unused
-    # 25 unused
-    # 26 Disp Info
-    'lump_26' / Lazy(Pointer(this.lump_t[26].fileofs,
-                             ddispinfo_t[this.lump_t[26].filelen // ddispinfo_t.sizeof()])),
-    # 27 Original Faces
-    'lump_27' / Lazy(Pointer(this.lump_t[27].fileofs,
-                             dface_t[this.lump_t[27].filelen // dface_t.sizeof()])),
-    # 28 Phys Disp
-    'lump_28' / Lazy(Pointer(this.lump_t[28].fileofs,
-                             Byte[this.lump_t[28].filelen // Byte.sizeof()])),
-    # 29 Phys Collide
-    'lump_29' / Lazy(Pointer(this.lump_t[29].fileofs,
-                             Byte[this.lump_t[29].filelen // Byte.sizeof()])),
-    # 30 Vert Normals
-    'lump_30' / Lazy(Pointer(this.lump_t[30].fileofs,
-                             Vector[this.lump_t[30].filelen // Vector.sizeof()])),
-    # 31 Vert Normal Indices
-    'lump_31' / Lazy(Pointer(this.lump_t[31].fileofs,
-                             Int16ul[this.lump_t[31].filelen // Int16ul.sizeof()])),
-    # 32 unused
-
-
-    # 33 Disp Verts
-    'lump_33' / Lazy(Pointer(this.lump_t[33].fileofs,
-                             CDispVert[this.lump_t[33].filelen // CDispVert.sizeof()])),
-    # 34 Disp Lightmap Sample Pos
-    'lump_34' / Lazy(Pointer(this.lump_t[34].fileofs,
-                             Int8ul[this.lump_t[34].filelen // Int8ul.sizeof()])),
-    # 35 Game Lump
-    'lump_35' / Lazy(Pointer(this.lump_t[35].fileofs, dgamelumpheader_t)),
-
-    # 36 Leaf Water Data
-    'lump_36' / Lazy(Pointer(this.lump_t[36].fileofs,
-                             dleafwaterdata_t[this.lump_t[36].filelen // dleafwaterdata_t.sizeof()])),
-    # 37 Primitives
-    'lump_37' / Lazy(Pointer(this.lump_t[37].fileofs,
-                             dprimitive_t[this.lump_t[37].filelen // dprimitive_t.sizeof()])),
-    # 38 Prim Verts
-    'lump_38' / Lazy(Pointer(this.lump_t[38].fileofs,
-                             dprimvert_t[this.lump_t[38].filelen // dprimvert_t.sizeof()])),
-    # 39 Prim Indices
-    'lump_39' / Lazy(Pointer(this.lump_t[39].fileofs,
-                             Int16ul[this.lump_t[39].filelen // Int16ul.sizeof()])),
-    # 40 PakFile
-    'lump_40' / Lazy(Pointer(this.lump_t[40].fileofs,
-                             Bytes(this.lump_t[40].filelen // Byte.sizeof()))),
-    # 41 Clip Portal Verts
-    'lump_41' / Lazy(Pointer(this.lump_t[41].fileofs,
-                             Vector[this.lump_t[41].filelen // Vector.sizeof()])),
-    # 42 Cubemaps
-    'lump_42' / Lazy(Pointer(this.lump_t[42].fileofs,
-                             dcubemapsample_t[this.lump_t[42].filelen // dcubemapsample_t.sizeof()])),
-    # 43 Texture String Data
-    'lump_43' / Lazy(Pointer(this.lump_t[43].fileofs,
+    'lump_0' / l_struct(this, LUMP_ENTITIES, CString("ascii")),
+    'lump_1' / l_array(this, LUMP_PLANES, dplane_t),
+    'lump_2' / l_array(this, LUMP_TEXDATA, dtexdata_t),
+    'lump_3' / l_array(this, LUMP_VERTEXES, Vector),
+    'lump_4' / l_bytes(this, LUMP_VISIBILITY),
+    'lump_5' / l_array(this, LUMP_NODES, dnode_t),
+    'lump_6' / l_array(this, LUMP_TEXINFO, texinfo_t),
+    'lump_7' / l_array(this, LUMP_FACES, dface_t),
+    'lump_8' / l_array(this, LUMP_LIGHTING, ColorRGBExp32),
+    'lump_9' / l_struct(this, LUMP_OCCLUSION, doccluder_t),
+    'lump_10' / l_array(this, LUMP_LEAFS, dleaf_t),
+    'lump_11' / l_array(this, LUMP_FACEIDS, dfaceid_t),
+    'lump_12' / l_array(this, LUMP_EDGES, dedge_t),
+    'lump_13' / l_array(this, LUMP_SURFEDGES, Int32sl),
+    'lump_14' / l_array(this, LUMP_MODELS, Int32sl),
+    'lump_15' / l_array(this, LUMP_WORLDLIGHTS, dworldlight_t),
+    'lump_16' / l_array(this, LUMP_LEAFFACES, Int16ul),
+    'lump_17' / l_array(this, LUMP_LEAFBRUSHES, Int16ul),
+    'lump_18' / l_array(this, LUMP_BRUSHES, dbrush_t),
+    'lump_19' / l_array(this, LUMP_BRUSHSIDES, dbrushside_t),
+    'lump_20' / l_array(this, LUMP_AREAS, darea_t),
+    'lump_21' / l_array(this, LUMP_AREAPORTALS, dareaportal_t),
+    'lump_22' / l_bytes(this, LUMP_UNUSED0),
+    'lump_23' / l_bytes(this, LUMP_UNUSED1),
+    'lump_24' / l_bytes(this, LUMP_UNUSED2),
+    'lump_25' / l_bytes(this, LUMP_UNUSED3),
+    'lump_26' / l_array(this, LUMP_DISPINFO, ddispinfo_t),
+    'lump_27' / l_array(this, LUMP_ORIGINALFACES, dface_t),
+    'lump_28' / l_array(this, LUMP_PHYSDISP, Byte),
+    'lump_29' / l_array(this, LUMP_PHYSCOLLIDE, Byte),
+    'lump_30' / l_array(this, LUMP_VERTNORMALS, Vector),
+    'lump_31' / l_array(this, LUMP_VERTNORMALINDICES, Int16ul),
+    'lump_32' / l_bytes(this, LUMP_DISP_LIGHTMAP_ALPHAS),
+    'lump_33' / l_array(this, LUMP_DISP_VERTS, CDispVert),
+    'lump_34' / l_array(this, LUMP_DISP_LIGHTMAP_SAMPLE_POSITIONS, Int8ul),
+    #'lump_35' / l_struct(this, LUMP_GAME_LUMP, dgamelumpheader_t),
+    'lump_35' / l_bytes(this, LUMP_GAME_LUMP),
+    'lump_36' / l_array(this, LUMP_LEAFWATERDATA, dleafwaterdata_t),
+    'lump_37' / l_array(this, LUMP_PRIMITIVES, dprimitive_t),
+    'lump_38' / l_array(this, LUMP_PRIMVERTS, dprimvert_t),
+    'lump_39' / l_array(this, LUMP_PRIMINDICES, Int16ul),
+    'lump_40' / l_bytes(this, LUMP_PAKFILE),
+    'lump_41' / l_array(this, LUMP_CLIPPORTALVERTS, Vector),
+    'lump_42' / l_array(this, LUMP_CUBEMAPS, dcubemapsample_t),
+    'lump_43' / Lazy(Pointer(this.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
                              RepeatUntil(lambda x, lst, ctx: len(lst) >=
-                                         ctx.lump_t[44].filelen // Int32sl.sizeof(), CString("ascii")))),
-    # 44 Texture String Table
-    'lump_44' / Lazy(Pointer(this.lump_t[44].fileofs,
-                             Int32sl[this.lump_t[44].filelen // Int32sl.sizeof()])),
-    # 45 Overlays
-    'lump_45' / Lazy(Pointer(this.lump_t[45].fileofs,
-                             doverlay_t[this.lump_t[45].filelen // doverlay_t.sizeof()])),
-    # 46 Leaf Min Dist to Water
-    'lump_46' / Lazy(Pointer(this.lump_t[46].fileofs,
-                             Int16ul[this.lump_t[46].filelen // Int16ul.sizeof()])),
-    # 47 Face Macro Texture Info
-    'lump_47' / Lazy(Pointer(this.lump_t[47].fileofs,
-                             Int16ul[this.lump_t[47].filelen // Int16ul.sizeof()])),
-    # 48 Disp Triangles
-    'lump_48' / Lazy(Pointer(this.lump_t[48].fileofs,
-                             CDispTri[this.lump_t[48].filelen // CDispTri.sizeof()])),
-    # 49 Phys Collide Surface
-
-    # 50 Water Overlays
-    'lump_50' / Lazy(Pointer(this.lump_t[50].fileofs,
-                             dwateroverlay_t[this.lump_t[50].filelen // dwateroverlay_t.sizeof()])),
-    # 51 Leaf Ambient Index HDR
-    'lump_51' / Lazy(Pointer(this.lump_t[51].fileofs,
-                             dleafambientindex_t[this.lump_t[52].filelen // dleafambientindex_t.sizeof()])),
-    # 52 Leaf Ambient Index
-    'lump_52' / Lazy(Pointer(this.lump_t[52].fileofs,
-                             dleafambientindex_t[this.lump_t[53].filelen // dleafambientindex_t.sizeof()])),
-    # 53 Lightmaps HDR
-    'lump_53' / Lazy(Pointer(this.lump_t[53].fileofs,
-                             ColorRGBExp32[this.lump_t[53].filelen // ColorRGBExp32.sizeof()])),
-    # 54 Worldlights HDR
-    'lump_54' / Lazy(Pointer(this.lump_t[54].fileofs,
-                             dworldlight_t[this.lump_t[54].filelen // dworldlight_t.sizeof()])),
-    # 55 Leaf Ambient Samples HDR
-    'lump_55' / Lazy(Pointer(this.lump_t[55].fileofs,
-                             dleafambientlighting_t[this.lump_t[55].filelen // dleafambientlighting_t.sizeof()])),
-    # 56 Leaf Ambient Samples
-    'lump_56' / Lazy(Pointer(this.lump_t[56].fileofs,
-                             dleafambientlighting_t[this.lump_t[56].filelen // dleafambientlighting_t.sizeof()])),
-    # 57 XZIP PakFile
-
-    # 58 Faces HDR
-    'lump_58' / Lazy(Pointer(this.lump_t[58].fileofs,
-                             dface_t[this.lump_t[58].filelen // dface_t.sizeof()])),
-    # 59 Map Flags
-    'lump_59' / Lazy(Pointer(this.lump_t[59].fileofs,
-                             'mLevelFalgs' / Int32ul)),
-    # 60 Overlay Fades
-    'lump_60' / Lazy(Pointer(this.lump_t[60].fileofs,
-                             doverlayfade_t[this.lump_t[60].filelen // doverlayfade_t.sizeof()])),
-
-    # 61 Overlay System Levels
-    # 62 Phys Level
-    # 63 Disp Multiblend
-
+                                         ctx.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii")))),
+    'lump_44' / l_array(this, LUMP_TEXDATA_STRING_TABLE, Int32sl),
+    'lump_45' / l_array(this, LUMP_OVERLAYS, doverlay_t),
+    'lump_46' / l_array(this, LUMP_LEAFMINDISTTOWATER, Int16ul),
+    'lump_47' / l_array(this, LUMP_FACE_MACRO_TEXTURE_INFO, Int16ul),
+    'lump_48' / l_array(this, LUMP_DISP_TRIS, CDispTri),
+    'lump_49' / l_bytes(this, LUMP_PHYSCOLLIDESURFACE),
+    'lump_50' / l_array(this, LUMP_WATEROVERLAYS, dwateroverlay_t),
+    'lump_51' / l_array(this, LUMP_LEAF_AMBIENT_INDEX_HDR, dleafambientindex_t),
+    'lump_52' / l_array(this, LUMP_LEAF_AMBIENT_INDEX, dleafambientindex_t),
+    'lump_53' / l_array(this, LUMP_LIGHTING_HDR, ColorRGBExp32),
+    'lump_54' / l_array(this, LUMP_WORLDLIGHTS_HDR, dworldlight_t),
+    'lump_55' / l_array(this, LUMP_LEAF_AMBIENT_LIGHTING_HDR,
+                        dleafambientlighting_t),
+    'lump_56' / l_array(this, LUMP_LEAF_AMBIENT_LIGHTING,
+                        dleafambientlighting_t),
+    'lump_57' / l_bytes(this, LUMP_XZIPPAKFILE),
+    'lump_58' / l_array(this, LUMP_FACES_HDR, dface_t),
+    'lump_59' / l_struct(this, LUMP_MAP_FLAGS, Struct('mLevelFlags' / Int32ul)),
+    'lump_60' / l_array(this, LUMP_OVERLAY_FADES, doverlayfade_t),
+    'lump_61' / l_bytes(this, LUMP_OVERLAY_SYSTEM_LEVELS),
+    'lump_62' / l_bytes(this, LUMP_PHYSLEVEL),
+    'lump_63' / l_bytes(this, LUMP_DISP_MULTIBLEND)
 )
