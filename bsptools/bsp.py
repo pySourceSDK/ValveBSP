@@ -1,3 +1,4 @@
+
 from __future__ import unicode_literals
 from __future__ import print_function
 from __future__ import division
@@ -11,14 +12,16 @@ from future import standard_library
 standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
+
 from collections.abc import MutableMapping  # NOQA: #402
-from bsptools.bsp_struct import *  # NOQA: #402
+from bsptools.constants import LUMP_GAME_LUMP  # NOQA: #402
+import bsptools.bsp_struct as BSP  # NOQA: #402
 
 GAMELUMP_SUPPORTED = {
-    'prps': dict([(10, StaticPropLump_t)]),
-    'prpd': dict([(4, DetailPropLump_t)]),
-    'tlpd': dict([(0, DetailPropLightStylesLump_t)]),
-    'hlpd': dict([(0, DetailPropLightStylesLump_t)])
+    'prps': dict([(10, BSP.StaticPropLump_t)]),
+    'prpd': dict([(4, BSP.DetailPropLump_t)]),
+    'tlpd': dict([(0, BSP.DetailPropLightStylesLump_t)]),
+    'hlpd': dict([(0, BSP.DetailPropLightStylesLump_t)])
 }
 
 
@@ -28,24 +31,24 @@ class Bsp(MutableMapping):
     def __init__(self, path=None):
         """Creates an empty instance of Bsp."""
 
-        self.ident = None
-        self.version = None
-        self.offsets = None
-        self.mapRevision = None
-        self.lumps = [None] * 64
-        self.gamelumps = {}
         self.source_path = None
-        self.construct = None
+        self.header = None
+        self.game_header = None
+
+        self.lumps = [None] * 64
+        self.game_lumps = {}
 
         if path:
-            self.f = open(path, "rb")
             self.source_path = path
-            self.construct = bsp_t.parse_stream(self.f)
+            with open(path, 'rb') as f:
+                self.header = self._parse_stream(f, BSP.header)
+                self.game_header = self._parse_stream(f, BSP.lump_35)
 
-            self.ident = self.construct['ident']
-            self.version = self.construct['version']
-            self.lump_t = self.construct['lump_t']
-            self.mapRevision = self.construct['mapRevision']
+    def _parse_stream(self, f, struct):
+        return struct.parse_stream(f, header=self.header)
+
+    def _parse_file(self, struct):
+        return struct.parse_file(self.source_path, header=self.header)
 
     def __setitem__(self, key, value):
         return
@@ -54,7 +57,7 @@ class Bsp(MutableMapping):
 
         if isinstance(index, str):  # It's a gamelump id
 
-            if index not in self.gamelumps:
+            if index not in self.game_lumps:
                 gamelump = False
                 for lump in self[LUMP_GAME_LUMP].gamelump:
                     if lump.id == index and \
@@ -68,17 +71,17 @@ class Bsp(MutableMapping):
                 if not gamelump:
                     raise IndexError('Lump ID not Found')
 
-                self.gamelumps[index] = gamelump.parse_stream(self.f)
-
-            return self.gamelumps[index]
+                self.game_lumps[index] = self._parse_file(gamelump)
+            return self.game_lumps[index]
 
         elif isinstance(index, int):  # It's a lump id
 
             if index not in range(64):
                 raise IndexError("Lump ID out of range")
             if not self.lumps[index]:
-                if self.construct:
-                    self.lumps[index] = self.construct['lump_'+str(index)]()
+                if self.header:
+                    lump_n = getattr(BSP, 'lump_' + str(index))
+                    self.lumps[index] = self._parse_file(lump_n)
                 else:
                     return None
 

@@ -493,106 +493,99 @@ DetailPropLump_t = Struct(
     'objects_lump' / DetailObjectDictLump_t,
 )
 
-
 DetailPropLightStyleLump_t = Struct(
     'm_Lighting' / ColorRGBExp32,
     'm_Style' / Int8ul,
 )
+
 DetailPropLightStylesLump_t = Struct(
     'count' / Int32sl,
     'styles' / DetailPropLightStyleLump_t[this.count]
 )
 
 
-def l_bytes(ctx, lump_id):
-    lump_info = ctx.lump_t[lump_id]
-    return Lazy(Pointer(lump_info.fileofs, Aligned(4, Bytes(lump_info.filelen))))
+def lump_bytes(lump_id):
+    return Pointer(this.header.lump_t[lump_id].fileofs, Aligned(4, Bytes(this.header.lump_t[lump_id].filelen)))
 
 
-def l_struct(ctx, lump_id, struct=None):
-    lump_info = ctx.lump_t[lump_id]
-    return Lazy(Pointer(lump_info.fileofs, struct))
+def lump_struct(lump_id, struct=None):
+    return Pointer(this.header.lump_t[lump_id].fileofs, struct)
 
 
-def l_array(ctx, lump_id, struct=None):
-    lump_info = ctx.lump_t[lump_id]
-    count = lump_info.filelen // struct.sizeof()
-    return Lazy(Pointer(lump_info.fileofs, struct[count]))
+def lump_array(lump_id, struct=None):
+    return Pointer(this.header.lump_t[lump_id].fileofs, struct[this.header.lump_t[lump_id].filelen // struct.sizeof()])
 
 
-bsp_t = Struct(
+header = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
     'lump_t' / lump_t[HEADER_LUMPS],
-    'mapRevision' / Int32sl,
-
-    'lump_0' / l_struct(this, LUMP_ENTITIES, CString("ascii")),
-    'lump_1' / l_array(this, LUMP_PLANES, dplane_t),
-    'lump_2' / l_array(this, LUMP_TEXDATA, dtexdata_t),
-    'lump_3' / l_array(this, LUMP_VERTEXES, Vector),
-    'lump_4' / l_bytes(this, LUMP_VISIBILITY),
-    'lump_5' / l_array(this, LUMP_NODES, dnode_t),
-    'lump_6' / l_array(this, LUMP_TEXINFO, texinfo_t),
-    'lump_7' / l_array(this, LUMP_FACES, dface_t),
-    'lump_8' / l_array(this, LUMP_LIGHTING, ColorRGBExp32),
-    'lump_9' / l_struct(this, LUMP_OCCLUSION, doccluder_t),
-    'lump_10' / l_array(this, LUMP_LEAFS, dleaf_t),
-    'lump_11' / l_array(this, LUMP_FACEIDS, dfaceid_t),
-    'lump_12' / l_array(this, LUMP_EDGES, dedge_t),
-    'lump_13' / l_array(this, LUMP_SURFEDGES, Int32sl),
-    'lump_14' / l_array(this, LUMP_MODELS, Int32sl),
-    'lump_15' / l_array(this, LUMP_WORLDLIGHTS, dworldlight_t),
-    'lump_16' / l_array(this, LUMP_LEAFFACES, Int16ul),
-    'lump_17' / l_array(this, LUMP_LEAFBRUSHES, Int16ul),
-    'lump_18' / l_array(this, LUMP_BRUSHES, dbrush_t),
-    'lump_19' / l_array(this, LUMP_BRUSHSIDES, dbrushside_t),
-    'lump_20' / l_array(this, LUMP_AREAS, darea_t),
-    'lump_21' / l_array(this, LUMP_AREAPORTALS, dareaportal_t),
-    'lump_22' / l_bytes(this, LUMP_UNUSED0),
-    'lump_23' / l_bytes(this, LUMP_UNUSED1),
-    'lump_24' / l_bytes(this, LUMP_UNUSED2),
-    'lump_25' / l_bytes(this, LUMP_UNUSED3),
-    'lump_26' / l_array(this, LUMP_DISPINFO, ddispinfo_t),
-    'lump_27' / l_array(this, LUMP_ORIGINALFACES, dface_t),
-    'lump_28' / l_array(this, LUMP_PHYSDISP, Byte),
-    'lump_29' / l_array(this, LUMP_PHYSCOLLIDE, Byte),
-    'lump_30' / l_array(this, LUMP_VERTNORMALS, Vector),
-    'lump_31' / l_array(this, LUMP_VERTNORMALINDICES, Int16ul),
-    'lump_32' / l_bytes(this, LUMP_DISP_LIGHTMAP_ALPHAS),
-    'lump_33' / l_array(this, LUMP_DISP_VERTS, CDispVert),
-    'lump_34' / l_array(this, LUMP_DISP_LIGHTMAP_SAMPLE_POSITIONS, Int8ul),
-    #'lump_35' / l_struct(this, LUMP_GAME_LUMP, dgamelumpheader_t),
-    'lump_35' / l_bytes(this, LUMP_GAME_LUMP),
-    'lump_36' / l_array(this, LUMP_LEAFWATERDATA, dleafwaterdata_t),
-    'lump_37' / l_array(this, LUMP_PRIMITIVES, dprimitive_t),
-    'lump_38' / l_array(this, LUMP_PRIMVERTS, dprimvert_t),
-    'lump_39' / l_array(this, LUMP_PRIMINDICES, Int16ul),
-    'lump_40' / l_bytes(this, LUMP_PAKFILE),
-    'lump_41' / l_array(this, LUMP_CLIPPORTALVERTS, Vector),
-    'lump_42' / l_array(this, LUMP_CUBEMAPS, dcubemapsample_t),
-    'lump_43' / Lazy(Pointer(this.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
-                             RepeatUntil(lambda x, lst, ctx: len(lst) >=
-                                         ctx.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii")))),
-    'lump_44' / l_array(this, LUMP_TEXDATA_STRING_TABLE, Int32sl),
-    'lump_45' / l_array(this, LUMP_OVERLAYS, doverlay_t),
-    'lump_46' / l_array(this, LUMP_LEAFMINDISTTOWATER, Int16ul),
-    'lump_47' / l_array(this, LUMP_FACE_MACRO_TEXTURE_INFO, Int16ul),
-    'lump_48' / l_array(this, LUMP_DISP_TRIS, CDispTri),
-    'lump_49' / l_bytes(this, LUMP_PHYSCOLLIDESURFACE),
-    'lump_50' / l_array(this, LUMP_WATEROVERLAYS, dwateroverlay_t),
-    'lump_51' / l_array(this, LUMP_LEAF_AMBIENT_INDEX_HDR, dleafambientindex_t),
-    'lump_52' / l_array(this, LUMP_LEAF_AMBIENT_INDEX, dleafambientindex_t),
-    'lump_53' / l_array(this, LUMP_LIGHTING_HDR, ColorRGBExp32),
-    'lump_54' / l_array(this, LUMP_WORLDLIGHTS_HDR, dworldlight_t),
-    'lump_55' / l_array(this, LUMP_LEAF_AMBIENT_LIGHTING_HDR,
-                        dleafambientlighting_t),
-    'lump_56' / l_array(this, LUMP_LEAF_AMBIENT_LIGHTING,
-                        dleafambientlighting_t),
-    'lump_57' / l_bytes(this, LUMP_XZIPPAKFILE),
-    'lump_58' / l_array(this, LUMP_FACES_HDR, dface_t),
-    'lump_59' / l_struct(this, LUMP_MAP_FLAGS, Struct('mLevelFlags' / Int32ul)),
-    'lump_60' / l_array(this, LUMP_OVERLAY_FADES, doverlayfade_t),
-    'lump_61' / l_bytes(this, LUMP_OVERLAY_SYSTEM_LEVELS),
-    'lump_62' / l_bytes(this, LUMP_PHYSLEVEL),
-    'lump_63' / l_bytes(this, LUMP_DISP_MULTIBLEND)
+    'mapRevision' / Int32sl
 )
+
+lump_0 = lump_struct(LUMP_ENTITIES, CString("ascii"))
+lump_1 = lump_array(LUMP_PLANES, dplane_t)
+lump_2 = lump_array(LUMP_TEXDATA, dtexdata_t)
+lump_3 = lump_array(LUMP_VERTEXES, Vector)
+lump_4 = lump_bytes(LUMP_VISIBILITY)
+lump_5 = lump_array(LUMP_NODES, dnode_t)
+lump_6 = lump_array(LUMP_TEXINFO, texinfo_t)
+lump_7 = lump_array(LUMP_FACES, dface_t)
+lump_8 = lump_array(LUMP_LIGHTING, ColorRGBExp32)
+lump_9 = lump_struct(LUMP_OCCLUSION, doccluder_t)
+lump_10 = lump_array(LUMP_LEAFS, dleaf_t)
+lump_11 = lump_array(LUMP_FACEIDS, dfaceid_t)
+lump_12 = lump_array(LUMP_EDGES, dedge_t)
+lump_13 = lump_array(LUMP_SURFEDGES, Int32sl)
+lump_14 = lump_array(LUMP_MODELS, Int32sl)
+lump_15 = lump_array(LUMP_WORLDLIGHTS, dworldlight_t)
+lump_16 = lump_array(LUMP_LEAFFACES, Int16ul)
+lump_17 = lump_array(LUMP_LEAFBRUSHES, Int16ul)
+lump_18 = lump_array(LUMP_BRUSHES, dbrush_t)
+lump_19 = lump_array(LUMP_BRUSHSIDES, dbrushside_t)
+lump_20 = lump_array(LUMP_AREAS, darea_t)
+lump_21 = lump_array(LUMP_AREAPORTALS, dareaportal_t)
+lump_22 = lump_bytes(LUMP_UNUSED0)
+lump_23 = lump_bytes(LUMP_UNUSED1)
+lump_24 = lump_bytes(LUMP_UNUSED2)
+lump_25 = lump_bytes(LUMP_UNUSED3)
+lump_26 = lump_array(LUMP_DISPINFO, ddispinfo_t)
+lump_27 = lump_array(LUMP_ORIGINALFACES, dface_t)
+lump_28 = lump_array(LUMP_PHYSDISP, Byte)
+lump_29 = lump_array(LUMP_PHYSCOLLIDE, Byte)
+lump_30 = lump_array(LUMP_VERTNORMALS, Vector)
+lump_31 = lump_array(LUMP_VERTNORMALINDICES, Int16ul)
+lump_32 = lump_bytes(LUMP_DISP_LIGHTMAP_ALPHAS)
+lump_33 = lump_array(LUMP_DISP_VERTS, CDispVert)
+lump_34 = lump_array(LUMP_DISP_LIGHTMAP_SAMPLE_POSITIONS, Int8ul)
+lump_35 = lump_struct(LUMP_GAME_LUMP, dgamelumpheader_t)
+lump_36 = lump_array(LUMP_LEAFWATERDATA, dleafwaterdata_t)
+lump_37 = lump_array(LUMP_PRIMITIVES, dprimitive_t)
+lump_38 = lump_array(LUMP_PRIMVERTS, dprimvert_t)
+lump_39 = lump_array(LUMP_PRIMINDICES, Int16ul)
+lump_40 = lump_bytes(LUMP_PAKFILE)
+lump_41 = lump_array(LUMP_CLIPPORTALVERTS, Vector)
+lump_42 = lump_array(LUMP_CUBEMAPS, dcubemapsample_t)
+lump_43 = Pointer(this.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
+                  RepeatUntil(lambda x, lst, ctx: len(lst) >=
+                              ctx.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii"))),
+lump_44 = lump_array(LUMP_TEXDATA_STRING_TABLE, Int32sl)
+lump_45 = lump_array(LUMP_OVERLAYS, doverlay_t)
+lump_46 = lump_array(LUMP_LEAFMINDISTTOWATER, Int16ul)
+lump_47 = lump_array(LUMP_FACE_MACRO_TEXTURE_INFO, Int16ul)
+lump_48 = lump_array(LUMP_DISP_TRIS, CDispTri)
+lump_49 = lump_bytes(LUMP_PHYSCOLLIDESURFACE)
+lump_50 = lump_array(LUMP_WATEROVERLAYS, dwateroverlay_t)
+lump_51 = lump_array(LUMP_LEAF_AMBIENT_INDEX_HDR, dleafambientindex_t)
+lump_52 = lump_array(LUMP_LEAF_AMBIENT_INDEX, dleafambientindex_t)
+lump_53 = lump_array(LUMP_LIGHTING_HDR, ColorRGBExp32)
+lump_54 = lump_array(LUMP_WORLDLIGHTS_HDR, dworldlight_t)
+lump_55 = lump_array(LUMP_LEAF_AMBIENT_LIGHTING_HDR, dleafambientlighting_t)
+lump_56 = lump_array(LUMP_LEAF_AMBIENT_LIGHTING, dleafambientlighting_t)
+lump_57 = lump_bytes(LUMP_XZIPPAKFILE)
+lump_58 = lump_array(LUMP_FACES_HDR, dface_t)
+lump_59 = lump_struct(LUMP_MAP_FLAGS, Struct(mLevelFlags=Int32ul))
+lump_60 = lump_array(LUMP_OVERLAY_FADES, doverlayfade_t)
+lump_61 = lump_bytes(LUMP_OVERLAY_SYSTEM_LEVELS)
+lump_62 = lump_bytes(LUMP_PHYSLEVEL)
+lump_63 = lump_bytes(LUMP_DISP_MULTIBLEND)
