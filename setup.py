@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 setup(
     name='bsptools',
     packages=['bsptools'],
@@ -9,8 +9,8 @@ setup(
     author_email='mdupuis@hotmail.ca',
     url='https://maxdup.github.io/bsp-tools/',
     # download_url='https://github.com/maxdup/bsp-tools/archive/v0.0.1.tar.gz',
-    keywords=['bsp', 'source', 'hammer'],
-    install_requires=['future'],
+    keywords=['bsp', 'source', 'hammer', 'valve'],
+    install_requires=['construct', 'future'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',

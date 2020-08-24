@@ -1,7 +1,7 @@
 from __future__ import division
 from __future__ import absolute_import
-from __future__ import print_function
 from __future__ import unicode_literals
+from __future__ import print_function
 from builtins import int
 from future import standard_library
 standard_library.install_aliases()
@@ -38,7 +38,7 @@ dvis_t = Struct(
     'bitofs' / Int32sl[8][2]
 )
 
-dnode_t = Struct(
+dnode_t = Aligned(4, Struct(
     'planenum' / Int32sl,
     'children' / Int32sl[2],
     'mins' / Int16sl[3],
@@ -46,8 +46,7 @@ dnode_t = Struct(
     'firstface' / Int16ul,
     'numfaces' / Int16ul,
     'area' / Int16sl,
-    'padding' / Int16sl,
-)
+))
 
 texinfo_t = Struct(
     'textureVecsTexelsPerWorldUnits' / Float32l[2][4],
@@ -144,7 +143,7 @@ dworldlight_t = Struct(
     'linear_attn' / Float32l,
     'quadratic_attn' / Float32l,
     'flags' / Int32sl,
-    'texinfo' / Int32sl,  # lump 2
+    'texinfo' / Int32sl * "refers to lump 2",
     'owner' / Int32sl,  # lump 0
 )
 
@@ -178,8 +177,11 @@ dleaf_t = Struct(
     'contents' / Int32sl,
     'cluster' / Int16sl,
 
-    'area' / Int16sl,
-    'flags' / Int16sl,
+
+    'areaflag' / BitStruct(
+        'area' / BitsInteger(7),
+        'flags' / BitsInteger(9)),
+    'unknown' / Int16sl,
 
     'mins' / Int16sl[3],
     'maxs' / Int16sl[3],
@@ -192,13 +194,12 @@ dleaf_t = Struct(
     'leafWaterDataID' / Int16sl
 )
 
-dleafambientlighting_t = Struct(
+dleafambientlighting_t = Aligned(4, Struct(
     'cube' / CompressedLightCube,
     'x' / Byte,
     'y' / Byte,
-    'z' / Byte,
-    'pad' / Byte
-)
+    'z' / Byte
+))
 
 dleafambientindex_t = Struct(  # matches dleaf_t
     'ambientSampleCount' / Int16ul,
@@ -274,7 +275,7 @@ CDispSubNeighbor = Struct(
     'm_Span' / NeighborSpan,
     'm_NeighborSpan' / NeighborSpan,
     'm_iNeighbor' / Int16ul,
-    'padding' / Byte,
+    'unknown' / Byte,
 
     'm_NeighborOrientation' / NeighborOrientation,
 )
@@ -304,9 +305,10 @@ ddispinfo_t = Struct(
     'm_iLightmapSamplePositionStart' / Int32sl,
 
     'm_EdgeNeighbors' / CDispNeighbor[4],
-    'm_CornerNeighbors' / CDispCornerNeighbors[4],  # 9x4=36=24
+    'm_CornerNeighbors' / CDispCornerNeighbors[4],
 
-    'padding' / Bytes(6),
+    'unknown' / Bytes(6),
+
 
     'm_AllowedVerts' / Int32ul[ALLOWEDVERTS_SIZE],
 )
@@ -328,14 +330,13 @@ dprimitive_type = Enum(
     PRIM_TRISTRIP=1,
 )
 
-dprimitive_t = Struct(
+dprimitive_t = Aligned(2, Struct(
     'type' / dprimitive_type,
     'firstIndex' / Int16ul,
     'indexCount' / Int16ul,
     'firstVert' / Int16ul,
     'vertCount' / Int16ul,
-    Padding(1)
-)
+))
 
 dprimvert_t = Struct(
     'pos' / Vector
@@ -408,7 +409,7 @@ StaticPropV10_t = Struct(
     'DiffuseModulation' / color32,
 
     # v9-10
-    'DisableX360' / Flag,
+    'DisableX360' / Int8ul,
 )
 
 StaticPropDictLump_t = Struct(
@@ -505,22 +506,31 @@ DetailPropLightStylesLump_t = Struct(
 
 
 def lump_bytes(lump_id):
-    return Pointer(this.header.lump_t[lump_id].fileofs, Aligned(4, Bytes(this.header.lump_t[lump_id].filelen)))
+    return Pointer(this.lump_header.fileofs,
+                   Aligned(LUMP_ALIGNMENT, Bytes(this.lump_header.filelen)))
 
 
-def lump_struct(lump_id, struct=None):
-    return Pointer(this.header.lump_t[lump_id].fileofs, struct)
+def lump_array(lump_id, struct):
+    count = this.lump_header.filelen // struct.sizeof()
+    return Pointer(this.lump_header.fileofs,
+                   Aligned(LUMP_ALIGNMENT, struct[count]))
 
 
-def lump_array(lump_id, struct=None):
-    return Pointer(this.header.lump_t[lump_id].fileofs, struct[this.header.lump_t[lump_id].filelen // struct.sizeof()])
+def lump_struct(lump_id, struct):
+    return Pointer(this.lump_header.fileofs,
+                   Aligned(LUMP_ALIGNMENT, struct))
+
+
+def lump_game(lump_id, struct):
+    return Pointer(this.lump_header.fileofs, struct)
 
 
 header = Struct(
+    # note: use rebuild for indices https://construct.readthedocs.io/en/latest/misc.html#rebuild
     'ident' / Const(b'VBSP'),
-    'version' / Int32sl,
+    'version' / Const(Int32sl, 20),
     'lump_t' / lump_t[HEADER_LUMPS],
-    'mapRevision' / Int32sl
+    'mapRevision' / Default(Int32sl, 0)
 )
 
 lump_0 = lump_struct(LUMP_ENTITIES, CString("ascii"))
@@ -566,9 +576,9 @@ lump_39 = lump_array(LUMP_PRIMINDICES, Int16ul)
 lump_40 = lump_bytes(LUMP_PAKFILE)
 lump_41 = lump_array(LUMP_CLIPPORTALVERTS, Vector)
 lump_42 = lump_array(LUMP_CUBEMAPS, dcubemapsample_t)
-lump_43 = Pointer(this.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
+lump_43 = Pointer(this.header.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
                   RepeatUntil(lambda x, lst, ctx: len(lst) >=
-                              ctx.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii"))),
+                              ctx.header.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii")))
 lump_44 = lump_array(LUMP_TEXDATA_STRING_TABLE, Int32sl)
 lump_45 = lump_array(LUMP_OVERLAYS, doverlay_t)
 lump_46 = lump_array(LUMP_LEAFMINDISTTOWATER, Int16ul)
@@ -589,3 +599,8 @@ lump_60 = lump_array(LUMP_OVERLAY_FADES, doverlayfade_t)
 lump_61 = lump_bytes(LUMP_OVERLAY_SYSTEM_LEVELS)
 lump_62 = lump_bytes(LUMP_PHYSLEVEL)
 lump_63 = lump_bytes(LUMP_DISP_MULTIBLEND)
+
+lump_prps = lump_game('prps', StaticPropLump_t)
+lump_prpd = lump_game('prpd', DetailPropLump_t)
+lump_tlpd = lump_game('tlpd', DetailPropLightStylesLump_t)
+lump_hlpd = lump_game('hlpd', DetailPropLightStylesLump_t)

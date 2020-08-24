@@ -12,6 +12,8 @@ MAX_MAP_LEAFS = 65536
 
 MAX_MAP_DISP_POWER = 4
 
+LUMP_ALIGNMENT = 4
+
 
 def NUM_DISP_POWER_VERTS(power):
     return (1 * (2 ** power) + 1) * (1 * (2 ** power) + 1)

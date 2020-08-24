@@ -1,8 +1,8 @@
 
 from __future__ import unicode_literals
-from __future__ import print_function
 from __future__ import division
 from __future__ import absolute_import
+from __future__ import print_function
 from builtins import dict
 from builtins import object
 from builtins import range
@@ -11,8 +11,8 @@ from builtins import open
 from future import standard_library
 standard_library.install_aliases()
 
+from shutil import copyfile  # NOQA: #402
 from construct import *  # NOQA: #402
-
 from collections.abc import MutableMapping  # NOQA: #402
 from bsptools.constants import LUMP_GAME_LUMP  # NOQA: #402
 import bsptools.bsp_struct as BSP  # NOQA: #402
@@ -41,54 +41,89 @@ class Bsp(MutableMapping):
         if path:
             self.source_path = path
             with open(path, 'rb') as f:
-                self.header = self._parse_stream(f, BSP.header)
-                self.game_header = self._parse_stream(f, BSP.lump_35)
+                self.header = BSP.header.parse_stream(f)
+                self.game_header = BSP.lump_35.parse_stream(
+                    f, lump_header=self.header.lump_t[35])
 
-    def _parse_stream(self, f, struct):
-        return struct.parse_stream(f, header=self.header)
+    def save(self, dest=None):
 
-    def _parse_file(self, struct):
-        return struct.parse_file(self.source_path, header=self.header)
+        dest = dest or self.source_path
+        if not dest:
+            raise FileNotFoundError
+
+        d = open(dest, 'wb')
+
+        if not self.source_path:
+            self._build_stream(BSP.header, self.header, d)
+
+        elif dest != self.source_path:
+            s = open(self.source_path, 'rb')
+            d.write(s.read())
+            s.close()
+
+        for index, val in enumerate(self.lumps):
+            lump_struct = getattr(BSP, 'lump_' + str(index))
+            lump_header = self._get_lump_header(index)
+            self._build_stream(lump_struct, val, d, lump_header=lump_header)
+
+        for key in self.game_lumps.keys():
+            val = self.game_lumps[key]
+            lump_struct = getattr(BSP, 'lump_' + str(key))
+            lump_header = self._get_lump_header(key)
+            self._build_stream(lump_struct, val, d, lump_header=lump_header)
+
+        d.close()
+
+    def _parse_stream(self, struct, f, **kwargs):
+        kwargs['header'] = self.header
+        return struct.parse_stream(f, **kwargs)
+
+    def _parse_file(self, struct, **kwargs):
+        kwargs['header'] = self.header
+        return struct.parse_file(self.source_path, **kwargs)
+
+    def _build_stream(self, struct, data, f, **kwargs):
+        kwargs['header'] = self.header
+        if not data:
+            return
+        return struct.build_stream(data, f, **kwargs)
+
+    def _build_file(self, struct, data, **kwargs):
+        if not struct:
+            return
+        kwargs['header'] = self.header
+        return struct.build_file(data, self.source_path, **kwargs)
+
+    def _get_lump_header(self, index):
+        if isinstance(index, str):  # It's a gamelump id
+            for h in self.game_header.gamelump:
+                if h.id == index:
+                    return h
+
+        elif isinstance(index, int):  # It's a lump number
+            if index in range(64) and self.header:
+                return self.header.lump_t[index]
+
+        raise IndexError('Invalid Lump ID')
 
     def __setitem__(self, key, value):
         return
 
     def __getitem__(self, index):
 
-        if isinstance(index, str):  # It's a gamelump id
+        lump_header = self._get_lump_header(index)
+        struct = getattr(BSP, 'lump_' + str(index))
 
-            if index not in self.game_lumps:
-                gamelump = False
-                for lump in self[LUMP_GAME_LUMP].gamelump:
-                    if lump.id == index and \
-                       index in GAMELUMP_SUPPORTED:
-                        if lump.version not in GAMELUMP_SUPPORTED[index]:
-                            raise IndexError('Lump version not supported')
+        data = self._parse_file(struct, lump_header=lump_header)
 
-                        gamelump = Pointer(
-                            lump.fileofs, GAMELUMP_SUPPORTED[index][lump.version])
-                        continue
-                if not gamelump:
-                    raise IndexError('Lump ID not Found')
-
-                self.game_lumps[index] = self._parse_file(gamelump)
+        if isinstance(index, str):
+            self.game_lumps[index] = data
             return self.game_lumps[index]
-
-        elif isinstance(index, int):  # It's a lump id
-
-            if index not in range(64):
-                raise IndexError("Lump ID out of range")
-            if not self.lumps[index]:
-                if self.header:
-                    lump_n = getattr(BSP, 'lump_' + str(index))
-                    self.lumps[index] = self._parse_file(lump_n)
-                else:
-                    return None
-
-            if index == 40:
-                return bytearray(self.lumps[index])
-
+        elif isinstance(index, int):
+            self.lumps[index] = data
             return self.lumps[index]
+        else:
+            return None
 
     def __delitem__(self, key):
         del self.store[self.__keytransform__(key)]
