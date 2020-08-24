@@ -35,7 +35,7 @@ dtexdata_t = Struct(
 
 dvis_t = Struct(
     'numclusters' / Int32sl,
-    'bitofs' / Int32sl[8][2]
+    'bitofs' / Int32sl[this.numclusters][2]
 )
 
 dnode_t = Aligned(4, Struct(
@@ -528,7 +528,7 @@ def lump_game(lump_id, struct):
 header = Struct(
     # note: use rebuild for indices https://construct.readthedocs.io/en/latest/misc.html#rebuild
     'ident' / Const(b'VBSP'),
-    'version' / Const(Int32sl, 20),
+    'version' / Const(20, Int32sl),
     'lump_t' / lump_t[HEADER_LUMPS],
     'mapRevision' / Default(Int32sl, 0)
 )
