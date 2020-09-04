@@ -1,4 +1,3 @@
-
 from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
@@ -15,14 +14,7 @@ from shutil import copyfile  # NOQA: #402
 from construct import *  # NOQA: #402
 from collections.abc import MutableMapping  # NOQA: #402
 from bsptools.constants import LUMP_GAME_LUMP  # NOQA: #402
-import bsptools.bsp_struct as BSP  # NOQA: #402
-
-GAMELUMP_SUPPORTED = {
-    'prps': dict([(10, BSP.StaticPropLump_t)]),
-    'prpd': dict([(4, BSP.DetailPropLump_t)]),
-    'tlpd': dict([(0, BSP.DetailPropLightStylesLump_t)]),
-    'hlpd': dict([(0, BSP.DetailPropLightStylesLump_t)])
-}
+import bsptools.structs.bsp_struct as BSP  # NOQA: #402
 
 
 class Bsp(MutableMapping):
@@ -31,19 +23,13 @@ class Bsp(MutableMapping):
     def __init__(self, path=None):
         """Creates an empty instance of Bsp."""
 
-        self.source_path = None
+        self.source_path = path
         self.header = None
-        self.game_header = None
+        self.lumps = {}
 
-        self.lumps = [None] * 64
-        self.game_lumps = {}
-
-        if path:
-            self.source_path = path
+        if self.source_path:
             with open(path, 'rb') as f:
                 self.header = BSP.header.parse_stream(f)
-                self.game_header = BSP.lump_35.parse_stream(
-                    f, lump_header=self.header.lump_t[35])
 
     def save(self, dest=None):
 
@@ -61,15 +47,11 @@ class Bsp(MutableMapping):
             d.write(s.read())
             s.close()
 
-        for index, val in enumerate(self.lumps):
-            lump_struct = getattr(BSP, 'lump_' + str(index))
-            lump_header = self._get_lump_header(index)
-            self._build_stream(lump_struct, val, d, lump_header=lump_header)
-
-        for key in self.game_lumps.keys():
-            val = self.game_lumps[key]
-            lump_struct = getattr(BSP, 'lump_' + str(key))
+        for key in self.lumps.keys():
+            print('saving: ' + str(key))
+            val = self.lumps[key]
             lump_header = self._get_lump_header(key)
+            lump_struct = getattr(BSP, 'lump_' + str(key))(lump_header.version)
             self._build_stream(lump_struct, val, d, lump_header=lump_header)
 
         d.close()
@@ -96,34 +78,32 @@ class Bsp(MutableMapping):
 
     def _get_lump_header(self, index):
         if isinstance(index, str):  # It's a gamelump id
-            for h in self.game_header.gamelump:
+            for h in self[35].gamelump:
                 if h.id == index:
                     return h
-
         elif isinstance(index, int):  # It's a lump number
             if index in range(64) and self.header:
                 return self.header.lump_t[index]
 
-        raise IndexError('Invalid Lump ID')
-
-    def __setitem__(self, key, value):
-        return
+        raise IndexError('Invalid Lump ID (' + str(index) + ')')
 
     def __getitem__(self, index):
 
-        lump_header = self._get_lump_header(index)
-        struct = getattr(BSP, 'lump_' + str(index))
-
-        data = self._parse_file(struct, lump_header=lump_header)
-
-        if isinstance(index, str):
-            self.game_lumps[index] = data
-            return self.game_lumps[index]
-        elif isinstance(index, int):
-            self.lumps[index] = data
-            return self.lumps[index]
-        else:
+        if index == '' or index == None:
             return None
+
+        if index in self.lumps and self.lumps[index]:
+            return self.lumps[index]
+
+        lump_header = self._get_lump_header(index)
+        lump_struct = getattr(BSP, 'lump_' + str(index))(lump_header.version)
+        data = self._parse_file(lump_struct, lump_header=lump_header)
+        self.lumps[index] = data
+
+        return self.lumps[index]
+
+    def __setitem__(self, key, value):
+        return
 
     def __delitem__(self, key):
         del self.store[self.__keytransform__(key)]

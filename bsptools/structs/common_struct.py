@@ -6,7 +6,7 @@ from future import standard_library
 standard_library.install_aliases()
 
 from construct import *  # NOQA: E402
-
+from bsptools.constants import *  # NOQA: E402
 
 Vector = Struct('x' / Float32l, 'y' / Float32l, 'z' / Float32l)
 Vector2D = Struct('x' / Float32l, 'y' / Float32l)
@@ -17,3 +17,24 @@ QAngle = Struct('x' / Float32l, 'y' / Float32l, 'z' / Float32l)
 Quaternion = Struct('x' / Float32l, 'y' / Float32l,
                     'z' / Float32l, 'w' / Float32l)
 color32 = Sequence('r' / Int8ul, 'g' / Int8ul, 'b' / Int8ul, 'a' / Int8ul)
+ColorRGBExp32 = Struct('r' / Byte, 'g' / Byte, 'b' / Byte, 'exponent' / Byte)
+
+
+def lump_bytes(lump_id):
+    return Pointer(this.lump_header.fileofs,
+                   Aligned(LUMP_ALIGNMENT, Bytes(this.lump_header.filelen).compile()))
+
+
+def lump_array(lump_id, struct):
+    count = this.lump_header.filelen // struct.sizeof()
+    return Pointer(this.lump_header.fileofs,
+                   Aligned(LUMP_ALIGNMENT, struct[count].compile()))
+
+
+def lump_struct(lump_id, struct):
+    return Pointer(this.lump_header.fileofs,
+                   Aligned(LUMP_ALIGNMENT, struct.compile()))
+
+
+def lump_game(lump_id, struct):
+    return Pointer(this.lump_header.fileofs, struct)

@@ -6,4 +6,3 @@ from future import standard_library
 standard_library.install_aliases()
 
 from bsptools.bsp import *  # NOQA: E402
-from bsptools.parser import BspParse  # NOQA: E402
