@@ -88,13 +88,59 @@ lump_t = Struct(
     'fileofs' / Int32sl,
     'filelen' / Int32sl,
     'version' / Int32sl,
-    'uncompressedSize' / Int32sl
+    'fourCC' / Byte[4]
 )
 
-header = Struct(
-    # note: use rebuild for indices https://construct.readthedocs.io/en/latest/misc.html#rebuild
+lump_t_TF2 = Struct(
+    'fileofs' / Int32sl,
+    'filelen' / Int32sl,
+    'version' / Int32sl,
+    'uncompressedSize' / Const(0, Int32sl)
+)
+
+lump_t_L4D2 = Struct(
+    'version' / Int32sl,
+    'fileofs' / Int32sl,
+    'filelen' / Int32sl,
+    'fourCC' / Byte[4]
+)
+
+dheader_t_TITAN = Struct(
     'ident' / Const(b'VBSP'),
-    'version' / Const(20, Int32sl),
+    'version' / Int32sl,
+    'mapRevision' / Default(Int32sl, 0),
+    'unknown' / Const(127, Int32sl),
+    'lump_t' / lump_t[HEADER_LUMPS],
+)
+
+dheader_t_TF2 = Struct(
+    'ident' / Const(b'VBSP'),
+    'version' / Int32sl,
+    'lump_t' / lump_t_TF2[HEADER_LUMPS],
+    'mapRevision' / Default(Int32sl, 0)
+)
+
+dheader_t_L4D2 = Struct(
+    'ident' / Const(b'VBSP'),
+    'version' / Int32sl,
+    'lump_t' / lump_t_L4D2[HEADER_LUMPS],
+    'mapRevision' / Default(Int32sl, 0)
+)
+
+dheader_t = Struct(
+    'ident' / Const(b'VBSP'),
+    'version' / Int32sl,
     'lump_t' / lump_t[HEADER_LUMPS],
     'mapRevision' / Default(Int32sl, 0)
 )
+
+
+def header(profile=None):
+    if profile == 'Team Fortress 2':
+        return dheader_t_TF2
+    elif profile == 'Left 4 Dead 2' or profile == 'Contagion':
+        return dheader_t_L4D2
+    elif profile == 'Titanfall':
+        return dheader_t_TITAN
+    else:
+        return dheader_t

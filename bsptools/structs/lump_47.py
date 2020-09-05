@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 
-def lump_47(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_FACE_MACRO_TEXTURE_INFO, Int16ul)
+def lump_47(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_FACE_MACRO_TEXTURE_INFO, Int16ul, header)

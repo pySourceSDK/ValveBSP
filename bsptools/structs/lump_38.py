@@ -15,7 +15,7 @@ dprimvert_t = Struct(
 )
 
 
-def lump_38(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_PRIMVERTS, dprimvert_t)
+def lump_38(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_PRIMVERTS, dprimvert_t, header)

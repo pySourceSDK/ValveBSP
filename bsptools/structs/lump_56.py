@@ -11,8 +11,14 @@ from bsptools.structs.common_struct import *  # NOQA #402
 from bsptools.structs.lump_55 import dleafambientlighting_t  # NOQA: #402
 
 
-def lump_56(version):
-    if version == 1:
-        return lump_array(LUMP_LEAF_AMBIENT_LIGHTING, dleafambientlighting_t)
+def lump_56(header):
+    if header.version == 1:
+        return lump_array(LUMP_LEAF_AMBIENT_LIGHTING,
+                          dleafambientlighting_t, header)
+
+    elif header.version == header.filelen:
+        # This is obviously a mistake in the bsp, let's not parse it
+        return lump_dud(LUMP_LEAF_AMBIENT_LIGHTING, header)
+
     else:
-        raise LumpVersionUnsupportedError(version)
+        raise LumpVersionUnsupportedError(header.version)

@@ -23,7 +23,7 @@ doverlay_t = Struct(
 )
 
 
-def lump_45(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_OVERLAYS, doverlay_t)
+def lump_45(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_OVERLAYS, doverlay_t, header)

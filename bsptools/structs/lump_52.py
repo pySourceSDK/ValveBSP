@@ -11,7 +11,10 @@ from bsptools.structs.common_struct import *  # NOQA #402
 from bsptools.structs.lump_51 import dleafambientindex_t  # NOQA #402
 
 
-def lump_52(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_LEAF_AMBIENT_INDEX, dleafambientindex_t)
+def lump_52(header):
+    if header.version == 0:
+        return lump_array(LUMP_LEAF_AMBIENT_INDEX, dleafambientindex_t, header)
+    elif header.version == 1:
+        return lump_array(LUMP_LEAF_AMBIENT_INDEX, dleafambientindex_t, header)
+    else:
+        raise LumpVersionUnsupportedError(header.version)

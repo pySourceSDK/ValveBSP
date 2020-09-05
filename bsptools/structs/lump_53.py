@@ -11,8 +11,8 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 
-def lump_53(version):
-    if version == 1:
-        return lump_array(LUMP_LIGHTING_HDR, ColorRGBExp32)
+def lump_53(header):
+    if header.version in [0, 1]:
+        return lump_array(LUMP_LIGHTING_HDR, ColorRGBExp32, header)
     else:
-        raise LumpVersionUnsupportedError(version)
+        raise LumpVersionUnsupportedError(header.version)

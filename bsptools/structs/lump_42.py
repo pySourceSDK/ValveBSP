@@ -16,7 +16,7 @@ dcubemapsample_t = Struct(
 )
 
 
-def lump_42(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_CUBEMAPS, dcubemapsample_t)
+def lump_42(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_CUBEMAPS, dcubemapsample_t, header)

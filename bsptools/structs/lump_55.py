@@ -10,9 +10,6 @@ from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
-CompressedLightCube = Struct(
-    'm_color' / ColorRGBExp32[6]
-)
 
 dleafambientlighting_t = Aligned(4, Struct(
     'cube' / CompressedLightCube,
@@ -22,9 +19,14 @@ dleafambientlighting_t = Aligned(4, Struct(
 ))
 
 
-def lump_55(version):
-    if version == 1:
+def lump_55(header):
+    if header.version == 1:
         return lump_array(LUMP_LEAF_AMBIENT_LIGHTING_HDR,
-                          dleafambientlighting_t)
+                          dleafambientlighting_t, header)
+
+    elif header.version == header.filelen:
+        # This is obviously a mistake in the bsp, let's not parse it
+        return lump_dud(LUMP_LEAF_AMBIENT_LIGHTING_HDR, header)
+
     else:
-        raise LumpVersionUnsupportedError(version)
+        raise LumpVersionUnsupportedError(header.version)

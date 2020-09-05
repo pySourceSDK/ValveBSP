@@ -17,24 +17,27 @@ QAngle = Struct('x' / Float32l, 'y' / Float32l, 'z' / Float32l)
 Quaternion = Struct('x' / Float32l, 'y' / Float32l,
                     'z' / Float32l, 'w' / Float32l)
 color32 = Sequence('r' / Int8ul, 'g' / Int8ul, 'b' / Int8ul, 'a' / Int8ul)
-ColorRGBExp32 = Struct('r' / Byte, 'g' / Byte, 'b' / Byte, 'exponent' / Byte)
+ColorRGBExp32 = Struct('r' / Byte, 'g' / Byte, 'b' /
+                       Byte, 'exponent' / Byte)
+CompressedLightCube = Struct('color' / ColorRGBExp32[6])
 
 
-def lump_bytes(lump_id):
-    return Pointer(this.lump_header.fileofs,
-                   Aligned(LUMP_ALIGNMENT, Bytes(this.lump_header.filelen).compile()))
+def lump_bytes(lump_id, header):
+    return Pointer(header.fileofs, Aligned(4, Bytes(header.filelen).compile()))
 
 
-def lump_array(lump_id, struct):
-    count = this.lump_header.filelen // struct.sizeof()
-    return Pointer(this.lump_header.fileofs,
-                   Aligned(LUMP_ALIGNMENT, struct[count].compile()))
+def lump_array(lump_id, struct, header):
+    count = header.filelen // struct.sizeof()
+    return Pointer(header.fileofs, Aligned(4, struct[count])).compile()
 
 
-def lump_struct(lump_id, struct):
-    return Pointer(this.lump_header.fileofs,
-                   Aligned(LUMP_ALIGNMENT, struct.compile()))
+def lump_struct(lump_id, struct, header):
+    return Pointer(header.fileofs, Aligned(4, struct.compile()))
 
 
-def lump_game(lump_id, struct):
-    return Pointer(this.lump_header.fileofs, struct)
+def lump_game(lump_id, struct, header):
+    return Pointer(header.fileofs, struct)
+
+
+def lump_dud(lump_id, header):
+    return Pointer(header.fileofs, Bytes(0))

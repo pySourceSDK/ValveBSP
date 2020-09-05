@@ -25,7 +25,7 @@ dprimitive_t = Aligned(2, Struct(
 ))
 
 
-def lump_37(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_PRIMITIVES, dprimitive_t)
+def lump_37(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_PRIMITIVES, dprimitive_t, header)

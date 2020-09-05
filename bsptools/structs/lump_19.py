@@ -12,14 +12,14 @@ from bsptools.structs.common_struct import *  # NOQA: #402
 
 
 dbrushside_t = Struct(
-    'planenum' / Int32ul,
-    'texinfo' / Int32sl,
-    'dispinfo' / Int32sl,
-    'bevel' / Int32sl
+    'planenum' / Int16ul,
+    'texinfo' / Int16sl,
+    'dispinfo' / Int16sl,
+    'bevel' / Int16sl
 )
 
 
-def lump_19(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_BRUSHSIDES, dbrushside_t)
+def lump_19(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_BRUSHSIDES, dbrushside_t, header)

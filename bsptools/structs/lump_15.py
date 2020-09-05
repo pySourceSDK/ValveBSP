@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 emittype_t = Enum(
-    Int32sl,
+    Int32ul,
     emit_surface=0,
     emit_point=1,
     emit_spotlight=2,
@@ -20,7 +20,7 @@ emittype_t = Enum(
     emit_skyambient=5
 )
 
-dworldlight_t = Struct(
+dworldlight_tV0 = Struct(
     'origin' / Vector,
     'intensity' / Vector,
     'normal' / Vector,
@@ -39,8 +39,31 @@ dworldlight_t = Struct(
     'owner' / Int32sl,  # lump 0
 )
 
+dworldlight_tV1 = Struct(
+    'origin' / Vector,
+    'intensity' / Vector,
+    'normal' / Vector,
+    'shadow_cast_offset' / Vector,
+    'cluster' / Int32sl,
+    'type' / emittype_t,
+    'style' / Int32sl,
+    'stopdot' / Float32l,
+    'stopdot2' / Float32l,
+    'exponent' / Float32l,
+    'radius' / Float32l,
+    'constant_attn' / Float32l,
+    'linear_attn' / Float32l,
+    'quadratic_attn' / Float32l,
+    'flags' / Int32sl,
+    'texinfo' / Int32sl * "refers to lump 2",
+    'owner' / Int32sl,  # lump 0
+)
 
-def lump_15(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_WORLDLIGHTS, dworldlight_t)
+
+def lump_15(header):
+    if header.version == 0:
+        return lump_array(LUMP_WORLDLIGHTS, dworldlight_tV0, header)
+    elif header.version == 1:
+        return lump_array(LUMP_WORLDLIGHTS, dworldlight_tV1, header)
+    else:
+        raise LumpVersionUnsupportedError(header.version)

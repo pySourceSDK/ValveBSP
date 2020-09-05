@@ -73,7 +73,7 @@ ddispinfo_t = Struct(
 )
 
 
-def lump_26(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_DISPINFO, ddispinfo_t)
+def lump_26(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_DISPINFO, ddispinfo_t, header)

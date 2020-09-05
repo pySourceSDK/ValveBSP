@@ -13,7 +13,7 @@ from bsptools.structs.common_struct import *  # NOQA #402
 flags_t = Struct('levelFlags' / Int32ul)
 
 
-def lump_59(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_struct(LUMP_MAP_FLAGS, flags_t)
+def lump_59(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_struct(LUMP_MAP_FLAGS, flags_t, header)

@@ -15,7 +15,7 @@ dfaceid_t = Struct(
 )
 
 
-def lump_11(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_FACEIDS, dfaceid_t)
+def lump_11(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_FACEIDS, dfaceid_t, header)

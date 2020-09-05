@@ -17,7 +17,7 @@ CDispVert = Struct(
 )
 
 
-def lump_33(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_DISP_VERTS, CDispVert)
+def lump_33(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_DISP_VERTS, CDispVert, header)

@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 
-def lump_0(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_struct(LUMP_ENTITIES, CString("ascii"))
+def lump_0(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return Pointer(header.fileofs, Aligned(4, CString("ascii")))

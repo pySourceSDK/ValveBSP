@@ -13,8 +13,8 @@ from bsptools.structs.common_struct import *  # NOQA #402
 from bsptools.structs.lump_tlpd import DetailPropLightStylesLump_t  # NOQA #402
 
 
-def lump_hlpd(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
+def lump_hlpd(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
 
-    return lump_game('hlpd', DetailPropLightStylesLump_t)
+    return lump_game('hlpd', DetailPropLightStylesLump_t, header)

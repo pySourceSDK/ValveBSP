@@ -13,7 +13,7 @@ from bsptools.structs.common_struct import *  # NOQA #402
 from bsptools.structs.lump_45 import doverlay_t as dwateroverlay_t  # NOQA #402
 
 
-def lump_50(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_WATEROVERLAYS, dwateroverlay_t)
+def lump_50(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_WATEROVERLAYS, dwateroverlay_t, header)

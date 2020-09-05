@@ -20,16 +20,18 @@ import bsptools.structs.bsp_struct as BSP  # NOQA: #402
 class Bsp(MutableMapping):
     """Contains all the data from a Bsp file"""
 
-    def __init__(self, path=None):
+    def __init__(self, path=None, profile=None):
         """Creates an empty instance of Bsp."""
 
         self.source_path = path
+        self.profile = profile
         self.header = None
         self.lumps = {}
 
         if self.source_path:
             with open(path, 'rb') as f:
-                self.header = BSP.header.parse_stream(f)
+                header_struct = BSP.header(self.profile)
+                self.header = header_struct.parse_stream(f)
 
     def save(self, dest=None):
 
@@ -40,7 +42,8 @@ class Bsp(MutableMapping):
         d = open(dest, 'wb')
 
         if not self.source_path:
-            self._build_stream(BSP.header, self.header, d)
+            header_struct = BSP.header(self.profile)
+            self._build_stream(header_struct, self.header, d)
 
         elif dest != self.source_path:
             s = open(self.source_path, 'rb')
@@ -48,11 +51,10 @@ class Bsp(MutableMapping):
             s.close()
 
         for key in self.lumps.keys():
-            print('saving: ' + str(key))
             val = self.lumps[key]
             lump_header = self._get_lump_header(key)
-            lump_struct = getattr(BSP, 'lump_' + str(key))(lump_header.version)
-            self._build_stream(lump_struct, val, d, lump_header=lump_header)
+            lump_struct = getattr(BSP, 'lump_' + str(key))(lump_header)
+            self._build_stream(lump_struct, val, d)
 
         d.close()
 
@@ -96,8 +98,8 @@ class Bsp(MutableMapping):
             return self.lumps[index]
 
         lump_header = self._get_lump_header(index)
-        lump_struct = getattr(BSP, 'lump_' + str(index))(lump_header.version)
-        data = self._parse_file(lump_struct, lump_header=lump_header)
+        lump_struct = getattr(BSP, 'lump_' + str(index))(lump_header)
+        data = self._parse_file(lump_struct)
         self.lumps[index] = data
 
         return self.lumps[index]

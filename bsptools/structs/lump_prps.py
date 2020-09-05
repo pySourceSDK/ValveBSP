@@ -10,128 +10,201 @@ from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
+prps_flags8 = FlagsEnum(Int8ul,
+                        STATIC_PROP_FLAG_FADES=1,
+                        STATIC_PROP_USE_LIGHTING_ORIGIN=2,
+                        STATIC_PROP_NO_DRAW=4,
+                        STATIC_PROP_IGNORE_NORMALS=8,
+                        STATIC_PROP_NO_SHADOW=16,
+                        STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE=32,
+                        STATIC_PROP_NO_PER_VERTEX_LIGHTING=64,
+                        STATIC_PROP_NO_SELF_SHADOWING=128)
+
+prps_flags32 = FlagsEnum(Int32ul,
+                         STATIC_PROP_FLAG_FADES=1,
+                         STATIC_PROP_USE_LIGHTING_ORIGIN=2,
+                         STATIC_PROP_NO_DRAW=4,
+                         STATIC_PROP_IGNORE_NORMALS=8,
+                         STATIC_PROP_NO_SHADOW=16,
+                         STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE=32,
+                         STATIC_PROP_NO_PER_VERTEX_LIGHTING=64,
+                         STATIC_PROP_NO_SELF_SHADOWING=128)
+
 StaticPropV4_t = Struct(
-    'Origin' / Vector,
-    'Angles' / QAngle,
+    'origin' / Vector,
+    'angles' / QAngle,
 
-    'PropType' / Int16ul,
-    'FirstLeaf' / Int16ul,
-    'm_LeafCount' / Int16ul,
-
-    'Solid' / Int8ul,
-    'Flags' / Int8ul,
-    'Skin' / Int32sl,
+    'propType' / Int16ul * 'refers to prps.dict_lump',
+    'firstLeaf' / Int16ul * 'refers to prps.leaf_lump',
+    'leafCount' / Int16ul,
+    'solid' / Int8ul,
+    'flags' / prps_flags8,
+    'skin' / Int32sl,
 
     'FadeMinDist' / Float32l,
     'FadeMaxDist' / Float32l,
 
-    'LightingOrigin' / Vector,
-
-    'MinDXLevel' / Int16ul,
-    'MaxDXLevel' / Int16ul,
+    'lightingOrigin' / Vector,
 )
 
 StaticPropV5_t = Struct(
-    'm_Origin' / Vector,
-    'm_Angles' / QAngle,
+    # validated through hl, hl2, p1 and css
+    'origin' / Vector,
+    'angles' / QAngle,
 
-    'm_PropType' / Int16ul,
-    'm_FirstLeaf' / Int16ul,
-    'm_LeafCount' / Int16ul,
+    'propType' / Int16ul * 'refers to prps.dict_lump',
+    'firstLeaf' / Int16ul * 'refers to prps.leaf_lump',
+    'leafCount' / Int16ul,
+    'solid' / Int8ul,
+    'flags' / prps_flags8,
+    'skin' / Int32sl,
 
-    'm_Solid' / Int8ul,
-    'm_Flags' / Int8ul,
-    'm_Skin' / Int32sl,
+    'fadeMinDist' / Float32l,
+    'fadeMaxDist' / Float32l,
 
-    'm_FadeMinDist' / Float32l,
-    'm_FadeMaxDist' / Float32l,
-
-    'm_LightingOrigin' / Vector,
-
-    'm_nMinDXLevel' / Int16ul,
-    'm_nMaxDXLevel' / Int16ul,
+    'lightingOrigin' / Vector,
+    'forcedFadeScale' / Float32l,
 )
 
 StaticPropV6_t = Struct(
-    'Origin' / Vector,
-    'Angles' / QAngle,
+    # validated through p1, css and dod
+    'origin' / Vector,
+    'angles' / QAngle,
 
-    'PropType' / Int16ul,
-    'FirstLeaf' / Int16ul,
-    'LeafCount' / Int16ul,
-
-    'Solid' / Int8ul,
-    'Flags' / Int32ul,
-    'Skin' / Int32sl,
+    'propType' / Int16ul * 'refers to prps.dict_lump',
+    'firstLeaf' / Int16ul * 'refers to prps.leaf_lump',
+    'leafCount' / Int16ul,
+    'solid' / Int8ul,
+    'flags' / prps_flags8,
+    'skin' / Int32sl,
 
     'FadeMinDist' / Float32l,
     'FadeMaxDist' / Float32l,
 
-    'LightingOrigin' / Vector,
+    'lightingOrigin' / Vector,
+    'forcedFadeScale' / Float32l,
 
-    'MinDXLevel' / Int16ul,
-    'MaxDXLevel' / Int16ul,
+    'minDXLevel' / Int16ul,
+    'maxDXLevel' / Int16ul,
 )
 
 StaticPropV8_t = Struct(
-    'Origin' / Vector,
-    'Angles' / QAngle,
+    'origin' / Vector,
+    'angles' / QAngle,
 
-    'PropType' / Int16ul,
-    'FirstLeaf' / Int16ul,
-    'LeafCount' / Int16ul,
-
-    'Solid' / Int8ul,
-    'Flags' / Int8ul,
-    'Skin' / Int32sl,
-
-    'FadeMinDist' / Float32l,
-    'FadeMaxDist' / Float32l,
-
-    'LightingOrigin' / Vector,
-
-    'ForcedFadeScale' / Float32l,
-
-    'MinCPULevel' / Int8ul,
-    'MaxCPULevel' / Int8ul,
-    'MinGPULevel' / Int8ul,
-    'MaxGPULevel' / Int8ul,
-
-    'DiffuseModulation' / color32,
-)
-
-StaticPropV10_t = Struct(
-    'Origin' / Vector,
-    'Angles' / QAngle,
-
-    'PropType' / Int16ul,
-    'FirstLeaf' / Int16ul,
-    'LeafCount' / Int16ul,
-
-    'Solid' / Int8ul,
-    'Flags' / Int32ul,
-    'Skin' / Int32sl,
+    'propType' / Int16ul * 'refers to prps.dict_lump',
+    'firstLeaf' / Int16ul * 'refers to prps.leaf_lump',
+    'leafCount' / Int16ul,
+    'solid' / Int8ul,
+    'flags' / prps_flags8,
+    'skin' / Int32sl,
 
     'FadeMinDist' / Float32l,
     'FadeMaxDist' / Float32l,
 
-    'LightingOrigin' / Vector,
+    'lightingOrigin' / Vector,
+    'forcedFadeScale' / Float32l,
 
-    'ForcedFadeScale' / Float32l,
+    'minCPULevel' / Int8ul,
+    'maxCPULevel' / Int8ul,
+    'minGPULevel' / Int8ul,
+    'maxGPULevel' / Int8ul,
 
-    'MinCPULevel' / Int8ul,
-    'MaxCPULevel' / Int8ul,
-    'MinGPULevel' / Int8ul,
-    'MaxGPULevel' / Int8ul,
-
-    'DiffuseModulation' / color32,
-
-    'DisableX360' / Int8ul,
-
-    #'m_nLightmapResolutionX' / Int16ul,
-    #'m_nLightmapResolutionY' / Int16ul,
-    #'dirt' / Int8ul
+    'diffuseModulation' / color32,
 )
+
+
+StaticPropV9_t = Aligned(4, Struct(
+    # validated through portal2
+    'origin' / Vector,
+    'angles' / QAngle,
+
+    'propType' / Int16ul * 'refers to prps.dict_lump',
+    'firstLeaf' / Int16ul * 'refers to prps.leaf_lump',
+    'leafCount' / Int16ul,
+    'solid' / Int8ul,
+    'flags' / prps_flags8,
+    'skin' / Int32sl,
+
+    'FadeMinDist' / Float32l,
+    'FadeMaxDist' / Float32l,
+
+    'lightingOrigin' / Vector,
+    'forcedFadeScale' / Float32l,
+
+    'minCPULevel' / Int8ul,
+    'maxCPULevel' / Int8ul,
+    'minGPULevel' / Int8ul,
+    'maxGPULevel' / Int8ul,
+
+    'diffuseModulation' / color32,
+
+    'disableX360' / Aligned(4, Flag),
+))
+
+StaticPropV10_t = Aligned(4, Struct(
+    # partially validated through tf2
+    'origin' / Vector,
+    'angles' / QAngle,
+
+    'propType' / Int16ul * 'refers to prps.dict_lump',
+    'firstLeaf' / Int16ul * 'refers to prps.leaf_lump',
+    'leafCount' / Int16ul,
+
+    'solid' / Int8ul,
+    'flags' / prps_flags8,
+    'skin' / Int32sl,
+
+    'FadeMinDist' / Float32l,
+    'FadeMaxDist' / Float32l,
+
+    'lightingOrigin' / Vector,
+    'forcedFadeScale' / Float32l,
+
+    'minCPULevel' / Int8ul,
+    'maxCPULevel' / Int8ul,
+    'minGPULevel' / Int8ul,
+    'maxGPULevel' / Int8ul,
+
+    'diffuseModulation' / color32,
+
+    'disableX360' / Aligned(4, Flag),
+
+    'flagEx' / Int8sl,
+))
+
+StaticPropV11_t = Aligned(4, Struct(
+    # validated through csgo
+    'origin' / Vector,
+    'angles' / QAngle,
+
+    'propType' / Int16ul * 'refers to prps.dict_lump',
+    'firstLeaf' / Int16ul * 'refers to prps.leaf_lump',
+    'leafCount' / Int16ul,
+
+    'solid' / Int8ul,
+    'flags' / prps_flags8,
+    'skin' / Int32sl,
+
+    'FadeMinDist' / Float32l,
+    'FadeMaxDist' / Float32l,
+
+    'lightingOrigin' / Vector,
+    'forcedFadeScale' / Float32l,
+
+    'minCPULevel' / Int8ul,
+    'maxCPULevel' / Int8ul,
+    'minGPULevel' / Int8ul,
+    'maxGPULevel' / Int8ul,
+
+    'diffuseModulation' / color32,
+
+    'disableX360' / Aligned(4, Flag),
+
+    'flagsEx' / Int32ul,
+
+    'uniformScale' / Float32l,
+))
 
 
 StaticPropDictLump_t = Struct(
@@ -148,20 +221,32 @@ StaticPropLightstylesDictLump_t = Struct(
 )
 
 
-def lump_prps(version):
-    # hl2ep2 is version 4
-    # l4d is version 8
-
-    if version == 10:
+def lump_prps(header):
+    '''
+    print('v4:' + str(StaticPropV4_t.sizeof()))
+    print('v5:' + str(StaticPropV5_t.sizeof()))
+    print('v6:' + str(StaticPropV6_t.sizeof()))
+    print('v8:' + str(StaticPropV8_t.sizeof()))
+    print('v9:' + str(StaticPropV9_t.sizeof()))
+    print('v10:' + str(StaticPropV10_t.sizeof()))
+    print('v11:' + str(StaticPropV11_t.sizeof()))
+    '''
+    if header.version == 11:
+        StaticProp_t = StaticPropV11_t
+    elif header.version == 10:
         StaticProp_t = StaticPropV10_t
-    elif version == 8:
+    elif header.version == 9:
+        StaticProp_t = StaticPropV9_t
+    elif header.version == 8:
         StaticProp_t = StaticPropV8_t
-    elif version == 6:
+    elif header.version == 6:
         StaticProp_t = StaticPropV6_t
-    elif version == 4:
+    elif header.version == 5:
+        StaticProp_t = StaticPropV5_t
+    elif header.version == 4:
         StaticProp_t = StaticPropV4_t
     else:
-        raise LumpVersionUnsupportedError(version)
+        raise LumpVersionUnsupportedError(header.version)
 
     StaticPropLump_t = Struct(
         'dict_lump' / StaticPropDictLump_t,
@@ -171,4 +256,4 @@ def lump_prps(version):
         'lightstyles_lump' / StaticPropLightstylesDictLump_t
     )
 
-    return lump_game('prps', StaticPropLump_t)
+    return lump_game('prps', StaticPropLump_t, header)

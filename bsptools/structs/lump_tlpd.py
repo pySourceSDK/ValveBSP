@@ -11,8 +11,8 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 DetailPropLightStyleLump_t = Struct(
-    'm_Lighting' / ColorRGBExp32,
-    'm_Style' / Int8ul,
+    'lighting' / ColorRGBExp32,
+    'style' / Int8ul,
 )
 
 DetailPropLightStylesLump_t = Struct(
@@ -21,8 +21,8 @@ DetailPropLightStylesLump_t = Struct(
 )
 
 
-def lump_tlpd(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
+def lump_tlpd(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
 
-    return lump_game('tlpd', DetailPropLightStylesLump_t)
+    return lump_game('tlpd', DetailPropLightStylesLump_t, header)

@@ -26,28 +26,28 @@ DetailPropType_t = Enum(
 )
 
 DetailSpriteLump_t = Struct(
-    'm_UL' / Vector2D,
-    'm_LR' / Vector2D,
-    'm_TexUL' / Vector2D,
-    'm_TexLR' / Vector2D,
+    'UL' / Vector2D,
+    'LR' / Vector2D,
+    'texUL' / Vector2D,
+    'texLR' / Vector2D,
 )
 
 DetailObjectLump_t = Struct(
-    'm_Origin' / Vector,
-    'm_Angles' / QAngle,
-    'm_DetailModel' / Int16ul,
-    'm_Leaf' / Int16ul,
-    'm_Lighting' / ColorRGBExp32,
-    'm_LightStyles' / Int32sl,
-    'm_LightStyleCount' / Int8ul,
-    'm_SwayAmount' / Int8ul,
-    'm_ShapeAngle' / Int8ul,
-    'm_ShapeSize' / Int8ul,
-    'm_Orientation' / DetailPropOrientation_t,
-    'm_Padding2' / Int8ul[3],
-    'm_Type' / DetailPropType_t,
-    'm_Padding3' / Int8ul[3],
-    'm_flScale' / Float32l
+    'origin' / Vector,
+    'angles' / QAngle,
+    'detailModel' / Int16ul,
+    'leaf' / Int16ul,
+    'lighting' / ColorRGBExp32,
+    'lightStyles' / Int32sl,
+    'lightStyleCount' / Int8ul,
+    'swayAmount' / Int8ul,
+    'shapeAngle' / Int8ul,
+    'shapeSize' / Int8ul,
+    'orientation' / DetailPropOrientation_t,
+    'padding2' / Int8ul[3],
+    'type' / DetailPropType_t,
+    'padding3' / Int8ul[3],
+    'scale' / Float32l
 )
 
 DetailPropDictLump_t = Struct(
@@ -72,8 +72,8 @@ DetailPropLump_t = Struct(
 )
 
 
-def lump_prpd(version):
-    if version != 4:
-        raise LumpVersionUnsupportedError(version)
+def lump_prpd(header):
+    if header.version != 4:
+        raise LumpVersionUnsupportedError(header.version)
 
-    return lump_game('prpd', DetailPropLump_t)
+    return lump_game('prpd', DetailPropLump_t, header)

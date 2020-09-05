@@ -10,7 +10,10 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA #402
 
 
-def lump_62(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_bytes(LUMP_PHYSLEVEL)
+def lump_62(header):
+    if header.filelen == 0:
+        return lump_dud(LUMP_PHYSLEVEL, header)
+    if header.version == 0:
+        return lump_bytes(LUMP_PHYSLEVEL, header)
+    else:
+        raise LumpVersionUnsupportedError(header.version)

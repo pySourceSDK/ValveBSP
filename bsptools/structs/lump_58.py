@@ -12,8 +12,8 @@ from bsptools.structs.common_struct import *  # NOQA #402
 from bsptools.structs.lump_7 import dface_t  # NOQA #402
 
 
-def lump_58(version):
-    if version == 1:
-        return lump_array(LUMP_FACES_HDR, dface_t)
+def lump_58(header):
+    if header.version in [0, 1]:
+        return lump_array(LUMP_FACES_HDR, dface_t, header)
     else:
-        raise LumpVersionUnsupportedError(version)
+        raise LumpVersionUnsupportedError(header.version)

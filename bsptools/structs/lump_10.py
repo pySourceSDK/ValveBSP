@@ -10,7 +10,31 @@ from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
-dleaf_t = Struct(
+
+dleaf_tV0 = Struct(
+    'contents' / Int32sl,
+    'cluster' / Int16sl,
+
+
+    'areaflag' / BitStruct(
+        'area' / BitsInteger(7),
+        'flags' / BitsInteger(9)),
+    'unknown' / Int16sl,
+
+    'mins' / Int16sl[3],
+    'maxs' / Int16sl[3],
+
+    'firstleafface' / Int16ul,
+    'numleaffaces' / Int16ul,
+
+    'firstleafbrush' / Int16ul,
+    'numleafbrushes' / Int16ul,
+    'leafWaterDataID' / Int16sl,
+
+    'ambientLighting' / CompressedLightCube
+)
+
+dleaf_tV1 = Struct(
     'contents' / Int32sl,
     'cluster' / Int16sl,
 
@@ -32,8 +56,10 @@ dleaf_t = Struct(
 )
 
 
-def lump_10(version):
-    if version == 1:
-        return lump_array(LUMP_LEAFS, dleaf_t)
+def lump_10(header):
+    if header.version == 0:
+        return lump_array(LUMP_LEAFS, dleaf_tV0, header)
+    elif header.version == 1:
+        return lump_array(LUMP_LEAFS, dleaf_tV1, header)
     else:
-        raise LumpVersionUnsupportedError(version)
+        raise LumpVersionUnsupportedError(header.version)

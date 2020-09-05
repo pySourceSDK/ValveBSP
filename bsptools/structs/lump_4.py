@@ -16,7 +16,7 @@ dvis_t = Struct(
 )
 
 
-def lump_4(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_bytes(LUMP_VISIBILITY)
+def lump_4(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_bytes(LUMP_VISIBILITY, header)

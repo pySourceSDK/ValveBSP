@@ -15,7 +15,7 @@ dedge_t = Struct(
 )
 
 
-def lump_12(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_EDGES, dedge_t)
+def lump_12(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_EDGES, dedge_t, header)

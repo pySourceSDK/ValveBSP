@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA #402
 
 
-def lump_34(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_DISP_LIGHTMAP_SAMPLE_POSITIONS, Int8ul)
+def lump_34(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_DISP_LIGHTMAP_SAMPLE_POSITIONS, Int8ul, header)

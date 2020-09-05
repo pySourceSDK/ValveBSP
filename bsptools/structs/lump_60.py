@@ -17,7 +17,7 @@ doverlayfade_t = Struct(
 )
 
 
-def lump_60(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_OVERLAY_FADES, doverlayfade_t)
+def lump_60(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_OVERLAY_FADES, doverlayfade_t, header)

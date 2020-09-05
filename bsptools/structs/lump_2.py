@@ -20,7 +20,7 @@ dtexdata_t = Struct(
 )
 
 
-def lump_2(version):
-    if version != 0:
-        raise LumpVersionUnsupportedError(version)
-    return lump_array(LUMP_TEXDATA, dtexdata_t)
+def lump_2(header):
+    if header.version != 0:
+        raise LumpVersionUnsupportedError(header.version)
+    return lump_array(LUMP_TEXDATA, dtexdata_t, header)
