@@ -31,45 +31,44 @@ CDispSubNeighbor = Struct(
     # 'm_Span' / NeighborSpan,
     # 'm_NeighborSpan' / NeighborSpan
     # The fields seem to be misordered, this is my best guess
-    'm_Span' / NeighborSpan,
-    'm_NeighborSpan' / NeighborSpan,
-    'm_iNeighbor' / Int16ul,
+    'span' / NeighborSpan,
+    'neighborSpan' / NeighborSpan,
+    'neighbor' / Int16ul,
     'unknown' / Byte,
 
-    'm_NeighborOrientation' / NeighborOrientation,
+    'neighborOrientation' / NeighborOrientation,
 )
 
 CDispNeighbor = Struct(
-    'm_SubNeighbors' / CDispSubNeighbor[2],
+    'subNeighbors' / CDispSubNeighbor[2],
 )
 
 CDispCornerNeighbors = Struct(
-    'm_Neighbors' / Int16ul[MAX_DISP_CORNER_NEIGHBORS],
-    'm_nNeighbors' / Int8ul
+    'neighbors' / Int16ul[MAX_DISP_CORNER_NEIGHBORS],
+    'nNeighbors' / Int8ul
 )
 
 ddispinfo_t = Struct(
     'startPosition' / Vector,
-    'm_iDispVertStart' / Int32sl,
-    'm_iDispTriStart'/Int32sl,
+    'dispVertStart' / Int32sl,
+    'dispTriStart'/Int32sl,
 
     'power' / Int32sl,
     'minTess'/Int32sl,
     'smoothingAngle' / Float32l,
     'contents'/Int32sl,
 
-    'm_iMapFace' / Int16ul,
+    'mapFace' / Int16ul,
 
-    'm_iLightmapAlphaStart' / Int32sl,
-    'm_iLightmapSamplePositionStart' / Int32sl,
+    'lightmapAlphaStart' / Int32sl,
+    'lightmapSamplePositionStart' / Int32sl,
 
-    'm_EdgeNeighbors' / CDispNeighbor[4],
-    'm_CornerNeighbors' / CDispCornerNeighbors[4],
+    'edgeNeighbors' / CDispNeighbor[4],
+    'cornerNeighbors' / CDispCornerNeighbors[4],
 
     'unknown' / Bytes(6),
 
-
-    'm_AllowedVerts' / Int32ul[ALLOWEDVERTS_SIZE],
+    'allowedVerts' / Int32ul[ALLOWEDVERTS_SIZE],
 )
 
 

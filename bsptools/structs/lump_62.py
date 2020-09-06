@@ -13,7 +13,7 @@ from bsptools.structs.common_struct import *  # NOQA #402
 def lump_62(header, profile=None):
     if header.filelen == 0:
         return lump_dud(LUMP_PHYSLEVEL, header)
-    if header.version == 0:
+    elif header.version == 0:
         return lump_bytes(LUMP_PHYSLEVEL, header)
     else:
         raise LumpVersionUnsupportedError(header.version)

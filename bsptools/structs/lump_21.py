@@ -11,10 +11,10 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 dareaportal_t = Struct(
-    'm_PortalKey' / Int16ul,
+    'portalKey' / Int16ul,
     'otherarea' / Int16ul,
-    'm_FirstClipPortalVert' / Int16ul,
-    'm_nClipPortalVerts' / Int16ul,
+    'firstClipPortalVert' / Int16ul,
+    'clipPortalVerts' / Int16ul,
     'planenum' / Int32sl
 )
 
