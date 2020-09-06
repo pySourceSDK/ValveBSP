@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 
-def lump_17(header):
+def lump_17(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
     return lump_array(LUMP_LEAFBRUSHES, Int16ul, header)

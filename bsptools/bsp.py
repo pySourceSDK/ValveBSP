@@ -53,7 +53,8 @@ class Bsp(MutableMapping):
         for key in self.lumps.keys():
             val = self.lumps[key]
             lump_header = self._get_lump_header(key)
-            lump_struct = getattr(BSP, 'lump_' + str(key))(lump_header)
+            lump_fn = getattr(BSP, 'lump_' + str(key))
+            lump_struct = lump_fn(lump_header, self.profile)
             self._build_stream(lump_struct, val, d)
 
         d.close()
@@ -98,7 +99,8 @@ class Bsp(MutableMapping):
             return self.lumps[index]
 
         lump_header = self._get_lump_header(index)
-        lump_struct = getattr(BSP, 'lump_' + str(index))(lump_header)
+        lump_fn = getattr(BSP, 'lump_' + str(index))
+        lump_struct = lump_fn(lump_header, self.profile)
         data = self._parse_file(lump_struct)
         self.lumps[index] = data
 

@@ -10,7 +10,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA #402
 
 
-def lump_62(header):
+def lump_62(header, profile=None):
     if header.filelen == 0:
         return lump_dud(LUMP_PHYSLEVEL, header)
     if header.version == 0:

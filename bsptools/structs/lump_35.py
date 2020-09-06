@@ -24,7 +24,7 @@ dgamelumpheader_t = Struct(
 )
 
 
-def lump_35(header):
+def lump_35(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
     return lump_struct(LUMP_GAME_LUMP, dgamelumpheader_t, header)

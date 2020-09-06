@@ -35,7 +35,7 @@ doccluder_t = Struct(
 )
 
 
-def lump_9(header):
+def lump_9(header, profile=None):
     if header.version == 2:
         return lump_struct(LUMP_OCCLUSION, doccluder_t, header)
     else:

@@ -21,7 +21,7 @@ DetailPropLightStylesLump_t = Struct(
 )
 
 
-def lump_tlpd(header):
+def lump_tlpd(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
 

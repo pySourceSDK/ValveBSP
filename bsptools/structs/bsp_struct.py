@@ -136,11 +136,11 @@ dheader_t = Struct(
 
 
 def header(profile=None):
-    if profile == 'Team Fortress 2':
+    if profile == TEAMFORTRESS2:
         return dheader_t_TF2
-    elif profile == 'Left 4 Dead 2' or profile == 'Contagion':
+    elif profile in [LEFT4DEAD2, CONTAGION]:
         return dheader_t_L4D2
-    elif profile == 'Titanfall':
+    elif profile == TITANFALL:
         return dheader_t_TITAN
     else:
         return dheader_t

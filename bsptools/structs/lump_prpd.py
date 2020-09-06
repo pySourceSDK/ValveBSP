@@ -72,7 +72,7 @@ DetailPropLump_t = Struct(
 )
 
 
-def lump_prpd(header):
+def lump_prpd(header, profile=None):
     if header.version != 4:
         raise LumpVersionUnsupportedError(header.version)
 

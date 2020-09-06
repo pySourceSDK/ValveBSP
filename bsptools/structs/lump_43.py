@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 
-def lump_43(header):
+def lump_43(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
     return Pointer(this.header.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,

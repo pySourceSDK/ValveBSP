@@ -31,7 +31,7 @@ dface_t = Struct(
 )
 
 
-def lump_7(header):
+def lump_7(header, profile=None):
     if header.version in [0, 1]:
         return lump_array(LUMP_FACES, dface_t, header)
     else:

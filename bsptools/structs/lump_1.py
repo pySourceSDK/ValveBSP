@@ -16,7 +16,7 @@ dplane_t = Struct(
 )
 
 
-def lump_1(header):
+def lump_1(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
     return lump_array(LUMP_PLANES, dplane_t, header)

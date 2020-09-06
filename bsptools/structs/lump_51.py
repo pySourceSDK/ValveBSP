@@ -16,7 +16,7 @@ dleafambientindex_t = Struct(  # matches dleaf_t
 )
 
 
-def lump_51(header):
+def lump_51(header, profile=None):
     if header.version == 0:
         return lump_array(LUMP_LEAF_AMBIENT_INDEX_HDR, dleafambientindex_t, header)
     elif header.version == 1:

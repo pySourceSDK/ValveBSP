@@ -56,7 +56,7 @@ dleaf_tV1 = Struct(
 )
 
 
-def lump_10(header):
+def lump_10(header, profile=None):
     if header.version == 0:
         return lump_array(LUMP_LEAFS, dleaf_tV0, header)
     elif header.version == 1:

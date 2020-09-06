@@ -60,7 +60,7 @@ dworldlight_tV1 = Struct(
 )
 
 
-def lump_15(header):
+def lump_15(header, profile=None):
     if header.version == 0:
         return lump_array(LUMP_WORLDLIGHTS, dworldlight_tV0, header)
     elif header.version == 1:

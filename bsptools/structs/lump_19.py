@@ -17,9 +17,20 @@ dbrushside_t = Struct(
     'dispinfo' / Int16sl,
     'bevel' / Int16sl
 )
+dbrushside_t_P2 = Struct(
+    'planenum' / Int16ul,
+    'texinfo' / Int16sl,
+    'dispinfo' / Int16sl,
+    'bevel' / Int8sl,
+    'thin' / Int8sl
+)
 
 
-def lump_19(header):
-    if header.version != 0:
+def lump_19(header, profile=None):
+    if header.version == 0:
+        if profile in [ALIENSWARM, PORTAL2]:
+            return lump_array(LUMP_BRUSHSIDES, dbrushside_t_P2, header)
+        else:
+            return lump_array(LUMP_BRUSHSIDES, dbrushside_t, header)
+    else:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_BRUSHSIDES, dbrushside_t, header)

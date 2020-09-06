@@ -19,14 +19,16 @@ dleafambientlighting_t = Aligned(4, Struct(
 ))
 
 
-def lump_55(header):
+def lump_55(header, profile=None):
     if header.version == 1:
         return lump_array(LUMP_LEAF_AMBIENT_LIGHTING_HDR,
                           dleafambientlighting_t, header)
 
     elif header.version == header.filelen:
-        # This is obviously a mistake in the bsp, let's not parse it
-        return lump_dud(LUMP_LEAF_AMBIENT_LIGHTING_HDR, header)
+        # This is obviously a mistake in the bsp header, let's assume v1
+        # (seen in css map once)
+        return lump_array(LUMP_LEAF_AMBIENT_LIGHTING_HDR,
+                          dleafambientlighting_t, header)
 
     else:
         raise LumpVersionUnsupportedError(header.version)
