@@ -24,7 +24,7 @@ import os
 sys.path.insert(0, os.path.abspath('../../'))
 
 project = u'Bsp-tools'
-copyright = u'2019, Maxime Dupuis'
+copyright = u'2020, Maxime Dupuis'
 author = u'Maxime Dupuis'
 
 
@@ -45,6 +45,7 @@ release = u'0.0.1'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'docs.ext.autoconstruct',
     'sphinx.ext.intersphinx',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
