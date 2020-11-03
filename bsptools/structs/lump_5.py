@@ -11,12 +11,12 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA #402
 
 dnode_t = Aligned(4, Struct(
-    'planenum' / Int32sl,
+    'planeNum' / Int32sl,
     'children' / Int32sl[2],
     'mins' / Int16sl[3],
     'maxs' / Int16sl[3],
-    'firstface' / Int16ul,
-    'numfaces' / Int16ul,
+    'firstFace' / Int16ul,
+    'numFaces' / Int16ul,
     'area' / Int16sl,
 ))
 

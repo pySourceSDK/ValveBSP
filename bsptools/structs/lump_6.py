@@ -14,7 +14,7 @@ texinfo_t = Struct(
     'textureVecsTexelsPerWorldUnits' / Float32l[2][4],
     'lightmapVecsLuxelsPerWorldUnits' / Float32l[2][4],
     'flags' / Int32sl,
-    'texdata' / Int32sl,
+    'texData' / Int32sl,
 )
 
 

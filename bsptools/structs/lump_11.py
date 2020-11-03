@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 dfaceid_t = Struct(
-    'hammerfaceid' / Int16ul
+    'hammerFaceID' / Int16ul
 )
 
 

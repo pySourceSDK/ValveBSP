@@ -11,7 +11,7 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 dvis_t = Struct(
-    'numclusters' / Int32sl,
+    'numClusters' / Int32sl,
     'bitofs' / Int32sl[this.numclusters][2]
 )
 

@@ -12,17 +12,17 @@ from bsptools.structs.common_struct import *  # NOQA: #402
 
 doccluderdata_t = Struct(
     'flags' / Int32sl,
-    'firstpoly' / Int32sl,
-    'polycount' / Int32sl,
+    'firstPoly' / Int32sl,
+    'polyCount' / Int32sl,
     'mins' / Vector,
     'maxs' / Vector,
     'area' / Int32sl,
 )
 
 doccluderpolydata_t = Struct(
-    'firstvertexindex' / Int32sl,
-    'vertexcount' / Int32sl,
-    'planenum' / Int32sl,
+    'firstVertexIndex' / Int32sl,
+    'vertexCount' / Int32sl,
+    'planeNum' / Int32sl,
 )
 
 doccluder_t = Struct(

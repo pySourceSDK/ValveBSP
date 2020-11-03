@@ -12,15 +12,15 @@ from bsptools.structs.common_struct import *  # NOQA: #402
 
 
 dbrushside_t = Struct(
-    'planenum' / Int16ul,
-    'texinfo' / Int16sl,
-    'dispinfo' / Int16sl,
+    'planeNum' / Int16ul,
+    'texInfo' / Int16sl,
+    'dispInfo' / Int16sl,
     'bevel' / Int16sl
 )
 dbrushside_t_P2 = Struct(
-    'planenum' / Int16ul,
-    'texinfo' / Int16sl,
-    'dispinfo' / Int16sl,
+    'planeNum' / Int16ul,
+    'texInfo' / Int16sl,
+    'dispInfo' / Int16sl,
     'bevel' / Int8sl,
     'thin' / Int8sl
 )

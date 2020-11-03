@@ -24,11 +24,11 @@ dleaf_tV0 = Struct(
     'mins' / Int16sl[3],
     'maxs' / Int16sl[3],
 
-    'firstleafface' / Int16ul,
-    'numleaffaces' / Int16ul,
+    'firstLeafFace' / Int16ul,
+    'numLeafFaces' / Int16ul,
 
-    'firstleafbrush' / Int16ul,
-    'numleafbrushes' / Int16ul,
+    'firstLeafBrush' / Int16ul,
+    'numLeafBrushes' / Int16ul,
     'leafWaterDataID' / Int16sl,
 
     'ambientLighting' / CompressedLightCube
@@ -47,11 +47,11 @@ dleaf_tV1 = Struct(
     'mins' / Int16sl[3],
     'maxs' / Int16sl[3],
 
-    'firstleafface' / Int16ul,
-    'numleaffaces' / Int16ul,
+    'firstLeafFace' / Int16ul,
+    'numLeafFaces' / Int16ul,
 
-    'firstleafbrush' / Int16ul,
-    'numleafbrushes' / Int16ul,
+    'firstLeafBrush' / Int16ul,
+    'numLeafBrushes' / Int16ul,
     'leafWaterDataID' / Int16sl
 )
 

@@ -6,6 +6,10 @@ from future import standard_library
 standard_library.install_aliases()
 
 
+class LumpUnsupportedError(Exception):
+    pass
+
+
 class LumpVersionUnsupportedError(Exception):
     pass
 

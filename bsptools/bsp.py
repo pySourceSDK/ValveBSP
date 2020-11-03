@@ -14,32 +14,53 @@ from shutil import copyfile  # NOQA: #402
 from construct import *  # NOQA: #402
 from collections.abc import MutableMapping  # NOQA: #402
 from bsptools.constants import LUMP_GAME_LUMP  # NOQA: #402
-import bsptools.structs.bsp_struct as BSP  # NOQA: #402
+import bsptools.structs.bsp as BSP  # NOQA: #402
 
 
 class Bsp(MutableMapping):
     """Contains all the data from a Bsp file"""
 
     def __init__(self, path=None, profile=None):
-        """Creates an empty instance of Bsp."""
+        """Creates an empty instance of Bsp.
+
+        :param path: A path to an existing bsp file.
+        :type path: str
+        :param profile: A profile name corresponding to a specific game.
+            :ref:`See profiles page for appropriate values<profiles>`
+        :type profile: str, optional"""
 
         self.source_path = path
         self.profile = profile
+
         self.header = None
         self.lumps = {}
 
+        # note: file might not be found,
+        # profile might not exist
         if self.source_path:
             with open(path, 'rb') as f:
                 header_struct = BSP.header(self.profile)
                 self.header = header_struct.parse_stream(f)
 
-    def save(self, dest=None):
+    def save(self, destination=None):
+        """Saves the current instance of the Bsp. Overwrites original bsp
+        file if no destination is provided.
 
-        dest = dest or self.source_path
-        if not dest:
+        Note that the bsp is lazy loaded. When overwritting, only loaded
+        lumps will be written. When saving to a new destination,
+        The original bsp will be copied and loaded lumps will be
+        written on top.
+
+        :param destination: A path (directory + filename) to determine
+            where to save the bsp file.
+        :type destination: str, optional
+        """
+
+        dest = destination or self.source_path
+        try:
+            d = open(dest, 'wb')
+        except:
             raise FileNotFoundError
-
-        d = open(dest, 'wb')
 
         if not self.source_path:
             header_struct = BSP.header(self.profile)
@@ -60,15 +81,15 @@ class Bsp(MutableMapping):
         d.close()
 
     def _parse_stream(self, struct, f, **kwargs):
-        kwargs['header'] = self.header
+        kwargs['bspHeader'] = self.header
         return struct.parse_stream(f, **kwargs)
 
     def _parse_file(self, struct, **kwargs):
-        kwargs['header'] = self.header
+        kwargs['bspHeader'] = self.header
         return struct.parse_file(self.source_path, **kwargs)
 
     def _build_stream(self, struct, data, f, **kwargs):
-        kwargs['header'] = self.header
+        kwargs['bspHeader'] = self.header
         if not data:
             return
         return struct.build_stream(data, f, **kwargs)
@@ -76,7 +97,7 @@ class Bsp(MutableMapping):
     def _build_file(self, struct, data, **kwargs):
         if not struct:
             return
-        kwargs['header'] = self.header
+        kwargs['bspHeader'] = self.header
         return struct.build_file(data, self.source_path, **kwargs)
 
     def _get_lump_header(self, index):
@@ -91,9 +112,19 @@ class Bsp(MutableMapping):
         raise IndexError('Invalid Lump ID (' + str(index) + ')')
 
     def __getitem__(self, index):
+        """Provides data at the specified lump index. It is used for both
+        bsp lumps (0, 1, 2, ...63) and game lumps ('prps', 'prpd', 'tlpd'...)
+
+        :param index: The index of the lump.
+        :type index: str, int
+        """
 
         if index == '' or index == None:
-            return None
+            raise LumpUnsupportedError(index)
+
+        if index not in range(0, 64) and \
+           index not in ['prps', 'prpd', 'tlpd', 'hlpd']:
+            raise LumpUnsupportedError(index)
 
         if index in self.lumps and self.lumps[index]:
             return self.lumps[index]

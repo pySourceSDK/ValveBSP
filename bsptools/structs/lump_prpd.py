@@ -66,9 +66,9 @@ DetailObjectDictLump_t = Struct(
 )
 
 DetailPropLump_t = Struct(
-    'dict_lump' / DetailPropDictLump_t,
-    'sprites_lump' / DetailSpriteDictLump_t,
-    'objects_lump' / DetailObjectDictLump_t
+    'dictLump' / DetailPropDictLump_t,
+    'spritesLump' / DetailSpriteDictLump_t,
+    'objectLump' / DetailObjectDictLump_t
 )
 
 

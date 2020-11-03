@@ -11,8 +11,8 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 dbrush_t = Struct(
-    'firstside' / Int32sl,
-    'numsides' / Int32sl,
+    'firstSide' / Int32sl,
+    'numSides' / Int32sl,
     'contents' / Int32sl,
 )
 

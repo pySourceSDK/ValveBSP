@@ -14,6 +14,6 @@ from bsptools.structs.common_struct import *  # NOQA: #402
 def lump_43(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return Pointer(this.header.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
+    return Pointer(header.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
                    RepeatUntil(lambda x, lst, ctx: len(lst) >=
-                               ctx.header.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii")))
+                               header.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii")))

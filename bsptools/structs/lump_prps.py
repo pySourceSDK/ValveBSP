@@ -31,14 +31,14 @@ StaticPropV4_t = Struct(
     'flags' / prps_flags8,
     'skin' / Int32sl,
 
-    'FadeMinDist' / Float32l,
-    'FadeMaxDist' / Float32l,
+    'fadeMinDist' / Float32l,
+    'fadeMaxDist' / Float32l,
 
     'lightingOrigin' / Vector,
 )
 
 StaticPropV5_t = Struct(
-    # validated through hl, hl2, p1 and css
+    # hl, hl2, p1, css
     'origin' / Vector,
     'angles' / QAngle,
 
@@ -57,7 +57,7 @@ StaticPropV5_t = Struct(
 )
 
 StaticPropV6_t = Struct(
-    # validated through p1, css and dod
+    # p1, css, dod
     'origin' / Vector,
     'angles' / QAngle,
 
@@ -79,7 +79,7 @@ StaticPropV6_t = Struct(
 )
 
 StaticPropV7_t = Struct(
-    # validated through zeno
+    # zeno
     'origin' / Vector,
     'angles' / QAngle,
 
@@ -129,7 +129,7 @@ StaticPropV8_t = Struct(
 
 
 StaticPropV9_t = Struct(
-    # validated through portal2
+    # portal2
     'origin' / Vector,
     'angles' / QAngle,
 
@@ -158,7 +158,7 @@ StaticPropV9_t = Struct(
 
 
 StaticPropV10_t = Aligned(4, Struct(
-    # partially validated through tf2
+    # tf2
     'origin' / Vector,
     'angles' / QAngle,
 
@@ -189,7 +189,7 @@ StaticPropV10_t = Aligned(4, Struct(
 ))
 
 StaticPropV11_t = Aligned(4, Struct(
-    # validated through csgo
+    # csgo
     'origin' / Vector,
     'angles' / QAngle,
 
@@ -258,18 +258,18 @@ def lump_prps(header, profile=None):
 
     if profile == ZENOCLASH:
         StaticPropLump_t = Struct(
-            'dict_lump' / StaticPropDictLump_t,
-            'dict_lump2' / StaticPropDictLump_t,
-            'leaf_lump' / StaticPropLeafDictLump_t,
-            'object_lump' / Struct('count' / Int32sl,
-                                   'objects' / Aligned(4, StaticProp_t[this.count])),
-            'lightstyles_lump' / StaticPropLightstylesDictLump_t)
+            'dictLump' / StaticPropDictLump_t,
+            'dictLump2' / StaticPropDictLump_t,
+            'leafLump' / StaticPropLeafDictLump_t,
+            'objectLump' / Struct('count' / Int32sl,
+                                  'objects' / Aligned(4, StaticProp_t[this.count])),
+            'lightstylesLump' / StaticPropLightstylesDictLump_t)
     else:
         StaticPropLump_t = Struct(
-            'dict_lump' / StaticPropDictLump_t,
-            'leaf_lump' / StaticPropLeafDictLump_t,
-            'object_lump' / Struct('count' / Int32sl,
-                                   'objects' / Aligned(4, StaticProp_t[this.count])),
-            'lightstyles_lump' / StaticPropLightstylesDictLump_t)
+            'dictLump' / StaticPropDictLump_t,
+            'leafLump' / StaticPropLeafDictLump_t,
+            'objectLump' / Struct('count' / Int32sl,
+                                  'objects' / Aligned(4, StaticProp_t[this.count])),
+            'lightstylesLump' / StaticPropLightstylesDictLump_t)
 
     return lump_game('prps', StaticPropLump_t, header)

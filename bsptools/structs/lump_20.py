@@ -11,8 +11,8 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 darea_t = Struct(
-    'numareaportals' / Int32sl,
-    'firstareaportal' / Int32sl
+    'numAreaPortals' / Int32sl,
+    'firstAreaPortal' / Int32sl
 )
 
 

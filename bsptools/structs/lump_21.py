@@ -12,10 +12,10 @@ from bsptools.structs.common_struct import *  # NOQA: #402
 
 dareaportal_t = Struct(
     'portalKey' / Int16ul,
-    'otherarea' / Int16ul,
+    'otherArea' / Int16ul,
     'firstClipPortalVert' / Int16ul,
     'clipPortalVerts' / Int16ul,
-    'planenum' / Int32sl
+    'planeNum' / Int32sl
 )
 
 

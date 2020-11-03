@@ -11,12 +11,12 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common_struct import *  # NOQA: #402
 
 dtexdata_t = Struct(
-    'reflectivity' / Vector,  # RGB reflectivity
-    'nameStringTableID' / Int32sl,  # index into TexdataStringTable
+    'reflectivity' / Vector * "RGB reflectivity",
+    'nameStringTableID' / Int32sl * "index into TexdataStringTable",
     'width' / Int32sl,
     'height' / Int32sl,
-    'view_width' / Int32sl,
-    'view_height' / Int32sl
+    'viewWidth' / Int32sl,
+    'viewHeight' / Int32sl
 )
 
 
