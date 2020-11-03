@@ -1,5 +1,4 @@
 sphinx-autobuild \
-    -z ../bsptools \
     --ignore "*~" \
     --ignore "*/#*#*" \
     --ignore "*.#*" \
