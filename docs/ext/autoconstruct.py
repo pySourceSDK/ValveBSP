@@ -1,4 +1,5 @@
 
+import os
 from docutils import nodes
 import sphinx
 import construct
@@ -19,6 +20,7 @@ from sphinx.domains.python import PythonDomain, PyXrefMixin, PyXRefRole, PyObjec
 from sphinx.writers.html5 import HTML5Translator
 from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.directives import ObjectDescription
+from sphinx.util.fileutil import copy_asset
 from docutils.parsers import rst
 
 import mock
@@ -32,26 +34,23 @@ ALL = object()
 
 VERBOSE = False
 
-"""PROBLEMS: automodule doesn't give struct name,
-             autostruct gives name, must be placed first"""
-
 
 def Struct_mock__init__(self, *subcons, **subconskw):
     """
-    This here is some black magic. This is init function is meant to
+    This here is some introspection black magic. This init function is meant to
     replace Struct's __init__, only during documentation building.
-    It will allow a struct to remember it's name.
-    The Struct will take on the name of the variable it's defined in.
+    It will allow a struct to remember it's variable name.
+    The Struct will take on the name of the variable it's defined as.
     """
 
-    # Regular things
+    # Regular Init
     construct.core.Construct.__init__(self)
     self.subcons = list(subcons) + list(k/v for k, v in subconskw.items())
     self._subcons = construct.lib.Container((sc.name, sc)
                                             for sc in self.subcons if sc.name)
     self.flagbuildnone = all(sc.flagbuildnone for sc in self.subcons)
 
-    # Added things
+    # Additional init
     try:
         node = executing.Source.executing(sys._getframe(1)).node
         while hasattr(node, 'parent') and not isinstance(node, ast.Assign):
@@ -66,7 +65,7 @@ def Struct_mock__init__(self, *subcons, **subconskw):
 
 
 def getdoc(obj, attrgetter=safe_getattr, allow_inherited=False):
-    """ method to extract a Struct's doc, replacing it's docstring."""
+    """method to extract a Struct's doc, replacing it's docstring."""
     return obj.docs
 
 
@@ -341,6 +340,18 @@ class ConstructPythonDomain(PythonDomain):
              'subcon': PyXRefRole()}
 
 
+asset_files = ['autoconstruct.css']
+
+
+def copy_asset_files(app, exc):
+    ext_dir = os.path.abspath(os.path.dirname(__file__))
+    if exc is None:  # build succeeded
+        for asset in asset_files:
+            asset_path = os.path.join(ext_dir, asset)
+            copy_asset(asset_path, os.path.join(app.outdir, '_static'))
+            app.add_css_file(asset)
+
+
 def setup(app):
     app.add_builder(StructStandaloneHTMLbuilder, override=True)
     app.add_domain(ConstructPythonDomain)
@@ -349,5 +360,9 @@ def setup(app):
     app.add_node(desc_ctype)
     app.add_autodocumenter(StructDocumenter)
     app.add_autodocumenter(SubconDocumenter)
+
+    for asset in asset_files:
+        app.add_css_file(asset)
+    app.connect('build-finished', copy_asset_files)
 
     return {'version': sphinx.__display_version__, 'parallel_read_safe': True}
