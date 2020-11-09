@@ -7,8 +7,8 @@ As you may already know, bsp is organised into lumps. They are generally numbere
    :maxdepth: 2
 
    api/header
+   api/common
    api/lumps
    api/gamelumps
-   api/common
 
 

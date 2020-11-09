@@ -3,20 +3,20 @@ import os
 from docutils import nodes
 import sphinx
 import construct
-from sphinx.ext.autodoc import Documenter,  ModuleDocumenter, ModuleLevelDocumenter, ClassLevelDocumenter
+from sphinx.ext.autodoc import Documenter, ModuleDocumenter, ModuleLevelDocumenter, ClassLevelDocumenter
 
 from typing import cast
 
 from sphinx import addnodes
 from sphinx.locale import _, __
-from sphinx.util.inspect import safe_getattr
+from sphinx.util.inspect import safe_getattr, safe_getmembers
 from sphinx.util.docstrings import prepare_docstring
 from sphinx.util.docfields import DocFieldTransformer
 from sphinx.util.nodes import make_id
 from sphinx.pycode import ModuleAnalyzer, PycodeError
 from sphinx.domains import ObjType
 from sphinx.domains.cpp import CPPDomain
-from sphinx.domains.python import PythonDomain, PyXrefMixin, PyXRefRole, PyObject, PyVariable, PyAttribute, PyClasslike, PyField, PyTypedField
+from sphinx.domains.python import PythonDomain, PyXrefMixin, PyXRefRole, PyObject, PyModule, PyVariable, PyAttribute, PyClasslike, PyField, PyTypedField
 from sphinx.writers.html5 import HTML5Translator
 from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.directives import ObjectDescription
@@ -52,7 +52,11 @@ def Struct_mock__init__(self, *subcons, **subconskw):
 
     # Additional init
     try:
-        node = executing.Source.executing(sys._getframe(1)).node
+        # Remember module is was declared in
+        frame = sys._getframe(1)
+        self.__module__ = frame.f_globals['__name__']
+        # Remember name it was declared as
+        node = executing.Source.executing(frame).node
         while hasattr(node, 'parent') and not isinstance(node, ast.Assign):
             node = node.parent
             assert not isinstance(node, ast.Module)
@@ -201,6 +205,37 @@ class StructDocumenter(ConstructDocumenter, ModuleLevelDocumenter):
         self.env.temp_data['autodoc:class'] = None
 
 
+class ModconDocumenter(ModuleDocumenter):
+    objtype = 'modcon'
+
+    def add_directive_header(self, sig):
+        return
+
+    def import_object(self):
+        # inject the new constructor into Struct
+        with mock.patch.object(
+                construct.core.Struct, '__init__', Struct_mock__init__):
+            return super().import_object()
+
+    def filter_members(self, members, want_all):
+        ret = []
+        for mname, member in members:
+            if self.object.__name__ == member.__module__:
+                ret.append((mname, member, True))
+        return ret
+
+    def get_object_members(self, want_all):
+        ret = []
+
+        def isStruct(i):
+            return isinstance(i, construct.core.Struct)
+
+        for mname, member in safe_getmembers(self.object, isStruct):
+            ret.append((mname, safe_getattr(self.object, mname)))
+
+        return False, ret
+
+
 class desc_structref(nodes.Part, nodes.Inline, nodes.FixedTextElement):
     pass
 
@@ -290,12 +325,10 @@ class ConstructObjectDesc():
                                               fullname, '', None))
 
 
-# PyObject > ObjectDescription > SphinxDirective > Directive > object
 class Struct(ConstructObjectDesc, PyClasslike):
     option_spec = PyClasslike.option_spec.copy()
 
 
-# PyObject > ObjectDescription > SphinxDirective > Directive > object
 class Subcon(ConstructObjectDesc, PyAttribute):
     option_spec = PyAttribute.option_spec.copy()
     option_spec.update({
@@ -358,6 +391,7 @@ def setup(app):
     app.add_node(desc_structref)
     app.add_node(desc_pytype)
     app.add_node(desc_ctype)
+    app.add_autodocumenter(ModconDocumenter)
     app.add_autodocumenter(StructDocumenter)
     app.add_autodocumenter(SubconDocumenter)
 

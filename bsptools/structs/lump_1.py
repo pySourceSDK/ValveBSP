@@ -1,13 +1,19 @@
+"""
+Lump 1 is an array of dplane_t
+"""
+
 from __future__ import division
 from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
 from future import standard_library
 standard_library.install_aliases()
-from construct import *  # NOQA: #402
-from bsptools.constants import *  # NOQA: #402
-from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+
+from construct import Struct, Int32sl, Float32l, Padding  # NOQA: #402
+from bsptools.constants import LUMP_PLANES  # NOQA: #402
+from bsptools.exceptions import LumpVersionUnsupportedError  # NOQA: #402
+from bsptools.structs.common_struct import Vector, lump_array  # NOQA: #402
+
 
 dplane_t = Struct(
     'normal' / Vector,
