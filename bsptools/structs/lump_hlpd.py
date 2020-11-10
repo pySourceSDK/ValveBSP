@@ -1,3 +1,7 @@
+"""
+Lump hlpd - Prop Detail Lighting HDR
+====================================
+"""
 
 from __future__ import division
 from __future__ import absolute_import

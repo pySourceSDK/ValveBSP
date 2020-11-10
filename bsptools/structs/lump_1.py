@@ -1,4 +1,7 @@
 """
+Lump 1 - Planes
+===============
+
 Lump 1 is an array of dplane_t
 """
 

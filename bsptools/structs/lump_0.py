@@ -1,5 +1,6 @@
 """
-Lump 0 - Entity Lump
+Lump 0 - Entities
+=================
 """
 
 from __future__ import absolute_import

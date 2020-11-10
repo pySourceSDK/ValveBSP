@@ -1,3 +1,8 @@
+"""
+Lump 32 - Disp Lightmap Alphas
+==============================
+"""
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function

@@ -1,3 +1,8 @@
+"""
+Lump 51 - Lightmap Pages ...or Leaf Ambient Index HDR
+=====================================================
+"""
+
 from __future__ import division
 from __future__ import absolute_import
 from __future__ import print_function

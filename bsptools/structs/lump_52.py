@@ -1,3 +1,8 @@
+"""
+Lump 52 - Lightmap Page Infos ...or Leaf Ambient Index
+======================================================
+"""
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function

@@ -10,5 +10,3 @@ As you may already know, bsp is organised into lumps. They are generally numbere
    api/common
    api/lumps
    api/gamelumps
-
-

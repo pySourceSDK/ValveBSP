@@ -1,3 +1,8 @@
+"""
+Lump 49 - Phys Collide Surface ...or Lump Prop Blob
+===================================================
+"""
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
