@@ -1,7 +1,9 @@
 """
 Lump 54 - Worldlights HDR
 =========================
-"""
+
+This lump contains an array of :any:`dworldlight_tV0` or :any:`dworldlight_tV1` (Version detection is automatic).
+It is the HDR version of :ref:`lump 15<lump_15>`."""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -12,7 +14,7 @@ standard_library.install_aliases()
 
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA #402
+from bsptools.structs.common import *  # NOQA #402
 from bsptools.structs.lump_15 import dworldlight_tV0, dworldlight_tV1  # NOQA #402
 
 

@@ -1,6 +1,8 @@
 """
 Lump 4 - Visibility
 ===================
+
+This lump is not currently implemented. It will return the raw bytes.
 """
 
 from __future__ import division
@@ -13,12 +15,14 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
+'''
 dvis_t = Struct(
     'numClusters' / Int32sl,
     'bitofs' / Int32sl[this.numclusters][2]
 )
+'''
 
 
 def lump_4(header, profile=None):

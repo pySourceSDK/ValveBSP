@@ -1,6 +1,10 @@
 """
 Lump 19 - Brush Sides
 =====================
+
+This lump contains an array of :any:`dbrushside_t`.
+
+Note: Portal 2's implementation of this lump differs, a :ref:`profile<profiles>` must be specified.
 """
 
 from __future__ import division
@@ -13,7 +17,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 
 dbrushside_t = Struct(
@@ -22,6 +26,7 @@ dbrushside_t = Struct(
     'dispInfo' / Int16sl,
     'bevel' / Int16sl
 )
+
 dbrushside_t_P2 = Struct(
     'planeNum' / Int16ul,
     'texInfo' / Int16sl,

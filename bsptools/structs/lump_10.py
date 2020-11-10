@@ -1,6 +1,8 @@
 """
 Lump 10 - Leafs
 ===============
+
+This lump contains an array of :any:`dleaf_tV1` or :any:`dleaf_tV1` (Version detection is automatic).
 """
 
 from __future__ import division
@@ -13,13 +15,12 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 
 dleaf_tV0 = Struct(
     'contents' / Int32sl,
     'cluster' / Int16sl,
-
 
     'areaflag' / BitStruct(
         'area' / BitsInteger(7),
@@ -42,7 +43,6 @@ dleaf_tV0 = Struct(
 dleaf_tV1 = Struct(
     'contents' / Int32sl,
     'cluster' / Int16sl,
-
 
     'areaflag' / BitStruct(
         'area' / BitsInteger(7),

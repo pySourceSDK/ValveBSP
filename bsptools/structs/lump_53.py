@@ -1,6 +1,9 @@
 """
 Lump 53 - Lighting HDR
 ======================
+
+This lump contains an array of :any:`ColorRGBExp32`. They represent individual luxels.
+It is the HDR version of :ref:`lump 8<lump_8>`.
 """
 
 from __future__ import absolute_import
@@ -13,7 +16,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 
 def lump_53(header, profile=None):

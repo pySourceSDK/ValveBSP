@@ -1,6 +1,8 @@
 """
 Lump 29 - Phys Collide
 ======================
+
+This lump is not currently implemented. It will return the raw bytes.
 """
 
 from __future__ import absolute_import
@@ -13,10 +15,10 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA #402
+from bsptools.structs.common import *  # NOQA #402
 
 
 def lump_29(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_PHYSCOLLIDE, Byte, header)
+    return lump_bytes(LUMP_PHYSCOLLIDE, header)

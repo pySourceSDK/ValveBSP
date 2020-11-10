@@ -1,6 +1,9 @@
+
 """
 Lump 2 - Texture Data
 =====================
+
+This lump contains an array of :any:`dtexdata_t`.
 """
 
 from __future__ import division
@@ -13,11 +16,11 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 dtexdata_t = Struct(
     'reflectivity' / Vector * "RGB reflectivity",
-    'nameStringTableID' / Int32sl * "index into TexdataStringTable",
+    'nameStringTableID' / Int32sl * "index into :ref:`lump 44<lump_44>`",
     'width' / Int32sl,
     'height' / Int32sl,
     'viewWidth' / Int32sl,

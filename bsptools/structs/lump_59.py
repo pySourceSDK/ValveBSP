@@ -1,6 +1,8 @@
 """
 Lump 59 - Map Flags
 ===================
+
+This lump contains an array of :any:`flags_t`.
 """
 
 from __future__ import division
@@ -13,7 +15,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA #402
+from bsptools.structs.common import *  # NOQA #402
 
 flags_t = Struct('levelFlags' / Int32ul)
 

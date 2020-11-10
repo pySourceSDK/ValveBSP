@@ -1,6 +1,8 @@
 """
 Lump 18 - Brushes
 =================
+
+This lump contains an array of :any:`dbrush_t`.
 """
 
 from __future__ import division
@@ -13,7 +15,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 dbrush_t = Struct(
     'firstSide' / Int32sl,

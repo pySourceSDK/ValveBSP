@@ -1,6 +1,8 @@
 """
 Lump 11 - Face Ids
 ==================
+
+This lump contains an array of :any:`dfaceid_t`. This array matches the array of dface_t (:ref:`see lump_7<lump_7>`).
 """
 
 from __future__ import division
@@ -13,7 +15,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 dfaceid_t = Struct(
     'hammerFaceID' / Int16ul

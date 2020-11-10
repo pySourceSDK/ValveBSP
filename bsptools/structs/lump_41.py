@@ -1,6 +1,8 @@
 """
 Lump 41 - Clip Portal Verts
 ===========================
+
+This lump contains an array of verts represented as :any:`Vector`.
 """
 
 from __future__ import absolute_import
@@ -12,7 +14,7 @@ standard_library.install_aliases()
 
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 
 def lump_41(header, profile=None):

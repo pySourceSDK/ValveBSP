@@ -1,6 +1,8 @@
 """
 Lump 40 - Pakfile
 =================
+
+This lump contains raw data. the data can be saved directly to the disc as a zip file.
 """
 
 from __future__ import absolute_import
@@ -12,7 +14,7 @@ standard_library.install_aliases()
 
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA #402
+from bsptools.structs.common import *  # NOQA #402
 
 
 def lump_40(header, profile=None):

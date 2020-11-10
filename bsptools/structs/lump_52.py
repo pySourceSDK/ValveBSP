@@ -1,6 +1,8 @@
 """
 Lump 52 - Lightmap Page Infos ...or Leaf Ambient Index
 ======================================================
+
+This lump contains an array of :any:`dleafambientindex_t` (:ref:`as seen in lump_51<lump_51>`).
 """
 
 from __future__ import absolute_import
@@ -12,7 +14,7 @@ standard_library.install_aliases()
 
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA #402
+from bsptools.structs.common import *  # NOQA #402
 from bsptools.structs.lump_51 import dleafambientindex_t  # NOQA #402
 
 

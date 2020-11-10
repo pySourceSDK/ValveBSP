@@ -1,6 +1,9 @@
 """
 Lump 55 - Leaf Ambient Lighting HDR
 ===================================
+
+This lump contains an array of :any:`dleafambientlighting_t`.
+It is the HDR version of :ref:`lump 56<lump_56>`.
 """
 
 from __future__ import division
@@ -10,18 +13,10 @@ from __future__ import unicode_literals
 from future import standard_library
 standard_library.install_aliases()
 
-from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
-
-
-dleafambientlighting_t = Aligned(4, Struct(
-    'cube' / CompressedLightCube,
-    'x' / Byte,
-    'y' / Byte,
-    'z' / Byte
-))
+from bsptools.structs.common import *  # NOQA: #402
+from bsptools.structs.lump_56 import dleafambientlighting_t  # NOQA: #402
 
 
 def lump_55(header, profile=None):

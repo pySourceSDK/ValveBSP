@@ -1,6 +1,8 @@
 """
 Lump 27 - Original Faces
 ========================
+
+This lump contains an array of :any:`dface_t` (:ref:`as seen in lump_7<lump_7>`).
 """
 
 from __future__ import absolute_import
@@ -13,7 +15,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA #402
+from bsptools.structs.common import *  # NOQA #402
 from bsptools.structs.lump_7 import dface_t  # NOQA #402
 
 

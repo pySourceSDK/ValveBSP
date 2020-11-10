@@ -1,6 +1,8 @@
 """
 Lump 15 - Worldlights
 =====================
+
+This lump contains an array of :any:`dworldlight_tV0` or :any:`dworldlight_tV1` (Version detection is automatic).
 """
 
 from __future__ import division
@@ -13,7 +15,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 emittype_t = Enum(
     Int32ul,

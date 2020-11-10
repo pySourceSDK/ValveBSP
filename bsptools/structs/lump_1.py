@@ -2,7 +2,7 @@
 Lump 1 - Planes
 ===============
 
-Lump 1 is an array of dplane_t
+This lump contains an array of :any:`dplane_t`.
 """
 
 from __future__ import division
@@ -15,7 +15,7 @@ standard_library.install_aliases()
 from construct import Struct, Int32sl, Float32l, Padding  # NOQA: #402
 from bsptools.constants import LUMP_PLANES  # NOQA: #402
 from bsptools.exceptions import LumpVersionUnsupportedError  # NOQA: #402
-from bsptools.structs.common_struct import Vector, lump_array  # NOQA: #402
+from bsptools.structs.common import Vector, lump_array  # NOQA: #402
 
 
 dplane_t = Struct(

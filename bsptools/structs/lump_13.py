@@ -1,6 +1,8 @@
 """
 Lump 13 - Surfedges
 ===================
+
+This lump contains an array of Int. TODO: improve documentation.
 """
 
 from __future__ import absolute_import
@@ -13,7 +15,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA: #402
+from bsptools.structs.common import *  # NOQA: #402
 
 
 def lump_13(header, profile=None):

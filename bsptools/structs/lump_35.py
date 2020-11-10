@@ -1,6 +1,8 @@
 """
 Lump 35 - Game Lump
 ===================
+
+This lump contains a single :any:`dgamelumpheader_t`. This is only the gamelump headers and not the gamelump data. for gamelump data, :ref:`see gamelumps<gamelumps>`.
 """
 
 from __future__ import division
@@ -13,7 +15,7 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
-from bsptools.structs.common_struct import *  # NOQA #402
+from bsptools.structs.common import *  # NOQA #402
 
 dgamelump_t = Struct(
     'id' / PaddedString(4, "ascii"),
