@@ -1,5 +1,6 @@
 
 import os
+from contextlib import contextmanager, ExitStack
 from docutils import nodes
 import sphinx
 import construct
@@ -34,21 +35,27 @@ ALL = object()
 
 VERBOSE = False
 
+construct_overrides = [
+    construct.core.Struct,
+    construct.core.Renamed,
+    construct.core.Aligned,
+    construct.core.Array]
 
-def Struct_mock__init__(self, *subcons, **subconskw):
-    """
-    This here is some introspection black magic. This init function is meant to
-    replace Struct's __init__, only during documentation building.
-    It will allow a struct to remember it's variable name.
-    The Struct will take on the name of the variable it's defined as.
-    """
+construct_inits = {}
+for c in construct_overrides:
+    construct_inits[c.__name__] = c.__init__
 
+
+def Construct_mock__init__(self, *args, **kwargs):
+    """
+    This here is some introspection black magic to be injected in construct's
+    init functions, only during documentation building.
+    It allows construct class instances to remember a few things:
+    1. The variable name they were instantiated as.
+    2. The module they were defined as.
+    """
     # Regular Init
-    construct.core.Construct.__init__(self)
-    self.subcons = list(subcons) + list(k/v for k, v in subconskw.items())
-    self._subcons = construct.lib.Container((sc.name, sc)
-                                            for sc in self.subcons if sc.name)
-    self.flagbuildnone = all(sc.flagbuildnone for sc in self.subcons)
+    construct_inits[type(self).__name__](self, *args, **kwargs)
 
     # Additional init
     try:
@@ -68,26 +75,54 @@ def Struct_mock__init__(self, *subcons, **subconskw):
         node = None
 
 
+def Subconstruct_mock__getattr__(self, name):
+    """
+    makes sure Subconstruct has __getattr__,
+    otherwise introspection is impossible"""
+    return getattr(self.subcon, name)
+
+
+@contextmanager
+def mocked_constructs():
+    """A context to apply all the Construct mocks"""
+    with ExitStack() as es:
+        for x in construct_overrides:
+            minit = mock.patch.object(x,
+                                      '__init__', Construct_mock__init__)
+            es.enter_context(minit)
+        mgetattr = mock.patch.object(construct.core.Subconstruct,
+                                     '__getattr__', Subconstruct_mock__getattr__,
+                                     create=True)
+        es.enter_context(mgetattr)
+        yield
+
+
 def getdoc(obj, attrgetter=safe_getattr, allow_inherited=False):
     """method to extract a Struct's doc, replacing it's docstring."""
     return obj.docs
 
 
-def deconstruct(s, name=None, docs=None):
+def deconstruct(s, name=None, docs=None, count=None):
     """
-    Can get through a chain of Construct.core.Renamed and
+    Can get through a chain of Construct.core.Subcontruct and
     will determine what the original struct was, and what to use
-    as a name, struct name and docstring
+    as a name, struct name, docstring and possibly count
     """
-    if isinstance(s, construct.core.Renamed):
+    if isinstance(s, construct.core.Array):
+        count = count or []
+        if isinstance(s.count, int):
+            count = [s.count] + count
+        else:
+            count = [''] + count
+    if isinstance(s, construct.core.Subconstruct):
         name = name or safe_getattr(s, 'name')
         docs = docs or safe_getattr(s, 'docs')
-        return deconstruct(s.subcon, name, docs)
+        return deconstruct(s.subcon, name, docs, count)
     elif isinstance(s, construct.core.Struct):
         varname = safe_getattr(s, 'name', name)
-        return s, name, varname, docs
+        return s, name, varname, docs, count
     else:
-        return s, name, None, docs
+        return s, name, None, docs, count
 
 
 class ConstructDocumenter(Documenter):
@@ -104,9 +139,7 @@ class ConstructDocumenter(Documenter):
         return []
 
     def import_object(self):
-        # inject the new constructor into Struct
-        with mock.patch.object(
-                construct.core.Struct, '__init__', Struct_mock__init__):
+        with mocked_constructs():
             return super().import_object()
 
 
@@ -125,13 +158,15 @@ class SubconDocumenter(ConstructDocumenter, ClassLevelDocumenter):
         Documenter.add_directive_header(self, sig)
 
         sourcename = self.get_sourcename()
-        s, sname, srefname, sdoc = deconstruct(self.object)
+        s, sname, srefname, sdoc, count = deconstruct(self.object)
 
+        suffix = ''
+        if count:
+            suffix = ', [' + ']['.join([str(c) for c in count]) + ']'
         if isinstance(s, construct.core.FormatField):
-            self.add_line('   :fieldtype: ' + s.fmtstr, sourcename)
+            self.add_line('   :fieldtype: ' + s.fmtstr + suffix, sourcename)
         elif isinstance(s, construct.core.Struct) and srefname:
-            self.add_line('   :structtype: ' + srefname, sourcename)
-            link = ":con:struct:`" + srefname + '<' + srefname + '>`'
+            self.add_line('   :structtype: ' + srefname + suffix, sourcename)
 
     def generate(self, *args, **kwargs):
         # generate makes rest formated output
@@ -160,9 +195,9 @@ class StructDocumenter(ConstructDocumenter, ModuleLevelDocumenter):
 
     def get_object_members(self, want_all):
         # create a list of members out of self.object
-        s, name, refname, doc = deconstruct(self.object)
+        s, name, refname, doc, count = deconstruct(self.object)
         return (False, [(sname, ssc) for ssc, sname, refname, sdoc in
-                        [deconstruct(sc) for sc in s.subcons]])
+                        [deconstruct(sc)[:4] for sc in s.subcons]])
 
     def document_members(self, all_members=False):
         # ModuleLevelDocumenter.document_members(self)
@@ -212,9 +247,7 @@ class ModconDocumenter(ModuleDocumenter):
         return
 
     def import_object(self):
-        # inject the new constructor into Struct
-        with mock.patch.object(
-                construct.core.Struct, '__init__', Struct_mock__init__):
+        with mocked_constructs():
             return super().import_object()
 
     def filter_members(self, members, want_all):
@@ -228,7 +261,10 @@ class ModconDocumenter(ModuleDocumenter):
         ret = []
 
         def isStruct(i):
-            return isinstance(i, construct.core.Struct)
+            isS = isinstance(i, construct.core.Struct)
+            isS = isS or isinstance(i, construct.core.Aligned)
+            isS = isS or isinstance(i, construct.core.Renamed)
+            return isS
 
         for mname, member in safe_getmembers(self.object, isStruct):
             ret.append((mname, safe_getattr(self.object, mname)))
@@ -236,26 +272,48 @@ class ModconDocumenter(ModuleDocumenter):
         return False, ret
 
 
-class desc_structref(nodes.Part, nodes.Inline, nodes.FixedTextElement):
+class desc_subcon(nodes.Part, nodes.Inline, nodes.FixedTextElement):
     pass
 
 
-class desc_pytype(nodes.Part, nodes.Inline, nodes.FixedTextElement):
+class desc_stype(nodes.Part, nodes.Inline, nodes.FixedTextElement):
+    def astext(self):
+        return '({})'.format(super().astext())
+
+
+class desc_structref(desc_stype):
     pass
+
+
+class desc_pytype(desc_stype):
+    pass
+
+
+class desc_count(nodes.Part, nodes.Inline, nodes.FixedTextElement):
+    def astext(self):
+        return '[{}]'.format(super().astext())
 
 
 class desc_ctype(nodes.Part, nodes.Inline, nodes.FixedTextElement):
-    pass
+    def astext(self):
+        return '<parsed from {}>'.format(super().astext())
 
 
 class StructHTML5Translator(HTML5Translator):
-    def visit_type(self, node):
+
+    def visit_desc_subcon(self, node):
         self.body.append(self.starttag(node, 'code', '',
                                        CLASS='sig-prename descclassname'))
         self.body.append('<span class="sig-paren">(</span>')
 
+    def depart_desc_subcon(self, node):
+        self.body.append('<span class="sig-paren">)</span></code>')
+
+    def visit_type(self, node):
+        self.body.append(self.starttag(node, 'code', '',
+                                       CLASS='sig-prename descclassname'))
+
     def depart_type(self, node):
-        self.body.append('<span class="sig-paren">)</span>')
         self.body.append('</code>')
 
     visit_desc_structref = visit_type
@@ -264,14 +322,18 @@ class StructHTML5Translator(HTML5Translator):
     depart_desc_pytype = depart_type
 
     def visit_desc_ctype(self, node):
-        self.body.append(self.starttag(node, 'code', '',
-                                       CLASS='sig-prename descclassname',
+        self.body.append(self.starttag(node, 'span', '',
                                        STYLE='color: gray'))
-        self.body.append('<span>&ltparsed from ')
+        self.body.append('&ltparsed from ')
 
     def depart_desc_ctype(self, node):
         self.body.append('&gt</span>')
-        self.body.append('</code>')
+
+    def visit_desc_count(self, node):
+        pass
+
+    def depart_desc_count(self, node):
+        pass
 
 
 class StructStandaloneHTMLbuilder(StandaloneHTMLBuilder):
@@ -296,8 +358,16 @@ FF_TYPES = {
 }
 
 
-def unformat(formatfieldstr):
-    return FF_TYPES[formatfieldstr[1]]
+def unformatCount(formatfieldstr):
+    unformated = tuple(formatfieldstr.rsplit(', ', 1))
+    if len(unformated) == 1:
+        unformated += (None,)
+    return unformated
+
+
+def unformatFieldType(formatfieldstr):
+    unformated = unformatCount(formatfieldstr)
+    return FF_TYPES[unformated[0][1]] + (unformated[-1],)
 
 
 class ConstructObjectDesc():
@@ -338,24 +408,30 @@ class Subcon(ConstructObjectDesc, PyAttribute):
     })
 
     def handle_signature(self, sig, signode):
-        """ Almost there, this is for sure where the money happens.
-         create new nodes and you'll get there for sure
-        """
         fullname, prefix = super().handle_signature(sig, signode)
         structtype = self.options.get('structtype')
         if structtype:
+            stype, count = unformatCount(structtype)
+            subconnode = desc_subcon()
             refnode = addnodes.pending_xref('', refdomain=DOMAIN, refexplicit=False,
-                                            reftype='struct', reftarget=structtype)
-            refnode += desc_structref(structtype, structtype)
-            signode += refnode
+                                            reftype='struct', reftarget=stype)
+            refnode += desc_structref(stype, stype)
+            subconnode += refnode
+            if count:
+                subconnode += desc_count(count, count)
+            signode += subconnode
         fieldtype = self.options.get('fieldtype')
         if fieldtype:
-            pytype, ctype = unformat(fieldtype)
+            pytype, ctype, count = unformatFieldType(fieldtype)
 
-            pyref = addnodes.pending_xref('', refdomain='py', refexplicit=False,
-                                          reftype='class', reftarget=pytype)
-            pyref += desc_pytype(pytype, pytype)
-            signode += pyref
+            subconnode = desc_subcon()
+            refnode = addnodes.pending_xref('', refdomain='py', refexplicit=False,
+                                            reftype='class', reftarget=pytype)
+            refnode += desc_pytype(pytype, pytype)
+            subconnode += refnode
+            if count:
+                subconnode += desc_count(count, count)
+            signode += subconnode
             signode += desc_ctype(ctype, ctype)
 
         return fullname, prefix
@@ -391,6 +467,8 @@ def setup(app):
     app.add_node(desc_structref)
     app.add_node(desc_pytype)
     app.add_node(desc_ctype)
+    app.add_node(desc_count)
+    app.add_node(desc_subcon)
     app.add_autodocumenter(ModconDocumenter)
     app.add_autodocumenter(StructDocumenter)
     app.add_autodocumenter(SubconDocumenter)

@@ -1,4 +1,3 @@
-Common Structures
-=================
+.. _common:
+.. automodcon:: bsptools.structs.common
 
-.. automodcon:: bsptools.structs.common_struct

@@ -1,6 +1,8 @@
 """
 Lump prps - Prop Static
 =======================
+
+This lump is defined as a single :any:`StaticPropLump_t`
 """
 
 from __future__ import division

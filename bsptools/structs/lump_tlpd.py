@@ -1,6 +1,8 @@
 """
 Lump tlpd - Prop Detail Lighting
 ================================
+
+This lump is defined as a single :any:`DetailPropLightStylesLump_t`
 """
 
 from __future__ import division
