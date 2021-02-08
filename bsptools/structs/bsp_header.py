@@ -1,3 +1,11 @@
+"""
+Header
+======
+
+The BSP file header is defined as a single :any:`dheader_t` (dheader_t variants are determined by :ref:`profile<profiles>`)
+"""
+
+
 from __future__ import division
 from __future__ import absolute_import
 from __future__ import unicode_literals
@@ -9,13 +17,6 @@ standard_library.install_aliases()
 
 from construct import *	 # NOQA: #402
 from bsptools.constants import *  # NOQA: #402
-
-lump_t = Struct(
-    'fileofs' / Int32sl,
-    'filelen' / Int32sl,
-    'version' / Int32sl,
-    'fourCC' / Byte[4]
-)  #:
 
 lump_t_TF2 = Struct(
     'fileofs' / Int32sl,
@@ -31,12 +32,19 @@ lump_t_L4D2 = Struct(
     'fourCC' / Byte[4]
 )
 
+lump_t = Struct(
+    'fileofs' / Int32sl,
+    'filelen' / Int32sl,
+    'version' / Int32sl,
+    'fourCC' / Byte[4]
+)
+
 dheader_t_TITAN = Struct(
     'ident' / Const(b'VBSP'),
     'version' / Int32sl,
     'mapRevision' / Default(Int32sl, 0),
-    'unknown' / Const(127, Int32sl),
-    'lump_t' / lump_t[HEADER_LUMPS],
+    'lump_count' / Const(127, Int32sl),
+    'lump_t' / lump_t[this.lump_count],
 )
 
 dheader_t_TF2 = Struct(
@@ -58,7 +66,7 @@ dheader_t = Struct(
     'version' / Int32sl,
     'lump_t' / lump_t[HEADER_LUMPS],
     'mapRevision' / Default(Int32sl, 0)
-)  #:
+)
 
 
 def header(profile=None):

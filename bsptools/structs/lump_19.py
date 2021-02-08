@@ -19,20 +19,19 @@ from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common import *  # NOQA: #402
 
-
-dbrushside_t = Struct(
-    'planeNum' / Int16ul,
-    'texInfo' / Int16sl,
-    'dispInfo' / Int16sl,
-    'bevel' / Int16sl
-)
-
 dbrushside_t_P2 = Struct(
     'planeNum' / Int16ul,
     'texInfo' / Int16sl,
     'dispInfo' / Int16sl,
     'bevel' / Int8sl,
     'thin' / Int8sl
+)
+
+dbrushside_t = Struct(
+    'planeNum' / Int16ul,
+    'texInfo' / Int16sl,
+    'dispInfo' / Int16sl,
+    'bevel' / Int16sl
 )
 
 

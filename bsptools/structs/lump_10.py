@@ -18,47 +18,47 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common import *  # NOQA: #402
 
 
-dleaf_tV0 = Struct(
-    'contents' / Int32sl,
-    'cluster' / Int16sl,
+dleaf_tV0 = Bitwise(Struct(
+    'contents' / Bytewise(Int32sl),
+    'cluster' / Bytewise(Int16sl),
 
-    'areaflag' / BitStruct(
-        'area' / BitsInteger(7),
-        'flags' / BitsInteger(9)),
-    'unknown' / Int16sl,
+    'area' / BitsInteger(7),
+    'flags' / BitsInteger(9),
 
-    'mins' / Int16sl[3],
-    'maxs' / Int16sl[3],
+    'unknown' / Bytewise(Int16sl),
 
-    'firstLeafFace' / Int16ul,
-    'numLeafFaces' / Int16ul,
+    'mins' / Bytewise(Int16sl[3]),
+    'maxs' / Bytewise(Int16sl[3]),
 
-    'firstLeafBrush' / Int16ul,
-    'numLeafBrushes' / Int16ul,
-    'leafWaterDataID' / Int16sl,
+    'firstLeafFace' / Bytewise(Int16ul),
+    'numLeafFaces' / Bytewise(Int16ul),
 
-    'ambientLighting' / CompressedLightCube
-)
+    'firstLeafBrush' / Bytewise(Int16ul),
+    'numLeafBrushes' / Bytewise(Int16ul),
+    'leafWaterDataID' / Bytewise(Int16sl),
 
-dleaf_tV1 = Struct(
-    'contents' / Int32sl,
-    'cluster' / Int16sl,
+    'ambientLighting' / Bytewise(CompressedLightCube)
+))
 
-    'areaflag' / BitStruct(
-        'area' / BitsInteger(7),
-        'flags' / BitsInteger(9)),
-    'unknown' / Int16sl,
+dleaf_tV1 = Bitwise(Struct(
+    'contents' / Bytewise(Int32sl),
+    'cluster' / Bytewise(Int16sl),
 
-    'mins' / Int16sl[3],
-    'maxs' / Int16sl[3],
+    'area' / BitsInteger(7),
+    'flags' / BitsInteger(9),
 
-    'firstLeafFace' / Int16ul,
-    'numLeafFaces' / Int16ul,
+    'unknown' / Bytewise(Int16sl),
 
-    'firstLeafBrush' / Int16ul,
-    'numLeafBrushes' / Int16ul,
-    'leafWaterDataID' / Int16sl
-)
+    'mins' / Bytewise(Int16sl[3]),
+    'maxs' / Bytewise(Int16sl[3]),
+
+    'firstLeafFace' / Bytewise(Int16ul),
+    'numLeafFaces' / Bytewise(Int16ul),
+
+    'firstLeafBrush' / Bytewise(Int16ul),
+    'numLeafBrushes' / Bytewise(Int16ul),
+    'leafWaterDataID' / Bytewise(Int16sl)
+))
 
 
 def lump_10(header, profile=None):

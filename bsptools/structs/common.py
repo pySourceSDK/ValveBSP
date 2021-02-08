@@ -25,7 +25,7 @@ RadianEuler = Struct('x' / Float32l, 'y' / Float32l, 'z' / Float32l)
 QAngle = Struct('x' / Float32l, 'y' / Float32l, 'z' / Float32l)
 Quaternion = Struct('x' / Float32l, 'y' / Float32l,
                     'z' / Float32l, 'w' / Float32l)
-color32 = Sequence('r' / Int8ul, 'g' / Int8ul, 'b' / Int8ul, 'a' / Int8ul)
+color32 = Struct('r' / Int8ul, 'g' / Int8ul, 'b' / Int8ul, 'a' / Int8ul)
 ColorRGBExp32 = Struct('r' / Byte, 'g' / Byte, 'b' /
                        Byte, 'exponent' / Byte)
 CompressedLightCube = Struct('color' / ColorRGBExp32[6])

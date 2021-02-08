@@ -1,6 +1,8 @@
 """
 Lump 0 - Entities
 =================
+
+This lump is simply one long string containing all entities in a format similar to vmf.
 """
 
 from __future__ import absolute_import
@@ -15,8 +17,12 @@ from bsptools.constants import *  # NOQA: #402
 from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common import *  # NOQA: #402
 
+entities = Struct(
+    'content' / Aligned(4, CString("ascii"))
+)
+
 
 def lump_0(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return Pointer(header.fileofs, Aligned(4, CString("ascii")))
+    return Pointer(header.fileofs, entities)
