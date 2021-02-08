@@ -4,7 +4,7 @@ Bsp-tools is a Python library for parsing .bsp files for the Source Engine. It p
 
 ### Currently supported lumps
 
-:heavy_check_mark: (53) Supported :x: (5) Unsupported :white_check_mark: (5) Unused :no_good: (1) will not support
+:heavy_check_mark: (52) Supported :x: (6) Unsupported :white_check_mark: (5) Unused :no_good: (1) will not support
 
 | Lump # | Status             | Lump # | Status             | Lump # | Status             | Lump # | Status             |
 | ---    | ---                | ---    | ---                | ---    | ---                | ---    | ---                |

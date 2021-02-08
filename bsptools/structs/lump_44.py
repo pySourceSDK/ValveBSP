@@ -2,7 +2,9 @@
 Lump 44 - Texture Data String Table
 ===================================
 
-This lump contains an array of Int. TODO: improve documentation.
+This lump contains an array of :any:`Int<int>`. They represents offsets in :ref:`lump_43<lump_43>`.
+
+Note: Ids pointing to lump 44 should map perfectly to lump 43. It's considered safe to use lump 43 directly instead of 44.
 """
 
 from __future__ import absolute_import

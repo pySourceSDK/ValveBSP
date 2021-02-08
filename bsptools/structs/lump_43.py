@@ -1,6 +1,8 @@
 """
 Lump 43 - Texture Data String Data
 ==================================
+
+This lump contains an array of :any:`string<string>`. They are texture names used by the level.
 """
 
 from __future__ import absolute_import
@@ -19,6 +21,8 @@ from bsptools.structs.common import *  # NOQA: #402
 def lump_43(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return Pointer(header.lump_t[LUMP_TEXDATA_STRING_DATA].fileofs,
+
+    return Pointer(header.fileofs,
                    RepeatUntil(lambda x, lst, ctx: len(lst) >=
-                               header.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen // Int32sl.sizeof(), CString("ascii")))
+                               ctx.bspHeader.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen //
+                               Int32sl.sizeof(), CString("ascii")))
