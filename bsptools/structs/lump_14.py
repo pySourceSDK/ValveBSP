@@ -2,6 +2,7 @@
 Lump 14 - Models
 ================
 
+This lump contains an array of :any:`dmodel_t`.
 """
 
 from __future__ import absolute_import
