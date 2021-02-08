@@ -2,7 +2,7 @@
 Lump 13 - Surfedges
 ===================
 
-This lump contains an array of Int. TODO: improve documentation.
+This lump contains an array of :any:`Int<int>`. The absolute value references the edge array (:any:`lump_12<lump_12>`). Positive values indicate the edge is defined from the first to second vertex. Negative values indicate the edge is defined from second to first vertex.
 """
 
 from __future__ import absolute_import

@@ -2,7 +2,7 @@
 Lump 47 - Face Macro Texture Info
 =================================
 
-This lump contains an array of Int. TODO: improve documentation.
+This lump contains an array of :any:`Int<int>`. They are indices into :any:`lump_44<lump_44>`.
 """
 
 from __future__ import absolute_import

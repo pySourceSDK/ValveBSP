@@ -2,7 +2,7 @@
 Lump 17 - Leaf Brushes
 ======================
 
-This lump contains an array of Int. TODO: improve documentation.
+This lump contains an array of :any:`Int<int>`. They are references to brush ids in :any:`lump_18<lump_18>`.
 """
 
 from __future__ import absolute_import

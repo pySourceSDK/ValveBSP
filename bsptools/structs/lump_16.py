@@ -2,7 +2,7 @@
 Lump 16 - Leaf Faces
 ====================
 
-This lump contains an array of Int. TODO: improve documentation.
+This lump contains an array of :any:`Int<int>`. They are references to face ids in :any:`lump_7<lump_7>`.
 """
 
 from __future__ import absolute_import

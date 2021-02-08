@@ -2,7 +2,7 @@
 Lump 34 - Disp Lightmap Sample Positions
 ========================================
 
-This lump contains an array of Int. TODO: improve documentation.
+This lump contains an array of :any:`Int<int>`. TODO: improve documentation.
 """
 
 from __future__ import absolute_import
