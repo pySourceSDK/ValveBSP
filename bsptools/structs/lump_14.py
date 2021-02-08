@@ -17,7 +17,17 @@ from bsptools.exceptions import *  # NOQA: #402
 from bsptools.structs.common import *  # NOQA: #402
 
 
+dmodel_t = Struct(
+    'mins' / Vector * 'lower point of the bounding box',
+    'maxs' / Vector * 'higher point the bounding box',
+    'origin' / Vector,
+    'headnode' / Int32sl * 'index into node array',
+    'firstface' / Int32sl * 'index into face array',
+    'numfaces' / Int32sl
+)
+
+
 def lump_14(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_MODELS, Int32sl, header)
+    return lump_array(LUMP_MODELS, dmodel_t, header)
