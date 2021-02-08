@@ -1,7 +1,7 @@
-from setuptools import setup
+from distutils.core import setup
 setup(
     name='bsptools',
-    packages=['bsptools'],
+    packages=['bsptools', 'bsptools.structs'],
     version='0.0.1',
     license='gpl-3.0',
     description='A library to parse .bsp files used in the source engine.',
@@ -9,7 +9,7 @@ setup(
     author_email='mdupuis@hotmail.ca',
     url='https://maxdup.github.io/bsp-tools/',
     # download_url='https://github.com/maxdup/bsp-tools/archive/v0.0.1.tar.gz',
-    keywords=['bsp', 'source', 'hammer', 'valve'],
+    keywords=['bsp', 'source', 'sourcesdk', 'hammer', 'valve'],
     install_requires=['construct', 'future'],
     classifiers=[
         'Development Status :: 3 - Alpha',

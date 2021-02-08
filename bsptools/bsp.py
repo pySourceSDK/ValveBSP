@@ -1,23 +1,27 @@
-from __future__ import unicode_literals
-from __future__ import division
 from __future__ import absolute_import
+from __future__ import division
 from __future__ import print_function
-from builtins import dict
-from builtins import object
+from __future__ import unicode_literals
+
+from builtins import open
 from builtins import range
 from builtins import str
-from builtins import open
 from future import standard_library
 standard_library.install_aliases()
 
+import collections
 from shutil import copyfile  # NOQA: #402
 from construct import *  # NOQA: #402
-from collections.abc import MutableMapping  # NOQA: #402
 from bsptools.constants import LUMP_GAME_LUMP  # NOQA: #402
 import bsptools.structs.bsp as BSP  # NOQA: #402
 
+try:
+    collectionsAbc = collections.abc
+except AttributeError:
+    collectionsAbc = collections
 
-class Bsp(MutableMapping):
+
+class Bsp(collectionsAbc.MutableMapping):
     """Contains all the data from a Bsp file"""
 
     def __init__(self, path=None, profile=None):
