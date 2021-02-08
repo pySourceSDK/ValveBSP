@@ -22,8 +22,8 @@
 import sys
 import os
 
-project = u'Bsp-tools'
-copyright = u'2020, Maxime Dupuis'
+project = u'ValveBSP'
+copyright = u'2021, Maxime Dupuis'
 author = u'Maxime Dupuis'
 
 
@@ -115,7 +115,7 @@ html_theme = 'alabaster'
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Bsp-toolsdoc'
+htmlhelp_basename = 'ValveBSPdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -142,7 +142,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Bsp-tools.tex', u'Bsp-tools Documentation',
+    (master_doc, 'ValveBSP.tex', u'ValveBSP Documentation',
      u'Maxime Dupuis', 'manual'),
 ]
 
@@ -152,7 +152,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'bsp-tools', u'Bsp-tools Documentation',
+    (master_doc, 'ValveBSP', u'ValveBSP Documentation',
      [author], 1)
 ]
 
@@ -163,8 +163,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Bsp-tools', u'Bsp-tools Documentation',
-     author, 'Bsp-tools', 'One line description of project.',
+    (master_doc, 'ValveBSP', u'ValveBSP Documentation',
+     author, 'ValveBSP', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -196,5 +196,5 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 autodoc_member_order = 'bysource'
 autoclass_content = 'class'
-html_logo = 'icons-tools-hammer.png'
+html_logo = 'pysourcesdk_bsp.png'
 html_favicon = 'favicon.ico'

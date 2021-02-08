@@ -1,2 +1,2 @@
 .. _lump_prpd:
-.. automodcon:: bsptools.structs.lump_prpd
+.. automodcon:: valvebsp.structs.lump_prpd

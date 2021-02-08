@@ -1,2 +1,2 @@
 .. _header:
-.. automodcon:: bsptools.structs.bsp_header
+.. automodcon:: valvebsp.structs.bsp_header

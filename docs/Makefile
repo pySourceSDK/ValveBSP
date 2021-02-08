@@ -6,7 +6,7 @@
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
-BUILDDIR      = ../../bsp-tools-docs
+BUILDDIR      = ../../ValveBSP-docs
 
 # Put it first so that "make" without argument is like "make help".
 help:

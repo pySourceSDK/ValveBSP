@@ -1,6 +1,6 @@
-# Bsp-tools
+# ValveBSP
 
-Bsp-tools is a Python library for parsing .bsp files for the Source Engine. It provides provides access to lump data.
+ValveBSP is a Python library for parsing .bsp files for the Source Engine. It provides provides access to lump data.
 
 ### Currently supported lumps
 

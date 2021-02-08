@@ -1,9 +1,9 @@
 Bsp
 ===
 
-.. auto-construct-init:: bsptools.bsp
+.. auto-construct-init:: valvebsp.bsp
 
-.. autoclass:: bsptools.Bsp
+.. autoclass:: valvebsp.Bsp
    :special-members:
    :exclude-members: __weakref__
    :members:

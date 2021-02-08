@@ -1,18 +1,18 @@
-Welcome to Bsp-tools's documentation!
+Welcome to ValveBSP's documentation!
 =====================================
 
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
-   :target: https://github.com/maxdup/bsp-tools/blob/master/LICENSE.txt
+   :target: https://github.com/pySourceSDK/ValveBSP/blob/master/LICENSE.txt
 
-.. image:: https://img.shields.io/pypi/pyversions/bsptools.svg
-   :target: https://pypi.python.org/pypi/bsptools/
+.. image:: https://img.shields.io/pypi/pyversions/valvebsp.svg
+   :target: https://pypi.python.org/pypi/valvebsp/
 
-.. image:: https://badge.fury.io/py/bsptools.svg
-   :target: https://pypi.python.org/pypi/bsptools/
+.. image:: https://badge.fury.io/py/valvebsp.svg
+   :target: https://pypi.python.org/pypi/valvebsp/
 
 .. image:: coverage.svg
 
-Bsp-tools is a Python library for parsing .bsp files for the Source Engine. It provides ways to read, modify and write bsp files.
+ValveBSP is a Python library for parsing .bsp files for the Source Engine. It provides ways to read, modify and write bsp files.
 
 
 User Guides

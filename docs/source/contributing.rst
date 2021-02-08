@@ -20,7 +20,7 @@ To tinker with the code, it's recommended that you install the library from the 
    pip3 install --editable .
 
 
-This will allow you to import the bsptools in other projects normally while being able to mess with the code directly from the git folder. This way, you can make sure bsptools will work as intended in the context of your project.
+This will allow you to import valvebsp in other projects normally while being able to mess with the code directly from the git folder. This way, you can make sure valvebsp will work as intended in the context of your project.
 
 
 Documenting

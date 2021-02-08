@@ -8,11 +8,11 @@ Installation
 
 PyPI
 ~~~~
-Bsp-tools is available on the Python Package Index. This makes installing it with pip as easy as:
+ValveBSP is available on the Python Package Index. This makes installing it with pip as easy as:
 
 .. code-block:: bash
 
-   pip3 install bsptools
+   pip3 install valvebsp
 
 Git
 ~~~
@@ -23,9 +23,9 @@ You can easily clone the code with git:
 
 .. code-block:: bash
 
-   git clone git://github.com/maxdup/bsp-tools.git
+   git clone git://github.com/pySourceSDK/ValveBSP.git
 
-and install it with:
+and install it from the repo directory with:
 
 .. code-block:: bash
 
@@ -34,7 +34,7 @@ and install it with:
 Usage
 -----
 
-Here's a few example usage of bsp-tools
+Here's a few example usage of ValveBSP
 
 Parsing
 ~~~~~~~
@@ -43,6 +43,6 @@ Parsing can be done by creating an instance of Bsp with a path.
 
 .. code-block:: python
 
-   > from bsptools import BspParse
+   > from valvebsp import BspParse
 
    > bsp = Bsp('C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/maps/ctf_2fort.bsp')

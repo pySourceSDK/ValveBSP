@@ -1,2 +1,2 @@
 .. _lump_61:
-.. automodcon:: bsptools.structs.lump_61
+.. automodcon:: valvebsp.structs.lump_61

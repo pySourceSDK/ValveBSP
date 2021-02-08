@@ -1,3 +1,3 @@
 .. _common:
-.. automodcon:: bsptools.structs.common
+.. automodcon:: valvebsp.structs.common
 

@@ -4,8 +4,8 @@ import unittest
 import tempfile
 import filecmp
 
-from bsptools.bsp import *
-from bsptools.bsp_struct import *  # NOQA: #402
+from valvebsp.bsp import *
+from valvebsp.profiles import *
 
 
 class ParseBspTestCase(unittest.TestCase):
@@ -23,10 +23,9 @@ class ParseBspTestCase(unittest.TestCase):
         for i in range(64):
             bsp[i]
 
-        for gl in bsp.game_header.gamelump:
+        for gl in bsp[35].gamelump:
             bsp[gl.id]
 
-        bsp.source_path = None
         bsp.save(self.bsp_file)
 
         identical = filecmp.cmp('tests/data/testmap.bsp',

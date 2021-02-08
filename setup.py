@@ -1,14 +1,14 @@
 from distutils.core import setup
 setup(
-    name='bsptools',
-    packages=['bsptools', 'bsptools.structs'],
+    name='valvebsp',
+    packages=['valvebsp', 'valvebsp.structs'],
     version='0.0.1',
     license='gpl-3.0',
-    description='A library to parse .bsp files used in the source engine.',
+    description='A library to parse .bsp files used by the source engine.',
     author='Maxime Dupuis',
     author_email='mdupuis@hotmail.ca',
-    url='https://maxdup.github.io/bsp-tools/',
-    # download_url='https://github.com/maxdup/bsp-tools/archive/v0.0.1.tar.gz',
+    url='https://github.com/pySourceSDK/ValveBSP',
+    # download_url='https://github.com/pySourceSDK/ValveBSP/archive/v0.0.1.tar.gz',
     keywords=['bsp', 'source', 'sourcesdk', 'hammer', 'valve'],
     install_requires=['construct', 'future'],
     classifiers=[
