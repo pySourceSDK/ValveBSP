@@ -1,6 +1,12 @@
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/pySourceSDK/ValveBSP/blob/master/LICENSE.txt)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/valvebsp.svg)](https://pypi.python.org/pypi/valvebsp/)
+[![PyPI version fury.io](https://badge.fury.io/py/valvebsp.svg)](https://pypi.python.org/pypi/valvebsp/)
+[![alt text](https://github.com/pySourceSDK/ValveBSP/blob/master/docs/source/coverage.svg "coverage")]()
 # ValveBSP
 
 ValveBSP is a Python library for parsing .bsp files for the Source Engine. It provides provides access to lump data.
+
+Full documentation: https://pysourcesdk.github.io/ValveBSP/
 
 ### Currently supported lumps
 
@@ -24,3 +30,29 @@ ValveBSP is a Python library for parsing .bsp files for the Source Engine. It pr
 | 13     | :heavy_check_mark: | 29     | :x:                | 45     | :heavy_check_mark: | 61     | :x:                |
 | 14     | :heavy_check_mark: | 30     | :heavy_check_mark: | 46     | :heavy_check_mark: | 62     | :x:                |
 | 15     | :heavy_check_mark: | 31     | :heavy_check_mark: | 47     | :heavy_check_mark: | 63     | :x:                |
+
+## Installation
+
+### PyPI
+
+ValveBSP is available on the Python Package Index. This makes installing it with pip as easy as:
+
+```bash
+pip3 install valvebsp
+```
+
+### Git
+
+If you want the latest code or even feel like contributing, the code is available on GitHub.
+
+You can easily clone the code with git:
+
+```bash
+git clone git@github.com:pySourceSDK/ValveBSP.git
+```
+
+and install it with:
+
+```bash
+python3 setup.py install
+```
