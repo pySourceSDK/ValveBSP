@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header &#8212; ValveBSP 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-autodoc-construct.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Common Structures" href="common.html" />
+    <link rel="prev" title="Data Structures" href="../datastructures.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="header">
+<span id="id1"></span><h1>Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h1>
+<p>The BSP file header is defined as a single <a class="reference internal" href="#dheader_t" title="dheader_t"><code class="xref any py py-data docutils literal notranslate"><span class="pre">dheader_t</span></code></a> (dheader_t variants are determined by <a class="reference internal" href="profiles.html#id1"><span class="std std-ref">profile</span></a>)</p>
+<dl class="con struct">
+<dt id="dheader_t">
+<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.bsp_header.</code><code class="sig-name descname">dheader_t</code><a class="headerlink" href="#dheader_t" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt id="dheader_t.ident">
+<code class="sig-name descname">ident</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="sig-prename descclassname">bytes</code></a>[4]<span>, constant=b'VBSP'</span><span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t.ident" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t.version">
+<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t.lump_t">
+<code class="sig-name descname">lump_t</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#lump_t" title="lump_t"><code class="sig-prename descclassname">lump_t</code></a>[64]<span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t.lump_t" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t.mapRevision">
+<code class="sig-name descname">mapRevision</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span>, default=0</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t.mapRevision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt id="dheader_t_L4D2">
+<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.bsp_header.</code><code class="sig-name descname">dheader_t_L4D2</code><a class="headerlink" href="#dheader_t_L4D2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt id="dheader_t_L4D2.ident">
+<code class="sig-name descname">ident</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="sig-prename descclassname">bytes</code></a>[4]<span>, constant=b'VBSP'</span><span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t_L4D2.ident" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_L4D2.version">
+<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t_L4D2.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_L4D2.lump_t">
+<code class="sig-name descname">lump_t</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#lump_t_L4D2" title="lump_t_L4D2"><code class="sig-prename descclassname">lump_t_L4D2</code></a>[64]<span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t_L4D2.lump_t" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_L4D2.mapRevision">
+<code class="sig-name descname">mapRevision</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span>, default=0</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t_L4D2.mapRevision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt id="dheader_t_TF2">
+<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.bsp_header.</code><code class="sig-name descname">dheader_t_TF2</code><a class="headerlink" href="#dheader_t_TF2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt id="dheader_t_TF2.ident">
+<code class="sig-name descname">ident</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="sig-prename descclassname">bytes</code></a>[4]<span>, constant=b'VBSP'</span><span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t_TF2.ident" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_TF2.version">
+<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t_TF2.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_TF2.lump_t">
+<code class="sig-name descname">lump_t</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#lump_t_TF2" title="lump_t_TF2"><code class="sig-prename descclassname">lump_t_TF2</code></a>[64]<span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t_TF2.lump_t" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_TF2.mapRevision">
+<code class="sig-name descname">mapRevision</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span>, default=0</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t_TF2.mapRevision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt id="dheader_t_TITAN">
+<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.bsp_header.</code><code class="sig-name descname">dheader_t_TITAN</code><a class="headerlink" href="#dheader_t_TITAN" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt id="dheader_t_TITAN.ident">
+<code class="sig-name descname">ident</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="sig-prename descclassname">bytes</code></a>[4]<span>, constant=b'VBSP'</span><span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t_TITAN.ident" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_TITAN.version">
+<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t_TITAN.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_TITAN.mapRevision">
+<code class="sig-name descname">mapRevision</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span>, default=0</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t_TITAN.mapRevision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_TITAN.lump_count">
+<code class="sig-name descname">lump_count</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span>, constant=127</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dheader_t_TITAN.lump_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="dheader_t_TITAN.lump_t">
+<code class="sig-name descname">lump_t</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#lump_t" title="lump_t"><code class="sig-prename descclassname">lump_t</code></a>[]<span class="sig-paren">)</span></code><a class="headerlink" href="#dheader_t_TITAN.lump_t" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt id="lump_t">
+<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.bsp_header.</code><code class="sig-name descname">lump_t</code><a class="headerlink" href="#lump_t" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt id="lump_t.fileofs">
+<code class="sig-name descname">fileofs</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t.fileofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t.filelen">
+<code class="sig-name descname">filelen</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t.filelen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t.version">
+<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t.fourCC">
+<code class="sig-name descname">fourCC</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a>[4]<span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from unsigned char&gt</span><a class="headerlink" href="#lump_t.fourCC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt id="lump_t_L4D2">
+<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.bsp_header.</code><code class="sig-name descname">lump_t_L4D2</code><a class="headerlink" href="#lump_t_L4D2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt id="lump_t_L4D2.version">
+<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t_L4D2.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t_L4D2.fileofs">
+<code class="sig-name descname">fileofs</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t_L4D2.fileofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t_L4D2.filelen">
+<code class="sig-name descname">filelen</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t_L4D2.filelen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t_L4D2.fourCC">
+<code class="sig-name descname">fourCC</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a>[4]<span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from unsigned char&gt</span><a class="headerlink" href="#lump_t_L4D2.fourCC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt id="lump_t_TF2">
+<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.bsp_header.</code><code class="sig-name descname">lump_t_TF2</code><a class="headerlink" href="#lump_t_TF2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt id="lump_t_TF2.fileofs">
+<code class="sig-name descname">fileofs</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t_TF2.fileofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t_TF2.filelen">
+<code class="sig-name descname">filelen</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t_TF2.filelen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t_TF2.version">
+<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t_TF2.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt id="lump_t_TF2.uncompressedSize">
+<code class="sig-name descname">uncompressedSize</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span>, constant=0</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#lump_t_TF2.uncompressedSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/pysourcesdk_bsp.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../index.html">ValveBSP</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api_ref.html">Api Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../datastructures.html">Data Structures</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="common.html">Common Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumps.html">Lumps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gamelumps.html">Gamelumps</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../datastructures.html">Data Structures</a><ul>
+      <li>Previous: <a href="../datastructures.html" title="previous chapter">Data Structures</a></li>
+      <li>Next: <a href="common.html" title="next chapter">Common Structures</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Maxime Dupuis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/header.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

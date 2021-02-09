@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quickstart &#8212; ValveBSP 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-autodoc-construct.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Api Reference" href="api_ref.html" />
+    <link rel="prev" title="Welcome to ValveBSP’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>Get yourself up and running quickly.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pypi">
+<h3>PyPI<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
+<p>ValveBSP is available on the Python Package Index. This makes installing it with pip as easy as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install valvebsp
+</pre></div>
+</div>
+</div>
+<div class="section" id="git">
+<h3>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
+<p>If you want the latest code or even feel like contributing, the code is available on GitHub.</p>
+<p>You can easily clone the code with git:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git://github.com/pySourceSDK/ValveBSP.git
+</pre></div>
+</div>
+<p>and install it from the repo directory with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a few example usage of ValveBSP</p>
+<div class="section" id="parsing">
+<h3>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h3>
+<p>Parsing can be done by creating an instance of Bsp with a path.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">valvebsp</span> <span class="kn">import</span> <span class="n">BspParse</span>
+
+<span class="o">&gt;</span> <span class="n">bsp</span> <span class="o">=</span> <span class="n">Bsp</span><span class="p">(</span><span class="s1">&#39;C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/maps/ctf_2fort.bsp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/pysourcesdk_bsp.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">ValveBSP</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_ref.html">Api Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datastructures.html">Data Structures</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to ValveBSP’s documentation!</a></li>
+      <li>Next: <a href="api_ref.html" title="next chapter">Api Reference</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Maxime Dupuis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/quickstart.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bsp &#8212; ValveBSP 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-autodoc-construct.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Profiles" href="profiles.html" />
+    <link rel="prev" title="Api Reference" href="../api_ref.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="bsp">
+<h1>Bsp<a class="headerlink" href="#bsp" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="valvebsp.Bsp">
+<em class="property">class </em><code class="sig-prename descclassname">valvebsp.</code><code class="sig-name descname">Bsp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">profile</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/valvebsp/bsp.html#Bsp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#valvebsp.Bsp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all the data from a Bsp file</p>
+<dl class="py method">
+<dt id="valvebsp.Bsp.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">profile</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/valvebsp/bsp.html#Bsp.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#valvebsp.Bsp.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an empty instance of Bsp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – A path to an existing bsp file.</p></li>
+<li><p><strong>profile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – A profile name corresponding to a specific game.
+<a class="reference internal" href="profiles.html#id1"><span class="std std-ref">See profiles page for appropriate values</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="valvebsp.Bsp.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">destination</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/valvebsp/bsp.html#Bsp.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#valvebsp.Bsp.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the current instance of the Bsp. Overwrites original bsp
+file if no destination is provided.</p>
+<p>Note that the bsp is lazy loaded. When overwritting, only loaded
+lumps will be written. When saving to a new destination,
+The original bsp will be copied and loaded lumps will be
+written on top.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>destination</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><em>optional</em>) – A path (directory + filename) to determine
+where to save the bsp file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="valvebsp.Bsp.__getitem__">
+<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/valvebsp/bsp.html#Bsp.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#valvebsp.Bsp.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides data at the specified lump index. It is used for both
+bsp lumps (0, 1, 2, …63) and game lumps (‘prps’, ‘prpd’, ‘tlpd’…)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><em>int</em></a>) – The index of the lump.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/pysourcesdk_bsp.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="../index.html">ValveBSP</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_ref.html">Api Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bsp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiles.html">Profiles</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../datastructures.html">Data Structures</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../api_ref.html">Api Reference</a><ul>
+      <li>Previous: <a href="../api_ref.html" title="previous chapter">Api Reference</a></li>
+      <li>Next: <a href="profiles.html" title="next chapter">Profiles</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Maxime Dupuis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/bsp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

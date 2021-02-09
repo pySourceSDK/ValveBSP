@@ -1,0 +1,72 @@
+Lumps
+=====
+
+The bsp lumps are identified by their integer identifiers.
+
+.. toctree::
+   :maxdepth: 1
+
+   lumps/lump_0
+   lumps/lump_1
+   lumps/lump_2
+   lumps/lump_3
+   lumps/lump_4
+   lumps/lump_5
+   lumps/lump_6
+   lumps/lump_7
+   lumps/lump_8
+   lumps/lump_9
+   lumps/lump_10
+   lumps/lump_11
+   lumps/lump_12
+   lumps/lump_13
+   lumps/lump_14
+   lumps/lump_15
+   lumps/lump_16
+   lumps/lump_17
+   lumps/lump_18
+   lumps/lump_19
+   lumps/lump_20
+   lumps/lump_21
+   lumps/lump_22
+   lumps/lump_23
+   lumps/lump_24
+   lumps/lump_25
+   lumps/lump_26
+   lumps/lump_27
+   lumps/lump_28
+   lumps/lump_29
+   lumps/lump_30
+   lumps/lump_31
+   lumps/lump_32
+   lumps/lump_33
+   lumps/lump_34
+   lumps/lump_35
+   lumps/lump_36
+   lumps/lump_37
+   lumps/lump_38
+   lumps/lump_39
+   lumps/lump_40
+   lumps/lump_41
+   lumps/lump_42
+   lumps/lump_43
+   lumps/lump_44
+   lumps/lump_45
+   lumps/lump_46
+   lumps/lump_47
+   lumps/lump_48
+   lumps/lump_49
+   lumps/lump_50
+   lumps/lump_51
+   lumps/lump_52
+   lumps/lump_53
+   lumps/lump_54
+   lumps/lump_55
+   lumps/lump_56
+   lumps/lump_57
+   lumps/lump_58
+   lumps/lump_59
+   lumps/lump_60
+   lumps/lump_61
+   lumps/lump_62
+   lumps/lump_63
