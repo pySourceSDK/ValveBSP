@@ -39,45 +39,45 @@
 <p>This lump contains a single <a class="reference internal" href="#dgamelumpheader_t" title="dgamelumpheader_t"><code class="xref any py py-data docutils literal notranslate"><span class="pre">dgamelumpheader_t</span></code></a>. This is only the gamelump headers and not the gamelump data. for gamelump data, <a class="reference internal" href="../gamelumps.html#id1"><span class="std std-ref">see gamelumps</span></a>.</p>
 <dl class="con struct">
 <dt id="dgamelumpheader_t">
-<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.lump_35.</code><code class="sig-name descname">dgamelumpheader_t</code><a class="headerlink" href="#dgamelumpheader_t" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_35.</span></code><code class="sig-name descname"><span class="pre">dgamelumpheader_t</span></code><a class="headerlink" href="#dgamelumpheader_t" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="con subcon">
 <dt id="dgamelumpheader_t.lumpCount">
-<code class="sig-name descname">lumpCount</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dgamelumpheader_t.lumpCount" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">lumpCount</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#dgamelumpheader_t.lumpCount" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="con subcon">
 <dt id="dgamelumpheader_t.gamelump">
-<code class="sig-name descname">gamelump</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#dgamelump_t" title="dgamelump_t"><code class="sig-prename descclassname">dgamelump_t</code></a>[]<span class="sig-paren">)</span></code><a class="headerlink" href="#dgamelumpheader_t.gamelump" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">gamelump</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#dgamelump_t" title="dgamelump_t"><code class="sig-prename descclassname"><span class="pre">dgamelump_t</span></code></a><span class="pre">[]</span><span class="sig-paren">)</span></code><a class="headerlink" href="#dgamelumpheader_t.gamelump" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="con struct">
 <dt id="dgamelump_t">
-<em class="property">struct </em><code class="sig-prename descclassname">valvebsp.structs.lump_35.</code><code class="sig-name descname">dgamelump_t</code><a class="headerlink" href="#dgamelump_t" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">struct</span> </em><code class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_35.</span></code><code class="sig-name descname"><span class="pre">dgamelump_t</span></code><a class="headerlink" href="#dgamelump_t" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="con subcon">
 <dt id="dgamelump_t.id">
-<code class="sig-name descname">id</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.9)"><code class="sig-prename descclassname">string</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from a 4 bytes long padded string&gt</span><a class="headerlink" href="#dgamelump_t.id" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">id</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">string</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">4</span> <span class="pre">bytes</span> <span class="pre">long</span> <span class="pre">padded</span> <span class="pre">string</span>&gt</span><a class="headerlink" href="#dgamelump_t.id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="con subcon">
 <dt id="dgamelump_t.flags">
-<code class="sig-name descname">flags</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from unsigned short&gt</span><a class="headerlink" href="#dgamelump_t.flags" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">flags</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dgamelump_t.flags" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="con subcon">
 <dt id="dgamelump_t.version">
-<code class="sig-name descname">version</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from unsigned short&gt</span><a class="headerlink" href="#dgamelump_t.version" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">version</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dgamelump_t.version" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="con subcon">
 <dt id="dgamelump_t.fileofs">
-<code class="sig-name descname">fileofs</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dgamelump_t.fileofs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">fileofs</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#dgamelump_t.fileofs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="con subcon">
 <dt id="dgamelump_t.filelen">
-<code class="sig-name descname">filelen</code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname">int</code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from long&gt</span><a class="headerlink" href="#dgamelump_t.filelen" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">filelen</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#dgamelump_t.filelen" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -228,7 +228,7 @@
       &copy;2021, Maxime Dupuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
