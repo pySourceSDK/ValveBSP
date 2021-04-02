@@ -1,5 +1,5 @@
 Welcome to ValveBSP's documentation!
-=====================================
+====================================
 
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: https://github.com/pySourceSDK/ValveBSP/blob/master/LICENSE.txt

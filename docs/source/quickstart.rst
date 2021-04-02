@@ -43,6 +43,6 @@ Parsing can be done by creating an instance of Bsp with a path.
 
 .. code-block:: python
 
-   > from valvebsp import BspParse
+   > from valvebsp import Bsp
 
    > bsp = Bsp('C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/maps/ctf_2fort.bsp')
