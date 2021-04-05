@@ -28,7 +28,8 @@ dmodel_t = Struct(
 )
 
 
+@lump_array
 def lump_14(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_MODELS, dmodel_t, header)
+    return dmodel_t

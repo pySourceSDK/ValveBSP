@@ -26,7 +26,8 @@ dnode_t = Aligned(4, Struct(
 ))
 
 
+@lump_array
 def lump_5(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_NODES, dnode_t, header)
+    return dnode_t

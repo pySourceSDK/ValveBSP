@@ -17,7 +17,7 @@ from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA #402
 
 
+@lump_raw
 def lump_40(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_bytes(LUMP_PAKFILE, header)

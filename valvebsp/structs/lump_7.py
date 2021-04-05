@@ -38,8 +38,9 @@ dface_t = Struct(
 )
 
 
+@lump_array
 def lump_7(header, profile=None):
     if header.version in [0, 1]:
-        return lump_array(LUMP_FACES, dface_t, header)
+        return dface_t
     else:
         raise LumpVersionUnsupportedError(header.version)

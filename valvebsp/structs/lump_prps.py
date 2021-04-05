@@ -241,6 +241,7 @@ StaticPropLightstylesDictLump_t = Struct(
 )
 
 
+@lump_struct
 def lump_prps(header, profile=None):
     if header.version == 11:
         StaticProp_t = StaticPropV11_t
@@ -277,4 +278,4 @@ def lump_prps(header, profile=None):
                                   'objects' / Aligned(4, StaticProp_t[this.count])),
             'lightstylesLump' / StaticPropLightstylesDictLump_t)
 
-    return lump_game('prps', StaticPropLump_t, header)
+    return StaticPropLump_t

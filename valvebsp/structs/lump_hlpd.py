@@ -19,8 +19,8 @@ from valvebsp.structs.common import *  # NOQA #402
 from valvebsp.structs.lump_tlpd import DetailPropLightStylesLump_t  # NOQA #402
 
 
+@lump_struct
 def lump_hlpd(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-
-    return lump_game('hlpd', DetailPropLightStylesLump_t, header)
+    return DetailPropLightStylesLump_t

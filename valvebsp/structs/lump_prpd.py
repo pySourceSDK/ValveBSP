@@ -79,8 +79,9 @@ DetailPropLump_t = Struct(
 )
 
 
+@lump_struct
 def lump_prpd(header, profile=None):
     if header.version != 4:
         raise LumpVersionUnsupportedError(header.version)
 
-    return lump_game('prpd', DetailPropLump_t, header)
+    return DetailPropLump_t

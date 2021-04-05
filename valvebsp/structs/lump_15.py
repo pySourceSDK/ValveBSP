@@ -67,10 +67,11 @@ dworldlight_tV1 = Struct(
 )
 
 
+@lump_array
 def lump_15(header, profile=None):
     if header.version == 0:
-        return lump_array(LUMP_WORLDLIGHTS, dworldlight_tV0, header)
+        return dworldlight_tV0
     elif header.version == 1:
-        return lump_array(LUMP_WORLDLIGHTS, dworldlight_tV1, header)
+        return dworldlight_tV1
     else:
         raise LumpVersionUnsupportedError(header.version)

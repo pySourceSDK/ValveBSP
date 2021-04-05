@@ -25,7 +25,8 @@ texinfo_t = Struct(
 )
 
 
+@lump_array
 def lump_6(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_TEXINFO, texinfo_t, header)
+    return texinfo_t

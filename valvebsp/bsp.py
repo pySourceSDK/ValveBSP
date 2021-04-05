@@ -80,7 +80,12 @@ class Bsp(collectionsAbc.MutableMapping):
             lump_header = self._get_lump_header(key)
             lump_fn = getattr(BSP, 'lump_' + str(key))
             lump_struct = lump_fn(lump_header, self.profile)
-            self._build_stream(lump_struct, val, d)
+
+            data = lump_struct.build(val)
+
+
+            d.seek(lump_header.fileofs)
+            d.write(data)
 
         d.close()
 
@@ -134,10 +139,15 @@ class Bsp(collectionsAbc.MutableMapping):
             return self.lumps[index]
 
         lump_header = self._get_lump_header(index)
+
+        with open(self.source_path, 'rb') as f:
+            f.seek(lump_header.fileofs)
+            lump_raw = f.read(lump_header.filelen)
+
         lump_fn = getattr(BSP, 'lump_' + str(index))
         lump_struct = lump_fn(lump_header, self.profile)
-        data = self._parse_file(lump_struct)
-        self.lumps[index] = data
+        lump_data = lump_struct.parse(lump_raw)
+        self.lumps[index] = lump_data
 
         return self.lumps[index]
 

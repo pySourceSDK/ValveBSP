@@ -17,12 +17,8 @@ from valvebsp.constants import *  # NOQA: #402
 from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
-entities = Struct(
-    'content' / Aligned(4, CString("ascii"))
-)
-
 
 def lump_0(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return Pointer(header.fileofs, entities)
+    return GreedyString("ascii")

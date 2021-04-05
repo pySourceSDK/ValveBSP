@@ -24,7 +24,8 @@ CDispVert = Struct(
 )
 
 
+@lump_array
 def lump_33(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_DISP_VERTS, CDispVert, header)
+    return CDispVert

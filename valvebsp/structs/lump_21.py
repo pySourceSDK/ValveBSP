@@ -26,7 +26,8 @@ dareaportal_t = Struct(
 )
 
 
+@lump_array
 def lump_21(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_AREAPORTALS, dareaportal_t, header)
+    return dareaportal_t

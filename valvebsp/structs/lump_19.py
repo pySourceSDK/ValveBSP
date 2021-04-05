@@ -35,11 +35,12 @@ dbrushside_t = Struct(
 )
 
 
+@lump_array
 def lump_19(header, profile=None):
     if header.version == 0:
         if profile in [ALIENSWARM, PORTAL2]:
-            return lump_array(LUMP_BRUSHSIDES, dbrushside_t_P2, header)
+            return dbrushside_t_P2
         else:
-            return lump_array(LUMP_BRUSHSIDES, dbrushside_t, header)
+            return dbrushside_t
     else:
         raise LumpVersionUnsupportedError(header.version)

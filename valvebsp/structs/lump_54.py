@@ -18,10 +18,11 @@ from valvebsp.structs.common import *  # NOQA #402
 from valvebsp.structs.lump_15 import dworldlight_tV0, dworldlight_tV1  # NOQA #402
 
 
+@lump_array
 def lump_54(header, profile=None):
     if header.version == 0:
-        return lump_array(LUMP_WORLDLIGHTS_HDR, dworldlight_tV0, header)
+        return dworldlight_tV0
     elif header.version == 1:
-        return lump_array(LUMP_WORLDLIGHTS_HDR, dworldlight_tV1, header)
+        return dworldlight_tV1
     else:
         raise LumpVersionUnsupportedError(header.version)

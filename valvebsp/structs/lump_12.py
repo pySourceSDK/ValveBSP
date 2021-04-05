@@ -22,7 +22,8 @@ dedge_t = Struct(
 )
 
 
+@lump_array
 def lump_12(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_EDGES, dedge_t, header)
+    return dedge_t

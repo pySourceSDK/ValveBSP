@@ -22,7 +22,7 @@ lump_t_TF2 = Struct(
     'fileofs' / Int32sl,
     'filelen' / Int32sl,
     'version' / Int32sl,
-    'uncompressedSize' / Const(0, Int32sl)
+    'uncompressedSize' / Int32sl
 )
 
 lump_t_L4D2 = Struct(

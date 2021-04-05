@@ -24,7 +24,8 @@ dbrush_t = Struct(
 )
 
 
+@lump_array
 def lump_18(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_BRUSHES, dbrush_t, header)
+    return dbrush_t

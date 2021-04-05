@@ -61,10 +61,11 @@ dleaf_tV1 = Bitwise(Struct(
 ))
 
 
+@lump_array
 def lump_10(header, profile=None):
     if header.version == 0:
-        return lump_array(LUMP_LEAFS, dleaf_tV0, header)
+        return dleaf_tV0
     elif header.version == 1:
-        return lump_array(LUMP_LEAFS, dleaf_tV1, header)
+        return dleaf_tV1
     else:
         raise LumpVersionUnsupportedError(header.version)

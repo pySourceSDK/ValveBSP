@@ -22,7 +22,8 @@ CDispTri = Struct(
 )
 
 
+@lump_array
 def lump_48(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_DISP_TRIS, CDispTri, header)
+    return CDispTri

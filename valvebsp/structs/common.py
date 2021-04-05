@@ -31,22 +31,19 @@ ColorRGBExp32 = Struct('r' / Byte, 'g' / Byte, 'b' /
 CompressedLightCube = Struct('color' / ColorRGBExp32[6])
 
 
-def lump_bytes(lump_id, header):
-    return Pointer(header.fileofs, Aligned(4, Bytes(header.filelen).compile()))
+def lump_raw(func):
+    def wrapper(*args, **kwargs):
+        return GreedyBytes
+    return wrapper
 
 
-def lump_array(lump_id, struct, header):
-    count = header.filelen // struct.sizeof()
-    return Pointer(header.fileofs, Aligned(4, struct[count])).compile()
+def lump_struct(func):
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs).compile()
+    return wrapper
 
 
-def lump_struct(lump_id, struct, header):
-    return Pointer(header.fileofs, Aligned(4, struct.compile()))
-
-
-def lump_game(lump_id, struct, header):
-    return Pointer(header.fileofs, struct)
-
-
-def lump_dud(lump_id, header):
-    return Pointer(header.fileofs, Bytes(0))
+def lump_array(func):
+    def wrapper(*args, **kwargs):
+        return GreedyRange(func(*args, **kwargs).compile())
+    return wrapper

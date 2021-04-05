@@ -23,7 +23,8 @@ darea_t = Struct(
 )
 
 
+@lump_array
 def lump_20(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_AREAS, darea_t, header)
+    return darea_t

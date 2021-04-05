@@ -42,8 +42,9 @@ doccluder_t = Struct(
 )
 
 
+@lump_struct
 def lump_9(header, profile=None):
     if header.version == 2:
-        return lump_struct(LUMP_OCCLUSION, doccluder_t, header)
+        return doccluder_t
     else:
         raise LumpVersionUnsupportedError(header.version)

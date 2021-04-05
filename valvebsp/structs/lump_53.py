@@ -19,8 +19,9 @@ from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 
+@lump_array
 def lump_53(header, profile=None):
     if header.version in [0, 1]:
-        return lump_array(LUMP_LIGHTING_HDR, ColorRGBExp32, header)
+        return ColorRGBExp32
     else:
         raise LumpVersionUnsupportedError(header.version)

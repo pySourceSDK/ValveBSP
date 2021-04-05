@@ -18,7 +18,8 @@ from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 
+@lump_array
 def lump_31(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_VERTNORMALINDICES, Int16ul, header)
+    return Int16ul

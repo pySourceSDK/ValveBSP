@@ -24,7 +24,8 @@ dleafwaterdata_t = Aligned(4, Struct(
 ))
 
 
+@lump_array
 def lump_36(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_LEAFWATERDATA, dleafwaterdata_t, header)
+    return dleafwaterdata_t

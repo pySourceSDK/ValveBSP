@@ -19,16 +19,15 @@ from valvebsp.structs.common import *  # NOQA: #402
 from valvebsp.structs.lump_56 import dleafambientlighting_t  # NOQA: #402
 
 
+@lump_array
 def lump_55(header, profile=None):
     if header.version == 1:
-        return lump_array(LUMP_LEAF_AMBIENT_LIGHTING_HDR,
-                          dleafambientlighting_t, header)
+        return dleafambientlighting_t
 
     elif header.version == header.filelen:
         # This is obviously a mistake in the bsp header, let's assume v1
         # (seen in css map once)
-        return lump_array(LUMP_LEAF_AMBIENT_LIGHTING_HDR,
-                          dleafambientlighting_t, header)
+        return dleafambientlighting_t
 
     else:
         raise LumpVersionUnsupportedError(header.version)

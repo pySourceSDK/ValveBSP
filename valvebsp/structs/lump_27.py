@@ -19,7 +19,8 @@ from valvebsp.structs.common import *  # NOQA #402
 from valvebsp.structs.lump_7 import dface_t  # NOQA #402
 
 
+@lump_array
 def lump_27(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_ORIGINALFACES, dface_t, header)
+    return dface_t

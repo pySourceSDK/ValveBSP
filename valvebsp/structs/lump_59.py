@@ -20,7 +20,8 @@ from valvebsp.structs.common import *  # NOQA #402
 flags_t = Struct('levelFlags' / Int32ul)
 
 
+@lump_struct
 def lump_59(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_struct(LUMP_MAP_FLAGS, flags_t, header)
+    return flags_t

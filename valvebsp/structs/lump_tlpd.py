@@ -28,8 +28,8 @@ DetailPropLightStylesLump_t = Struct(
 )
 
 
+@lump_struct
 def lump_tlpd(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-
-    return lump_game('tlpd', DetailPropLightStylesLump_t, header)
+    return DetailPropLightStylesLump_t

@@ -18,11 +18,8 @@ from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 
+@lump_array
 def lump_43(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-
-    return Pointer(header.fileofs,
-                   RepeatUntil(lambda x, lst, ctx: len(lst) >=
-                               ctx.bspHeader.lump_t[LUMP_TEXDATA_STRING_TABLE].filelen //
-                               Int32sl.sizeof(), CString("ascii")))
+    return CString("ascii")

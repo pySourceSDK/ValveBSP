@@ -19,7 +19,8 @@ from valvebsp.structs.common import *  # NOQA #402
 from valvebsp.structs.lump_45 import doverlay_t as dwateroverlay_t  # NOQA #402
 
 
+@lump_array
 def lump_50(header, profile=None):
     if header.version != 0:
         raise LumpVersionUnsupportedError(header.version)
-    return lump_array(LUMP_WATEROVERLAYS, dwateroverlay_t, header)
+    return dwateroverlay_t
