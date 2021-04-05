@@ -12,10 +12,8 @@ from __future__ import unicode_literals
 from future import standard_library
 standard_library.install_aliases()
 
-from construct import Struct, Int32sl, Float32l, Padding  # NOQA: #402
-from valvebsp.constants import LUMP_PLANES  # NOQA: #402
-from valvebsp.exceptions import LumpVersionUnsupportedError  # NOQA: #402
-from valvebsp.structs.common import Vector, lump_array  # NOQA: #402
+from construct import Struct, Int32sl, Float32l  # NOQA: #402
+from valvebsp.structs.common import *  # NOQA: #402
 
 
 dplane_t = Struct(
@@ -26,7 +24,6 @@ dplane_t = Struct(
 
 
 @lump_array
+@lump_version(0)
 def lump_1(header, profile=None):
-    if header.version != 0:
-        raise LumpVersionUnsupportedError(header.version)
     return dplane_t

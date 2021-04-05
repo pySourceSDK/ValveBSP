@@ -13,8 +13,6 @@ from future import standard_library
 standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
-from valvebsp.constants import *  # NOQA: #402
-from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 dface_t = Struct(
@@ -39,8 +37,6 @@ dface_t = Struct(
 
 
 @lump_array
+@lump_version([0, 1])
 def lump_7(header, profile=None):
-    if header.version in [0, 1]:
-        return dface_t
-    else:
-        raise LumpVersionUnsupportedError(header.version)
+    return dface_t

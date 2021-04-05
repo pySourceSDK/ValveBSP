@@ -13,8 +13,6 @@ from future import standard_library
 standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
-from valvebsp.constants import *  # NOQA: #402
-from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA #402
 
 dleafwaterdata_t = Aligned(4, Struct(
@@ -25,7 +23,6 @@ dleafwaterdata_t = Aligned(4, Struct(
 
 
 @lump_array
+@lump_version(0)
 def lump_36(header, profile=None):
-    if header.version != 0:
-        raise LumpVersionUnsupportedError(header.version)
     return dleafwaterdata_t

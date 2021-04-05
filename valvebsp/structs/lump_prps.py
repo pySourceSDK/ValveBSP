@@ -13,8 +13,6 @@ from future import standard_library
 standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
-from valvebsp.constants import *  # NOQA: #402
-from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 prps_flags8 = FlagsEnum(Int8ul,
@@ -235,13 +233,9 @@ StaticPropLeafDictLump_t = Struct(
     'count' / Int32sl,
     'leafs' / Int16ul[this.count]
 )
-StaticPropLightstylesDictLump_t = Struct(
-    'count' / Int32sl,
-    'lightstyles' / ColorRGBExp32[this.count]
-)
 
 
-@lump_struct
+@lump_version([4, 5, 6, 7, 8, 9, 10, 11])
 def lump_prps(header, profile=None):
     if header.version == 11:
         StaticProp_t = StaticPropV11_t
@@ -259,8 +253,6 @@ def lump_prps(header, profile=None):
         StaticProp_t = StaticPropV5_t
     elif header.version == 4:
         StaticProp_t = StaticPropV4_t
-    else:
-        raise LumpVersionUnsupportedError(header.version)
 
     if profile == ZENOCLASH:
         StaticPropLump_t = Struct(
@@ -268,14 +260,12 @@ def lump_prps(header, profile=None):
             'dictLump2' / StaticPropDictLump_t,
             'leafLump' / StaticPropLeafDictLump_t,
             'objectLump' / Struct('count' / Int32sl,
-                                  'objects' / Aligned(4, StaticProp_t[this.count])),
-            'lightstylesLump' / StaticPropLightstylesDictLump_t)
+                                  'objects' / Aligned(4, StaticProp_t[this.count])))
     else:
         StaticPropLump_t = Struct(
             'dictLump' / StaticPropDictLump_t,
             'leafLump' / StaticPropLeafDictLump_t,
             'objectLump' / Struct('count' / Int32sl,
-                                  'objects' / Aligned(4, StaticProp_t[this.count])),
-            'lightstylesLump' / StaticPropLightstylesDictLump_t)
+                                  'objects' / Aligned(4, StaticProp_t[this.count])))
 
     return StaticPropLump_t

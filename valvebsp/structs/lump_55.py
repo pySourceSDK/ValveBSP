@@ -13,8 +13,6 @@ from __future__ import unicode_literals
 from future import standard_library
 standard_library.install_aliases()
 
-from valvebsp.constants import *  # NOQA: #402
-from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 from valvebsp.structs.lump_56 import dleafambientlighting_t  # NOQA: #402
 

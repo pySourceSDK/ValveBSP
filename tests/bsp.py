@@ -18,7 +18,7 @@ class ParseBspTestCase(unittest.TestCase):
         return
 
     def test_struct_bsp(self):
-        bsp = Bsp('tests/data/testmap.bsp')
+        bsp = Bsp('tests/data/testmap.bsp', profile="TF2")
 
         for i in range(64):
             bsp[i]

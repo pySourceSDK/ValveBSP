@@ -13,12 +13,19 @@ import collections
 from shutil import copyfile  # NOQA: #402
 from construct import *  # NOQA: #402
 from valvebsp.constants import LUMP_GAME_LUMP  # NOQA: #402
+
 import valvebsp.structs.bsp as BSP  # NOQA: #402
 
 try:
     collectionsAbc = collections.abc
 except AttributeError:
     collectionsAbc = collections
+
+
+def byte_align(filelen, align=4):
+    if (filelen % align):
+        filelen += (align - filelen % align)
+    return filelen
 
 
 class Bsp(collectionsAbc.MutableMapping):
@@ -83,6 +90,15 @@ class Bsp(collectionsAbc.MutableMapping):
 
             data = lump_struct.build(val)
 
+            if len(data) != lump_header.filelen:
+                # something something
+
+                print('uho!')
+                print(key)
+                print(len(data))
+                print(lump_header.filelen)
+                print(byte_align(lump_header.filelen))
+                pass
 
             d.seek(lump_header.fileofs)
             d.write(data)

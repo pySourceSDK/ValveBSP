@@ -12,8 +12,10 @@ from __future__ import unicode_literals
 from future import standard_library
 standard_library.install_aliases()
 
+from collections.abc import Iterable
 from construct import *  # NOQA: E402
 from valvebsp.constants import *  # NOQA: E402
+from valvebsp.exceptions import *  # NOQA: #402
 
 Vector = Struct('x' / Float32l, 'y' / Float32l, 'z' / Float32l)
 
@@ -31,19 +33,38 @@ ColorRGBExp32 = Struct('r' / Byte, 'g' / Byte, 'b' /
 CompressedLightCube = Struct('color' / ColorRGBExp32[6])
 
 
+def lump_version(versions):
+    # helper for lump version validation
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            requested_version = args[0].version
+            supported_versions = versions
+            if not isinstance(versions, Iterable):
+                supported_versions = [versions]
+            if requested_version not in supported_versions:
+                raise LumpVersionUnsupportedError(requested_version)
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
 def lump_raw(func):
+    # helper for raw or unsupported lumps
     def wrapper(*args, **kwargs):
+        func(*args, **kwargs)
         return GreedyBytes
     return wrapper
 
 
 def lump_struct(func):
+    # helper for struct based lumps
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs).compile()
     return wrapper
 
 
 def lump_array(func):
+    # helper for array based lumps
     def wrapper(*args, **kwargs):
         return GreedyRange(func(*args, **kwargs).compile())
     return wrapper

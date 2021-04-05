@@ -13,8 +13,6 @@ from future import standard_library
 standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
-from valvebsp.constants import *  # NOQA: #402
-from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 
@@ -62,10 +60,9 @@ dleaf_tV1 = Bitwise(Struct(
 
 
 @lump_array
+@lump_version([0, 1])
 def lump_10(header, profile=None):
     if header.version == 0:
         return dleaf_tV0
     elif header.version == 1:
         return dleaf_tV1
-    else:
-        raise LumpVersionUnsupportedError(header.version)

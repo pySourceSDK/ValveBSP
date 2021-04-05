@@ -13,8 +13,6 @@ from future import standard_library
 standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
-from valvebsp.constants import *  # NOQA: #402
-from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 DetailPropOrientation_t = Enum(
@@ -80,8 +78,6 @@ DetailPropLump_t = Struct(
 
 
 @lump_struct
+@lump_version(4)
 def lump_prpd(header, profile=None):
-    if header.version != 4:
-        raise LumpVersionUnsupportedError(header.version)
-
     return DetailPropLump_t

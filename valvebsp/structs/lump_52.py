@@ -12,17 +12,11 @@ from __future__ import unicode_literals
 from future import standard_library
 standard_library.install_aliases()
 
-from valvebsp.constants import *  # NOQA: #402
-from valvebsp.exceptions import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA #402
 from valvebsp.structs.lump_51 import dleafambientindex_t  # NOQA #402
 
 
 @lump_array
+@lump_version([0, 1])
 def lump_52(header, profile=None):
-    if header.version == 0:
-        return dleafambientindex_t
-    elif header.version == 1:
-        return dleafambientindex_t
-    else:
-        raise LumpVersionUnsupportedError(header.version)
+    return dleafambientindex_t
