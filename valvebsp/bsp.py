@@ -68,13 +68,13 @@ class Bsp(collectionsAbc.MutableMapping):
         """
 
         dest = destination or self.source_path
+        header_struct = BSP.header(self.profile)
         try:
             d = open(dest, 'wb')
         except:
             raise FileNotFoundError
 
         if not self.source_path:
-            header_struct = BSP.header(self.profile)
             self._build_stream(header_struct, self.header, d)
 
         elif dest != self.source_path:
@@ -82,26 +82,67 @@ class Bsp(collectionsAbc.MutableMapping):
             d.write(s.read())
             s.close()
 
+        self[35]  # loading gamelump for potential updates
+
         for key in self.lumps.keys():
             val = self.lumps[key]
+
             lump_header = self._get_lump_header(key)
-            lump_fn = getattr(BSP, 'lump_' + str(key))
-            lump_struct = lump_fn(lump_header, self.profile)
+            lump_struct = self._get_lump_struct(key)
 
             data = lump_struct.build(val)
 
-            if len(data) != lump_header.filelen:
-                # something something
+            if key == 35:
+                continue
 
-                print('uho!')
-                print(key)
-                print(len(data))
-                print(lump_header.filelen)
-                print(byte_align(lump_header.filelen))
-                pass
+            if len(data) == lump_header.filelen:
+                d.seek(lump_header.fileofs)
+                d.write(data)
+            else:
+                tail_from = lump_header.fileofs + \
+                    byte_align(lump_header.filelen)
+                tail_to = lump_header.fileofs + \
+                    byte_align(len(data))
 
-            d.seek(lump_header.fileofs)
-            d.write(data)
+                # read data to be offset
+                s = open(self.source_path, 'rb')
+                s.seek(tail_from)
+                tail = s.read()
+                s.close()
+
+                # write lump_data
+                d.seek(lump_header.fileofs)
+                d.write(data)
+
+                # write data to be offset
+                d.seek(tail_to)
+                d.write(tail)
+                d.truncate()
+
+                # update headers
+                difference = tail_to - tail_from
+
+                lump_header.filelen = len(data)
+
+                for lump_t in self.header.lump_t:
+                    if lump_header.fileofs < lump_t.fileofs:
+                        lump_t.fileofs = lump_t.fileofs + difference
+
+                for g_lump in self[35].gamelump:
+                    if lump_header.fileofs < g_lump.fileofs:
+                        g_lump.fileofs = g_lump.fileofs + difference
+
+        # write lump headers
+        header_data = header_struct.build(self.header)
+        d.seek(0)
+        d.write(header_data)
+
+        # write game headers
+        glump_header = self._get_lump_header(35)
+        glump_struct = self._get_lump_struct(35)
+        glump_data = glump_struct.build(self[35])
+        d.seek(glump_header.fileofs)
+        d.write(glump_data)
 
         d.close()
 
@@ -136,6 +177,12 @@ class Bsp(collectionsAbc.MutableMapping):
 
         raise IndexError('Invalid Lump ID (' + str(index) + ')')
 
+    def _get_lump_struct(self, index):
+        lump_header = self._get_lump_header(index)
+        lump_fn = getattr(BSP, 'lump_' + str(index))
+        lump_struct = lump_fn(lump_header, self.profile)
+        return lump_struct
+
     def __getitem__(self, index):
         """Provides data at the specified lump index. It is used for both
         bsp lumps (0, 1, 2, ...63) and game lumps ('prps', 'prpd', 'tlpd'...)
@@ -143,9 +190,6 @@ class Bsp(collectionsAbc.MutableMapping):
         :param index: The index of the lump.
         :type index: str, int
         """
-
-        if index == '' or index == None:
-            raise LumpUnsupportedError(index)
 
         if index not in range(0, 64) and \
            index not in ['prps', 'prpd', 'tlpd', 'hlpd']:
@@ -155,20 +199,23 @@ class Bsp(collectionsAbc.MutableMapping):
             return self.lumps[index]
 
         lump_header = self._get_lump_header(index)
+        lump_struct = self._get_lump_struct(index)
 
         with open(self.source_path, 'rb') as f:
             f.seek(lump_header.fileofs)
             lump_raw = f.read(lump_header.filelen)
 
-        lump_fn = getattr(BSP, 'lump_' + str(index))
-        lump_struct = lump_fn(lump_header, self.profile)
         lump_data = lump_struct.parse(lump_raw)
         self.lumps[index] = lump_data
 
         return self.lumps[index]
 
-    def __setitem__(self, key, value):
-        return
+    def __setitem__(self, index, value):
+        if index not in range(0, 64) and \
+           index not in ['prps', 'prpd', 'tlpd', 'hlpd']:
+            raise LumpUnsupportedError(index)
+
+        self.lumps[index] = value
 
     def __delitem__(self, key):
         del self.store[self.__keytransform__(key)]
