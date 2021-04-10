@@ -10,7 +10,7 @@ setup(
     url='https://github.com/pySourceSDK/ValveBSP',
     download_url='https://github.com/pySourceSDK/ValveBSP/archive/v1.0.0.tar.gz',
     keywords=['bsp', 'source', 'sourcesdk', 'hammer', 'valve'],
-    install_requires=['construct', 'future'],
+    install_requires=['construct', 'pyparsing', 'future'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
