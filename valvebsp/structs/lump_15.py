@@ -22,8 +22,12 @@ emittype_t = Enum(
     emit_spotlight=2,
     emit_skylight=3,
     emit_quakelight=4,
-    emit_skyambient=5
-)
+    emit_skyambient=5)
+
+dworldlight_flags32 = FlagsEnum(
+    Int32sl,
+    DWL_FLAGS_INAMBIENTCUBE=0,
+    DWL_FLAGS_CASTENTITYSHADOWS=1)
 
 dworldlight_tV0 = Struct(
     'origin' / Vector,
@@ -39,7 +43,7 @@ dworldlight_tV0 = Struct(
     'constantAttn' / Float32l,
     'linearAttn' / Float32l,
     'quadraticAttn' / Float32l,
-    'flags' / Int32sl,
+    'flags' / dworldlight_flags32,
     'texinfo' / Int32sl * "refers to lump 2",
     'owner' / Int32sl,  # lump 0
 )
@@ -59,7 +63,7 @@ dworldlight_tV1 = Struct(
     'constantAttn' / Float32l,
     'linearAttn' / Float32l,
     'quadraticAttn' / Float32l,
-    'flags' / Int32sl,
+    'flags' / dworldlight_flags32,
     'texinfo' / Int32sl * "refers to lump 2",
     'owner' / Int32sl,  # lump 0
 )
