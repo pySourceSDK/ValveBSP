@@ -70,7 +70,7 @@ class Bsp(collectionsAbc.MutableMapping):
         dest = destination or self.source_path
         header_struct = BSP.header(self.profile)
         try:
-            d = open(dest, 'wb')
+            d = open(dest, 'wb+')
         except:
             raise FileNotFoundError
 
@@ -105,10 +105,8 @@ class Bsp(collectionsAbc.MutableMapping):
                     byte_align(len(data))
 
                 # read data to be offset
-                s = open(self.source_path, 'rb')
-                s.seek(tail_from)
-                tail = s.read()
-                s.close()
+                d.seek(tail_from)
+                tail = d.read()
 
                 # write lump_data
                 d.seek(lump_header.fileofs)
@@ -116,6 +114,7 @@ class Bsp(collectionsAbc.MutableMapping):
 
                 # write data to be offset
                 d.seek(tail_to)
+
                 d.write(tail)
                 d.truncate()
 
@@ -218,7 +217,8 @@ class Bsp(collectionsAbc.MutableMapping):
         self.lumps[index] = value
 
     def __delitem__(self, key):
-        del self.store[self.__keytransform__(key)]
+        if key in self.lumps:
+            del self.lumps[self.__keytransform__(key)]
 
     def __iter__(self):
         return self.item(self.lumps)
