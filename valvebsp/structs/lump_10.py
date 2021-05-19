@@ -15,15 +15,18 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
+dleaf_flags9 = FlagsEnum(BitsInteger(9),
+                         LEAF_FLAGS_SKY=1,
+                         LEAF_FLAGS_RADIAL=2,
+                         LEAF_FLAGS_SKY2D=4,
+                         LEAF_FLAGS_CONTAINS_DETAILOBJECTS=8)
 
-dleaf_tV0 = Bitwise(Struct(
+dleaf_tV0 = Aligned(4, Bitwise(Struct(
     'contents' / Bytewise(Int32sl),
     'cluster' / Bytewise(Int16sl),
 
     'area' / BitsInteger(7),
-    'flags' / BitsInteger(9),
-
-    'unknown' / Bytewise(Int16sl),
+    'flags' / dleaf_flags9,
 
     'mins' / Bytewise(Int16sl[3]),
     'maxs' / Bytewise(Int16sl[3]),
@@ -36,16 +39,14 @@ dleaf_tV0 = Bitwise(Struct(
     'leafWaterDataID' / Bytewise(Int16sl),
 
     'ambientLighting' / Bytewise(CompressedLightCube)
-))
+)))
 
-dleaf_tV1 = Bitwise(Struct(
+dleaf_tV1 = Aligned(4, Bitwise(Struct(
     'contents' / Bytewise(Int32sl),
     'cluster' / Bytewise(Int16sl),
 
     'area' / BitsInteger(7),
-    'flags' / BitsInteger(9),
-
-    'unknown' / Bytewise(Int16sl),
+    'flags' / dleaf_flags9,
 
     'mins' / Bytewise(Int16sl[3]),
     'maxs' / Bytewise(Int16sl[3]),
@@ -56,7 +57,7 @@ dleaf_tV1 = Bitwise(Struct(
     'firstLeafBrush' / Bytewise(Int16ul),
     'numLeafBrushes' / Bytewise(Int16ul),
     'leafWaterDataID' / Bytewise(Int16sl)
-))
+)))
 
 
 @lump_array
