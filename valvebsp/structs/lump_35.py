@@ -15,9 +15,13 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA #402
 
+dgamelump_flags = FlagsEnum(
+    Int16ul,
+    GAMELUMPFLAG_COMPRESSED=1)
+
 dgamelump_t = Struct(
     'id' / PaddedString(4, "ascii"),
-    'flags' / Int16ul,
+    'flags' / dgamelump_flags,
     'version' / Int16ul,
     'fileofs' / Int32sl,
     'filelen' / Int32sl,
