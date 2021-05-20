@@ -17,7 +17,7 @@ from valvebsp.structs.common import *  # NOQA #402
 
 doverlay_t = Struct(
     'id' / Int32sl,
-    'texInfo' / Int16sl,
+    'texInfo' / Int16sl * "index into :ref:`lump 6<lump_6>`",
     'faceCountAndRenderOrder' / Int16ul,
     'faces' / Int32sl[OVERLAY_BSP_FACE_COUNT],
     'u' / Float32l[2],

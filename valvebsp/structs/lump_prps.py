@@ -188,7 +188,7 @@ StaticPropV10_t = Aligned(4, Struct(
 
     'diffuseModulation' / color32,
 
-    'flagEx' / Int32ul,
+    'flagsEx' / Int32ul,
 ))
 
 StaticPropV11_t = Aligned(4, Struct(

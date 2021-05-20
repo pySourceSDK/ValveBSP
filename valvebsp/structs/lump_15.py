@@ -33,7 +33,7 @@ dworldlight_tV0 = Struct(
     'origin' / Vector,
     'intensity' / Vector,
     'normal' / Vector,
-    'cluster' / Int32sl,
+    'cluster' / Int32sl * "index into :ref:`lump 23<lump_23>`",
     'type' / emittype_t,
     'style' / Int32sl,
     'stopdot' / Float32l,
@@ -44,8 +44,8 @@ dworldlight_tV0 = Struct(
     'linearAttn' / Float32l,
     'quadraticAttn' / Float32l,
     'flags' / dworldlight_flags32,
-    'texinfo' / Int32sl * "refers to lump 2",
-    'owner' / Int32sl,  # lump 0
+    'texinfo' / Int32sl * "index into :ref:`lump 2<lump_2>`",
+    'owner' / Int32sl * "index into :ref:`lump 0<lump_0>`"
 )
 
 dworldlight_tV1 = Struct(
@@ -53,7 +53,7 @@ dworldlight_tV1 = Struct(
     'intensity' / Vector,
     'normal' / Vector,
     'shadow_cast_offset' / Vector,
-    'cluster' / Int32sl,
+    'cluster' / Int32sl * "index into :ref:`lump 23<lump_23>`",
     'type' / emittype_t,
     'style' / Int32sl,
     'stopdot' / Float32l,
@@ -64,8 +64,8 @@ dworldlight_tV1 = Struct(
     'linearAttn' / Float32l,
     'quadraticAttn' / Float32l,
     'flags' / dworldlight_flags32,
-    'texinfo' / Int32sl * "refers to lump 2",
-    'owner' / Int32sl,  # lump 0
+    'texinfo' / Int32sl * "index into :ref:`lump 2<lump_2>`",
+    'owner' / Int32sl * "index into :ref:`lump 0<lump_0>`"
 )
 
 

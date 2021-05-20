@@ -2,7 +2,7 @@
 Lump 61 - Overlay System Levels
 ===============================
 
-This lump is not currently implemented. It will return the raw bytes.
+|lump_not_implemented|
 """
 
 from __future__ import absolute_import

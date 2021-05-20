@@ -31,12 +31,13 @@ dleaf_tV0 = Aligned(4, Bitwise(Struct(
     'mins' / Bytewise(Int16sl[3]),
     'maxs' / Bytewise(Int16sl[3]),
 
-    'firstLeafFace' / Bytewise(Int16ul),
+    'firstLeafFace' / Bytewise(Int16ul) * "index into :ref:`lump 16<lump_16>`",
     'numLeafFaces' / Bytewise(Int16ul),
 
-    'firstLeafBrush' / Bytewise(Int16ul),
+    'firstLeafBrush' / Bytewise(Int16ul) * "index into :ref:`lump 17<lump_17>`",
     'numLeafBrushes' / Bytewise(Int16ul),
-    'leafWaterDataID' / Bytewise(Int16sl),
+    'leafWaterDataID' / Bytewise(Int16sl) *
+    "index into :ref:`lump 36<lump_36>`",
 
     'ambientLighting' / Bytewise(CompressedLightCube)
 )))
@@ -51,12 +52,13 @@ dleaf_tV1 = Aligned(4, Bitwise(Struct(
     'mins' / Bytewise(Int16sl[3]),
     'maxs' / Bytewise(Int16sl[3]),
 
-    'firstLeafFace' / Bytewise(Int16ul),
+
+    'firstLeafFace' / Bytewise(Int16ul) * "index into :ref:`lump 16<lump_16>`",
     'numLeafFaces' / Bytewise(Int16ul),
 
-    'firstLeafBrush' / Bytewise(Int16ul),
+    'firstLeafBrush' / Bytewise(Int16ul) * "index into :ref:`lump 17<lump_17>`",
     'numLeafBrushes' / Bytewise(Int16ul),
-    'leafWaterDataID' / Bytewise(Int16sl)
+    'leafWaterDataID' / Bytewise(Int16sl) * "index into :ref:`lump 36<lump_36>`"
 )))
 
 

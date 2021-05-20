@@ -16,7 +16,7 @@ from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 dbrush_t = Struct(
-    'firstSide' / Int32sl,
+    'firstSide' / Int32sl * "index into :ref:`lump 19<lump_19>`",
     'numSides' / Int32sl,
     'contents' / Int32sl,
 )

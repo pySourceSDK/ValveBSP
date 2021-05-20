@@ -2,7 +2,7 @@
 Lump 40 - Pakfile
 =================
 
-This lump contains raw data. the data can be saved directly to the disc as a zip file.
+This lump contains raw data. The data can be saved directly to the disc as a zip file.
 """
 
 from __future__ import absolute_import

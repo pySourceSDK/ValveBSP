@@ -18,7 +18,7 @@ dnode_t = Aligned(4, Struct(
     'children' / Int32sl[2],
     'mins' / Int16sl[3],
     'maxs' / Int16sl[3],
-    'firstFace' / Int16ul,
+    'firstFace' / Int16ul * 'index into :ref:`lump 7<lump_7>`',
     'numFaces' / Int16ul,
     'area' / Int16sl,
 ))

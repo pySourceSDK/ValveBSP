@@ -3,6 +3,8 @@ Lump 0 - Entities
 =================
 
 This lump is simply one long string containing all entities in a format similar to vmf.
+
+ValveBsp will parse this string into a list of entities, represented as lists of properties.
 """
 from __future__ import absolute_import
 from __future__ import division

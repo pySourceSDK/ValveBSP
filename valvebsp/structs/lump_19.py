@@ -19,16 +19,16 @@ from valvebsp.structs.common import *  # NOQA: #402
 
 dbrushside_t_P2 = Struct(
     'planeNum' / Int16ul,
-    'texInfo' / Int16sl,
-    'dispInfo' / Int16sl,
+    'texInfo' / Int16sl * "index into :ref:`lump 6<lump_6>`",
+    'dispInfo' / Int16sl * "index into :ref:`lump 26<lump_26>`",
     'bevel' / Int8sl,
     'thin' / Int8sl
 )
 
 dbrushside_t = Struct(
     'planeNum' / Int16ul,
-    'texInfo' / Int16sl,
-    'dispInfo' / Int16sl,
+    'texInfo' / Int16sl * "index into :ref:`lump 6<lump_6>`",
+    'dispInfo' / Int16sl * "index into :ref:`lump 26<lump_26>`",
     'bevel' / Int16sl
 )
 

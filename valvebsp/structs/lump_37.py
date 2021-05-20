@@ -23,9 +23,9 @@ dprimitive_type = Enum(
 
 dprimitive_t = Aligned(2, Struct(
     'type' / dprimitive_type,
-    'firstIndex' / Int16ul * 'refers to lump_39',
+    'firstIndex' / Int16ul * "index into :ref:`lump 39<lump_39>`",
     'indexCount' / Int16ul,
-    'firstVert' / Int16ul * 'refers to lump_38',
+    'firstVert' / Int16ul * "index into :ref:`lump 38<lump_38>`",
     'vertCount' / Int16ul,
 ))
 

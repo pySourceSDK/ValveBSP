@@ -20,8 +20,8 @@ dmodel_t = Struct(
     'mins' / Vector * 'lower point of the bounding box',
     'maxs' / Vector * 'higher point the bounding box',
     'origin' / Vector,
-    'headnode' / Int32sl * 'index into node array',
-    'firstface' / Int32sl * 'index into face array',
+    'headnode' / Int32sl * 'index into :ref:`lump 5<lump_5>`',
+    'firstface' / Int32sl * 'index into :ref:`lump 7<lump_7>`',
     'numfaces' / Int32sl
 )
 

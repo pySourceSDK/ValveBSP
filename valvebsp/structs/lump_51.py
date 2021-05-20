@@ -17,7 +17,8 @@ from valvebsp.structs.common import *  # NOQA: #402
 
 dleafambientindex_t = Struct(  # matches dleaf_t
     'ambientSampleCount' / Int16ul,
-    'firstAmbientSample' / Int16ul
+    'firstAmbientSample' / Int16ul * \
+    "index into :ref:`lump 55<lump_55>` or :ref:`lump 56<lump_56>`",
 )
 
 

@@ -16,7 +16,7 @@ from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 dfaceid_t = Struct(
-    'hammerFaceID' / Int16ul
+    'hammerFaceID' / Int16ul * "index into :ref:`lump 27<lump_27>`",
 )
 
 

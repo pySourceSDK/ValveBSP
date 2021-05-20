@@ -63,9 +63,9 @@ ddispinfo_t = Struct(
     'smoothingAngle' / Float32l,
     'contents'/Int32sl,
 
-    'mapFace' / Int16ul,
+    'mapFace' / Int16ul * "index into :ref:`lump 7<lump_7>` or :ref:`lump 58<lump_58>`",
 
-    'lightmapAlphaStart' / Int32sl,
+    'lightmapAlphaStart' / Int32sl * "index into :ref:`lump 32<lump_32>`",
     'lightmapSamplePositionStart' / Int32sl,
 
     'edgeNeighbors' / CDispNeighbor[4],

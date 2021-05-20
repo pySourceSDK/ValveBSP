@@ -198,3 +198,7 @@ autodoc_member_order = 'bysource'
 autoclass_content = 'class'
 html_logo = 'pysourcesdk_bsp.png'
 html_favicon = 'favicon.ico'
+
+
+lump_not_implemented = 'This lump is not currently implemented. It will return the raw bytes.'
+rst_epilog = '.. |lump_not_implemented| replace:: %s' % lump_not_implemented

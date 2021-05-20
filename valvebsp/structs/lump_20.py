@@ -17,7 +17,7 @@ from valvebsp.structs.common import *  # NOQA: #402
 
 darea_t = Struct(
     'numAreaPortals' / Int32sl,
-    'firstAreaPortal' / Int32sl
+    'firstAreaPortal' / Int32sl * "index into :ref:`lump 21<lump_21>`"
 )
 
 
