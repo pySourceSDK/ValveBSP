@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lump 10 - Leafs &#8212; ValveBSP 1.0.0 documentation</title>
+    <title>Lump 10 - Leafs &#8212; ValveBSP 1.1.0 documentation</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-autodoc-construct.css" />
@@ -52,18 +52,13 @@
 
 <dl class="con subcon">
 <dt id="dleaf_tV1.area">
-<code class="sig-name descname"><span class="pre">area</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">7</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV1.area" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">area</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">9</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV1.area" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV1.flags">
-<code class="sig-name descname"><span class="pre">flags</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">9</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV1.flags" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="con subcon">
-<dt id="dleaf_tV1.unknown">
-<code class="sig-name descname"><span class="pre">unknown</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV1.unknown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">flags</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">7</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV1.flags" title="Permalink to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>LEAF_FLAGS_SKY</td></tr><tr><td>0x2</td><td>LEAF_FLAGS_RADIAL</td></tr><tr><td>0x3</td><td>LEAF_FLAGS_SKY2D</td></tr><tr><td>0x4</td><td>LEAF_FLAGS_CONTAINS_DETAILOBJECTS</td></tr></table></dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV1.mins">
@@ -78,7 +73,8 @@
 <dl class="con subcon">
 <dt id="dleaf_tV1.firstLeafFace">
 <code class="sig-name descname"><span class="pre">firstLeafFace</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV1.firstLeafFace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>index into <a class="reference internal" href="lump_16.html#lump-16"><span class="std std-ref">lump 16</span></a></p>
+</dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV1.numLeafFaces">
@@ -88,7 +84,8 @@
 <dl class="con subcon">
 <dt id="dleaf_tV1.firstLeafBrush">
 <code class="sig-name descname"><span class="pre">firstLeafBrush</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV1.firstLeafBrush" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>index into <a class="reference internal" href="lump_17.html#lump-17"><span class="std std-ref">lump 17</span></a></p>
+</dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV1.numLeafBrushes">
@@ -98,7 +95,8 @@
 <dl class="con subcon">
 <dt id="dleaf_tV1.leafWaterDataID">
 <code class="sig-name descname"><span class="pre">leafWaterDataID</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV1.leafWaterDataID" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>index into <a class="reference internal" href="lump_36.html#lump-36"><span class="std std-ref">lump 36</span></a></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -117,18 +115,13 @@
 
 <dl class="con subcon">
 <dt id="dleaf_tV0.area">
-<code class="sig-name descname"><span class="pre">area</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">7</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV0.area" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">area</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">9</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV0.area" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV0.flags">
-<code class="sig-name descname"><span class="pre">flags</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">9</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV0.flags" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="con subcon">
-<dt id="dleaf_tV0.unknown">
-<code class="sig-name descname"><span class="pre">unknown</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV0.unknown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">flags</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">7</span> <span class="pre">bit</span> <span class="pre">long</span> <span class="pre">integer</span>&gt</span><a class="headerlink" href="#dleaf_tV0.flags" title="Permalink to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>LEAF_FLAGS_SKY</td></tr><tr><td>0x2</td><td>LEAF_FLAGS_RADIAL</td></tr><tr><td>0x3</td><td>LEAF_FLAGS_SKY2D</td></tr><tr><td>0x4</td><td>LEAF_FLAGS_CONTAINS_DETAILOBJECTS</td></tr></table></dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV0.mins">
@@ -143,7 +136,8 @@
 <dl class="con subcon">
 <dt id="dleaf_tV0.firstLeafFace">
 <code class="sig-name descname"><span class="pre">firstLeafFace</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV0.firstLeafFace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>index into <a class="reference internal" href="lump_16.html#lump-16"><span class="std std-ref">lump 16</span></a></p>
+</dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV0.numLeafFaces">
@@ -153,7 +147,8 @@
 <dl class="con subcon">
 <dt id="dleaf_tV0.firstLeafBrush">
 <code class="sig-name descname"><span class="pre">firstLeafBrush</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV0.firstLeafBrush" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>index into <a class="reference internal" href="lump_17.html#lump-17"><span class="std std-ref">lump 17</span></a></p>
+</dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV0.numLeafBrushes">
@@ -163,7 +158,8 @@
 <dl class="con subcon">
 <dt id="dleaf_tV0.leafWaterDataID">
 <code class="sig-name descname"><span class="pre">leafWaterDataID</span></code><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">short</span>&gt</span><a class="headerlink" href="#dleaf_tV0.leafWaterDataID" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>index into <a class="reference internal" href="lump_36.html#lump-36"><span class="std std-ref">lump 36</span></a></p>
+</dd></dl>
 
 <dl class="con subcon">
 <dt id="dleaf_tV0.ambientLighting">
@@ -318,7 +314,7 @@
       &copy;2021, Maxime Dupuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
