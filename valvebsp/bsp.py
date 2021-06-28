@@ -70,7 +70,7 @@ class Bsp(collectionsAbc.MutableMapping):
         dest = destination or self.source_path
         header_struct = BSP.header(self.profile)
         try:
-            d = open(dest, 'wb+')
+            d = open(dest, 'rb+')
         except:
             raise FileNotFoundError
 

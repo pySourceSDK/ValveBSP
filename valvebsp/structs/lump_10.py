@@ -14,6 +14,7 @@ standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
+from valvebsp.structs.flags import contents_flags32  # NOQA: #402
 
 dleaf_flags7 = FlagsEnum(BitsInteger(7),
                          LEAF_FLAGS_SKY=1,
@@ -22,7 +23,7 @@ dleaf_flags7 = FlagsEnum(BitsInteger(7),
                          LEAF_FLAGS_CONTAINS_DETAILOBJECTS=8)
 
 dleaf_tV0 = Aligned(4, Bitwise(Struct(
-    'contents' / Bytewise(Int32sl),
+    'contents' / Bytewise(contents_flags32),
     'cluster' / Bytewise(Int16sl),
 
     'area' / BitsInteger(9),
@@ -43,7 +44,7 @@ dleaf_tV0 = Aligned(4, Bitwise(Struct(
 )))
 
 dleaf_tV1 = Aligned(4, Bitwise(Struct(
-    'contents' / Bytewise(Int32sl),
+    'contents' / Bytewise(contents_flags32),
     'cluster' / Bytewise(Int16sl),
 
     'area' / BitsInteger(9),
