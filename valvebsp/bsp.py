@@ -22,6 +22,10 @@ except AttributeError:
     collectionsAbc = collections
 
 
+class LumpUnsupportedError(IndexError):
+    pass
+
+
 def byte_align(filelen, align=4):
     if (filelen % align):
         filelen += (align - filelen % align)
@@ -69,16 +73,29 @@ class Bsp(collectionsAbc.MutableMapping):
 
         dest = destination or self.source_path
         header_struct = BSP.header(self.profile)
-        try:
-            d = open(dest, 'rb+')
-        except:
+
+        if not dest:
+            # save location is invalid
             raise FileNotFoundError
 
-        if not self.source_path:
-            self._build_stream(header_struct, self.header, d)
+        elif not self.source_path:
+            # creating a new file from nothing
+            try:
+                d = open(dest, 'wb')
+                self._build_stream(header_struct, self.header, d)
+            except:
+                raise FileNotFoundError
 
-        elif dest != self.source_path:
+        elif dest == self.source_path:
+            # overwritting original file
+            try:
+                d = open(dest, 'rb+')
+            except:
+                raise FileNotFoundError
+        else:
+            # source and dest are different
             s = open(self.source_path, 'rb')
+            d = open(dest, 'wb+')
             d.write(s.read())
             s.close()
 
@@ -174,7 +191,7 @@ class Bsp(collectionsAbc.MutableMapping):
             if index in range(64) and self.header:
                 return self.header.lump_t[index]
 
-        raise IndexError('Invalid Lump ID (' + str(index) + ')')
+        raise LumpUnsupportedError('Invalid Lump ID (' + str(index) + ')')
 
     def _get_lump_struct(self, index):
         lump_header = self._get_lump_header(index)
@@ -189,10 +206,6 @@ class Bsp(collectionsAbc.MutableMapping):
         :param index: The index of the lump.
         :type index: str, int
         """
-
-        if index not in range(0, 64) and \
-           index not in ['prps', 'prpd', 'tlpd', 'hlpd']:
-            raise LumpUnsupportedError(index)
 
         if index in self.lumps and self.lumps[index]:
             return self.lumps[index]
