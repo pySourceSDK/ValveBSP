@@ -44,7 +44,7 @@ dworldlight_tV0 = Struct(
     'linearAttn' / Float32l,
     'quadraticAttn' / Float32l,
     'flags' / dworldlight_flags32,
-    'texinfo' / Int32sl * "index into :ref:`lump 2<lump_2>`",
+    'texinfo' / Int32sl * "index into :ref:`lump 6<lump_6>`",
     'owner' / Int32sl * "index into :ref:`lump 0<lump_0>`"
 )
 
@@ -64,7 +64,7 @@ dworldlight_tV1 = Struct(
     'linearAttn' / Float32l,
     'quadraticAttn' / Float32l,
     'flags' / dworldlight_flags32,
-    'texinfo' / Int32sl * "index into :ref:`lump 2<lump_2>`",
+    'texinfo' / Int32sl * "index into :ref:`lump 6<lump_6>`",
     'owner' / Int32sl * "index into :ref:`lump 0<lump_0>`"
 )
 

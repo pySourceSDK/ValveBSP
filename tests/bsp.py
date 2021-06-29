@@ -6,7 +6,7 @@ import filecmp
 from shutil import copyfile
 
 from valvebsp.bsp import *
-from valvebsp.profiles import *
+from valvebsp.constants import *
 
 
 class ParseBspTestCase(unittest.TestCase):

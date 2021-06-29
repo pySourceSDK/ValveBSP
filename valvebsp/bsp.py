@@ -11,9 +11,8 @@ standard_library.install_aliases()
 
 import collections
 from shutil import copyfile  # NOQA: #402
-from construct import *  # NOQA: #402
-from valvebsp.constants import LUMP_GAME_LUMP  # NOQA: #402
 
+from construct import *  # NOQA: #402
 import valvebsp.structs.bsp as BSP  # NOQA: #402
 
 try:
