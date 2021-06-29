@@ -4,19 +4,20 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Contributing &#8212; ValveBSP 1.1.0 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-autodoc-construct.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Lump hlpd - Prop Detail Lighting HDR" href="api/gamelumps/lump_hlpd.html" />
+    <link rel="prev" title="Lump hlpd - Prop Detail Lighting HDR" href="datastructures/gamelumps/lump_hlpd.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -33,22 +34,22 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="contributing">
+  <section id="contributing">
 <h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
 <p>Few things to know before diving in the code.</p>
-<div class="section" id="project-guidelines">
+<section id="project-guidelines">
 <h2>Project Guidelines<a class="headerlink" href="#project-guidelines" title="Permalink to this headline">¶</a></h2>
 <p>Be pythonic, document and test your code. That’s all.</p>
-</div>
-<div class="section" id="dev-environment">
+</section>
+<section id="dev-environment">
 <h2>Dev Environment<a class="headerlink" href="#dev-environment" title="Permalink to this headline">¶</a></h2>
 <p>To tinker with the code, it’s recommended that you install the library from the cloned folder with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install --editable .
 </pre></div>
 </div>
 <p>This will allow you to import valvebsp in other projects normally while being able to mess with the code directly from the git folder. This way, you can make sure valvebsp will work as intended in the context of your project.</p>
-</div>
-<div class="section" id="documenting">
+</section>
+<section id="documenting">
 <h2>Documenting<a class="headerlink" href="#documenting" title="Permalink to this headline">¶</a></h2>
 <p>The documentation is done with <a class="reference external" href="http://www.sphinx-doc.org/en/master/">Sphinx</a>.
 To build the Sphinx documentation, you need:</p>
@@ -57,15 +58,15 @@ pip install sphinx-autobuild
 </pre></div>
 </div>
 <p>Then you can run sphinx-autobuild.sh in the docs/ directory. The documentation pages will be served on <a class="reference external" href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> by default.</p>
-</div>
-<div class="section" id="testing">
+</section>
+<section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
 <p>Tests can be ran from the root folder using:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 tests/tests.py
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -110,7 +111,7 @@ pip install sphinx-autobuild
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="api/gamelumps/lump_hlpd.html" title="previous chapter">Lump hlpd - Prop Detail Lighting HDR</a></li>
+      <li>Previous: <a href="datastructures/gamelumps/lump_hlpd.html" title="previous chapter">Lump hlpd - Prop Detail Lighting HDR</a></li>
   </ul></li>
 </ul>
 </div>
@@ -140,7 +141,7 @@ pip install sphinx-autobuild
       &copy;2021, Maxime Dupuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

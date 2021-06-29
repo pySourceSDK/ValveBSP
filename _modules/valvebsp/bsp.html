@@ -6,10 +6,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>valvebsp.bsp &#8212; ValveBSP 1.1.0 documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-autodoc-construct.css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -46,15 +46,18 @@
 
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">from</span> <span class="nn">shutil</span> <span class="kn">import</span> <span class="n">copyfile</span>  <span class="c1"># NOQA: #402</span>
-<span class="kn">from</span> <span class="nn">construct</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># NOQA: #402</span>
-<span class="kn">from</span> <span class="nn">valvebsp.constants</span> <span class="kn">import</span> <span class="n">LUMP_GAME_LUMP</span>  <span class="c1"># NOQA: #402</span>
 
+<span class="kn">from</span> <span class="nn">construct</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># NOQA: #402</span>
 <span class="kn">import</span> <span class="nn">valvebsp.structs.bsp</span> <span class="k">as</span> <span class="nn">BSP</span>  <span class="c1"># NOQA: #402</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">collectionsAbc</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span>
 <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
     <span class="n">collectionsAbc</span> <span class="o">=</span> <span class="n">collections</span>
+
+
+<span class="k">class</span> <span class="nc">LumpUnsupportedError</span><span class="p">(</span><span class="ne">IndexError</span><span class="p">):</span>
+    <span class="k">pass</span>
 
 
 <span class="k">def</span> <span class="nf">byte_align</span><span class="p">(</span><span class="n">filelen</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
@@ -104,16 +107,29 @@
 
         <span class="n">dest</span> <span class="o">=</span> <span class="n">destination</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span>
         <span class="n">header_struct</span> <span class="o">=</span> <span class="n">BSP</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dest</span><span class="p">:</span>
+            <span class="c1"># save location is invalid</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_build_stream</span><span class="p">(</span><span class="n">header_struct</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">:</span>
+            <span class="c1"># creating a new file from nothing</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_build_stream</span><span class="p">(</span><span class="n">header_struct</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
 
-        <span class="k">elif</span> <span class="n">dest</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">dest</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">:</span>
+            <span class="c1"># overwritting original file</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="s1">&#39;rb+&#39;</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># source and dest are different</span>
             <span class="n">s</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="s1">&#39;wb+&#39;</span><span class="p">)</span>
             <span class="n">d</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
             <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
@@ -209,7 +225,7 @@
             <span class="k">if</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">lump_t</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 
-        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Invalid Lump ID (&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">LumpUnsupportedError</span><span class="p">(</span><span class="s1">&#39;Invalid Lump ID (&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_get_lump_struct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="n">lump_header</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_lump_header</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
@@ -224,10 +240,6 @@
 <span class="sd">        :param index: The index of the lump.</span>
 <span class="sd">        :type index: str, int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="n">index</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> <span class="ow">and</span> \
-           <span class="n">index</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;prps&#39;</span><span class="p">,</span> <span class="s1">&#39;prpd&#39;</span><span class="p">,</span> <span class="s1">&#39;tlpd&#39;</span><span class="p">,</span> <span class="s1">&#39;hlpd&#39;</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="n">LumpUnsupportedError</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">index</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lumps</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">lumps</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lumps</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
@@ -332,7 +344,7 @@
       &copy;2021, Maxime Dupuis.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>

@@ -8,3 +8,5 @@ If you are looking for information on a specific function, class or method, this
 
    api/bsp
    api/profiles
+   api/lumps
+   api/constants
