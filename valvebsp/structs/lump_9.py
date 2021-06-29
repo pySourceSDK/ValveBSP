@@ -14,13 +14,11 @@ standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
+from valvebsp.structs.flags import doccluderdata_flags32  # NOQA: #402
 
-doccluderdata_flags = FlagsEnum(
-    Int32sl,
-    OCCLUDER_FLAGS_INACTIVE=1)
 
 doccluderdata_t = Struct(
-    'flags' / doccluderdata_flags,
+    'flags' / doccluderdata_flags32,
     'firstPoly' / Int32sl,
     'polyCount' / Int32sl,
     'mins' / Vector,

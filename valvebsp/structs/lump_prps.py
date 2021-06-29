@@ -14,16 +14,8 @@ standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
+from valvebsp.structs.flags import prps_flags8  # NOQA: #402
 
-prps_flags8 = FlagsEnum(Int8ul,
-                        STATIC_PROP_FLAG_FADES=1,
-                        STATIC_PROP_USE_LIGHTING_ORIGIN=2,
-                        STATIC_PROP_NO_DRAW=4,
-                        STATIC_PROP_IGNORE_NORMALS=8,
-                        STATIC_PROP_NO_SHADOW=16,
-                        STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE=32,
-                        STATIC_PROP_NO_PER_VERTEX_LIGHTING=64,
-                        STATIC_PROP_NO_SELF_SHADOWING=128)
 
 StaticPropV4_t = Struct(
     'origin' / Vector,

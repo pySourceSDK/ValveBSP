@@ -14,6 +14,7 @@ standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
+from valvebsp.structs.flags import dworldlight_flags32  # NOQA: #402
 
 emittype_t = Enum(
     Int32ul,
@@ -23,11 +24,6 @@ emittype_t = Enum(
     emit_skylight=3,
     emit_quakelight=4,
     emit_skyambient=5)
-
-dworldlight_flags32 = FlagsEnum(
-    Int32sl,
-    DWL_FLAGS_INAMBIENTCUBE=0,
-    DWL_FLAGS_CASTENTITYSHADOWS=1)
 
 dworldlight_tV0 = Struct(
     'origin' / Vector,
