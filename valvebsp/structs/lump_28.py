@@ -15,8 +15,14 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA #402
 
+physdisp = Struct(
+    'registry' / PrefixedArray(Int16ul,
+                               Struct('count' / Byte, 'unused' / Byte)),
+    'bytestreams' / Array(lambda ctx: len(ctx.registry),
+                          Bytes(lambda ctx: ctx.registry[ctx._index].count))
+)
 
-@lump_raw
+
 @lump_version(0)
 def lump_28(header, profile=None):
-    return
+    return physdisp
