@@ -217,16 +217,6 @@ StaticPropV11_t = Aligned(4, Struct(
 ))
 
 
-StaticPropDictLump_t = Struct(
-    'count' / Int32sl,
-    'names' / PaddedString(STATIC_PROP_NAME_LENGTH, 'ascii')[this.count]
-)
-StaticPropLeafDictLump_t = Struct(
-    'count' / Int32sl,
-    'leafs' / Int16ul[this.count]
-)
-
-
 @lump_version([4, 5, 6, 7, 8, 9, 10, 11])
 def lump_prps(header, profile=None):
     if header.version == 11:
@@ -248,16 +238,17 @@ def lump_prps(header, profile=None):
 
     if profile == ZENOCLASH:
         StaticPropLump_t = Struct(
-            'dictLump' / StaticPropDictLump_t,
-            'dictLump2' / StaticPropDictLump_t,
-            'leafLump' / StaticPropLeafDictLump_t,
-            'objectLump' / Struct('count' / Int32sl,
-                                  'objects' / Aligned(4, StaticProp_t[this.count])))
+            'dictLump' / PrefixedArray(Int32sl, PaddedString(
+                STATIC_PROP_NAME_LENGTH, 'ascii')),
+            'dictLump2' / PrefixedArray(Int32sl, PaddedString(
+                STATIC_PROP_NAME_LENGTH, 'ascii')),
+            'leafLump' / PrefixedArray(Int32sl, Int16ul),
+            'objectLump' / PrefixedArray(Int32sl, StaticProp_t[this.count]))
     else:
         StaticPropLump_t = Struct(
-            'dictLump' / StaticPropDictLump_t,
-            'leafLump' / StaticPropLeafDictLump_t,
-            'objectLump' / Struct('count' / Int32sl,
-                                  'objects' / Aligned(4, StaticProp_t[this.count])))
+            'dictLump' / PrefixedArray(Int32sl, PaddedString(
+                STATIC_PROP_NAME_LENGTH, 'ascii')),
+            'leafLump' / PrefixedArray(Int32sl, Int16ul),
+            'objectLump' / PrefixedArray(Int32sl, StaticProp_t))
 
     return StaticPropLump_t

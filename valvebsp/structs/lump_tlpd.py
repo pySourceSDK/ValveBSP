@@ -15,18 +15,13 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
-DetailPropLightStyleLump_t = Struct(
+DetailPropLightStyleLump_t = PrefixedArray(Int32sl, Struct(
     'lighting' / ColorRGBExp32,
     'style' / Int8ul,
-)
-
-DetailPropLightStylesLump_t = Struct(
-    'count' / Int32sl,
-    'styles' / DetailPropLightStyleLump_t[this.count]
-)
+))
 
 
 @lump_struct
 @lump_version(0)
 def lump_tlpd(header, profile=None):
-    return DetailPropLightStylesLump_t
+    return DetailPropLightStyleLump_t

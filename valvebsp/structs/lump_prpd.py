@@ -55,25 +55,11 @@ DetailObjectLump_t = Struct(
     'scale' / Float32l
 )
 
-DetailPropDictLump_t = Struct(
-    'count' / Int32sl,
-    'names' / PaddedString(DETAIL_NAME_LENGTH, 'ascii')[this.count]
-)
-
-DetailSpriteDictLump_t = Struct(
-    'count' / Int32sl,
-    'sprites' / DetailSpriteLump_t[this.count]
-)
-
-DetailObjectDictLump_t = Struct(
-    'count' / Int32sl,
-    'objects' / DetailObjectLump_t[this.count]
-)
-
 DetailPropLump_t = Struct(
-    'dictLump' / DetailPropDictLump_t,
-    'spritesLump' / DetailSpriteDictLump_t,
-    'objectLump' / DetailObjectDictLump_t
+    'dictLump' / PrefixedArray(Int32sl,
+                               PaddedString(DETAIL_NAME_LENGTH, 'ascii')),
+    'spritesLump' / PrefixedArray(Int32sl, DetailSpriteLump_t),
+    'objectLump' / PrefixedArray(Int32sl, DetailObjectLump_t)
 )
 
 

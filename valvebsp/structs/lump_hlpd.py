@@ -13,10 +13,10 @@ from future import standard_library
 standard_library.install_aliases()
 
 from valvebsp.structs.common import *  # NOQA #402
-from valvebsp.structs.lump_tlpd import DetailPropLightStylesLump_t  # NOQA #402
+from valvebsp.structs.lump_tlpd import DetailPropLightStyleLump_t  # NOQA #402
 
 
 @lump_struct
 @lump_version(0)
 def lump_hlpd(header, profile=None):
-    return DetailPropLightStylesLump_t
+    return DetailPropLightStyleLump_t
