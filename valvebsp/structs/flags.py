@@ -39,7 +39,11 @@ contents_flags32 = FlagsEnum(Int32ul,
                              CONTENTS_TRANSLUCENT=268435456,
                              CONTENTS_LADDER=536870912,
                              CONTENTS_HITBOX=1073741824)
-
+dispinfo_flags8 = FlagsEnum(Int8ul,
+                            COLL_UNUSED=1,
+                            COLL_NOPHYS=2,
+                            COLL_NOHULL=4,
+                            COLL_NORAY=8)
 texinfo_flags32 = FlagsEnum(Int32ul,
                             SURF_LIGHT=1,
                             SURF_SKY2D=2,

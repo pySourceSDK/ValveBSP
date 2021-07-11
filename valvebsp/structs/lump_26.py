@@ -14,6 +14,7 @@ standard_library.install_aliases()
 
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA #402
+from valvebsp.structs.flags import dispinfo_flags8, contents_flags32  # NOQA #402
 
 NeighborSpan = Enum(
     Int8sl,
@@ -56,12 +57,13 @@ CDispCornerNeighbors = Struct(
 ddispinfo_t = Struct(
     'startPosition' / Vector,
     'dispVertStart' / Int32sl,
-    'dispTriStart'/Int32sl,
+    'dispTriStart' / Int32sl,
 
     'power' / Int32sl,
-    'minTess'/Int32sl,
+    'flags' / dispinfo_flags8,
+    'minTess' / Int24sl,
     'smoothingAngle' / Float32l,
-    'contents'/Int32sl,
+    'contents' / contents_flags32,
 
     'mapFace' / Int16ul * "index into :ref:`lump 7<lump_7>` or :ref:`lump 58<lump_58>`",
 
