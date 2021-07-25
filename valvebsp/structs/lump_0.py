@@ -26,7 +26,7 @@ lump_0_encoding = pp.ZeroOrMore(entity_encoding)
 class EntityEncoder(Adapter):
 
     def _decode(self, obj, context, path):
-        return lump_0_encoding.parseString(obj)
+        return lump_0_encoding.parseString(obj).asList()
 
     def _encode(self, obj, context, path):
         estr = ''
