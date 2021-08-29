@@ -34,7 +34,6 @@ class ParseBspTestCase(unittest.TestCase):
                                 shallow=False)
 
         self.assertTrue(identical)
-
     '''
     def test_struct_full_bsp_new(self):
         bsp = Bsp('tests/data/testmap.bsp', profile="TF2")
@@ -89,7 +88,7 @@ class ParseBspTestCase(unittest.TestCase):
             bsp[gl.id]
         bsp.source_path = None
 
-        with self.assertRaises(FileNotFoundError):
+        with self.assertRaises(Exception):
             bsp.save()
 
     def test_struct_bsp_overwrite_impossible(self):
@@ -100,7 +99,7 @@ class ParseBspTestCase(unittest.TestCase):
             bsp[gl.id]
         bsp.source_path = self.bsp_file
 
-        with self.assertRaises(FileNotFoundError):
+        with self.assertRaises(Exception):
             bsp.save()
 
     def test_struct_bsp_outofbound(self):

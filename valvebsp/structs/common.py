@@ -12,10 +12,16 @@ from __future__ import unicode_literals
 from future import standard_library
 standard_library.install_aliases()
 
-from collections.abc import Iterable
 from construct import *  # NOQA: E402
 from valvebsp.constants import *  # NOQA: E402
 from valvebsp.exceptions import *  # NOQA: #402
+
+import collections
+try:
+    Iterable = collections.abc.Iterable
+except AttributeError:
+    Iterable = collections.Iterable
+
 
 Vector = Struct('x' / Float32l, 'y' / Float32l, 'z' / Float32l)
 
@@ -30,7 +36,7 @@ Quaternion = Struct('x' / Float32l, 'y' / Float32l,
 color32 = Struct('r' / Int8ul, 'g' / Int8ul, 'b' / Int8ul, 'a' / Int8ul)
 ColorRGBExp32 = Struct('r' / Byte, 'g' / Byte, 'b' /
                        Byte, 'exponent' / Int8sl)
-CompressedLightCube = Struct('color' / ColorRGBExp32[6])
+CompressedLightCube = Array(6, ColorRGBExp32)
 
 
 def lump_version(versions):
