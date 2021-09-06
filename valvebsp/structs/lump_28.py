@@ -2,7 +2,7 @@
 Lump 28 - Phys Disp
 ===================
 
-|lump_not_implemented|
+This lump contains a single :any:`physdisps`. 'registry' and 'bytestreams' are of equal length. the length of each bytestream is determined by the corresponding length stated in the registry. The format of the bytestream is not currently known/implemented and will return raw bytes.
 """
 
 from __future__ import absolute_import
@@ -15,14 +15,15 @@ standard_library.install_aliases()
 from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA #402
 
-physdisp = Struct(
-    'registry' / PrefixedArray(Int16ul,
-                               Struct('count' / Byte, 'unused' / Byte)),
+streamLength = Struct('length' / Byte, 'unused' / Byte)
+
+physdisps = Struct(
+    'registry' / PrefixedArray(Int16ul, streamLength),
     'bytestreams' / Array(lambda ctx: len(ctx.registry),
-                          Bytes(lambda ctx: ctx.registry[ctx._index].count))
+                          Bytes(lambda ctx: ctx.registry[ctx._index].length))
 )
 
 
 @lump_version(0)
 def lump_28(header, profile=None):
-    return physdisp
+    return physdisps

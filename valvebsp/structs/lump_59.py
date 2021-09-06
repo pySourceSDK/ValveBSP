@@ -2,7 +2,7 @@
 Lump 59 - Map Flags
 ===================
 
-This lump contains an array of :any:`flags_t`.
+This lump contains a single :any:`flags_t`.
 """
 
 from __future__ import division

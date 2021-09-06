@@ -74,3 +74,12 @@ def lump_array(func):
     def wrapper(*args, **kwargs):
         return GreedyRange(func(*args, **kwargs).compile())
     return wrapper
+
+
+def lump_prefixed_array(prefix):
+    # helper for prefixed array based lumps
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            return PrefixedArray(prefix, func(*args, **kwargs))
+        return wrapper
+    return decorator

@@ -243,7 +243,7 @@ def lump_prps(header, profile=None):
             'dictLump2' / PrefixedArray(Int32sl, PaddedString(
                 STATIC_PROP_NAME_LENGTH, 'ascii')),
             'leafLump' / PrefixedArray(Int32sl, Int16ul),
-            'objectLump' / PrefixedArray(Int32sl, StaticProp_t[this.count]))
+            'objectLump' / PrefixedArray(Int32sl, StaticProp_t))
     else:
         StaticPropLump_t = Struct(
             'dictLump' / PrefixedArray(Int32sl, PaddedString(

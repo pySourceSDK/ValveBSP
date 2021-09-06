@@ -1,6 +1,8 @@
 """
 Lump 5 - Nodes
 ==============
+
+This lump contains an array of :any:`dnode_t`.
 """
 
 from __future__ import division
