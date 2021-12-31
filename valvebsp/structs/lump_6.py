@@ -17,8 +17,8 @@ from valvebsp.structs.common import *  # NOQA: #402
 from valvebsp.structs.flags import texinfo_flags32  # NOQA: #402
 
 texinfo_t = Struct(
-    'textureVecsTexelsPerWorldUnits' / Float32l[2][4],
-    'lightmapVecsLuxelsPerWorldUnits' / Float32l[2][4],
+    'textureVecsTexelsPerWorldUnits' / Float32l[4][2],
+    'lightmapVecsLuxelsPerWorldUnits' / Float32l[4][2],
     'flags' / texinfo_flags32,
     'texData' / Int32sl * 'index into :ref:`lump 2<lump_2>`',
 )
