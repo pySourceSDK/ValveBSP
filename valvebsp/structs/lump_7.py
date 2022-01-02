@@ -16,16 +16,16 @@ from construct import *  # NOQA: #402
 from valvebsp.structs.common import *  # NOQA: #402
 
 dface_t = Struct(
-    'planenum' / Int16ul,
+    'planeNum' / Int16ul,
     'side' / Byte,
     'onNode' / Byte,
-    'firstedge' / Int32sl * "index into :ref:`lump 13<lump_13>`",
-    'numedges' / Int16sl,
-    'texinfo' / Int16sl * "index into :ref:`lump 6<lump_6>`",
-    'dispinfo' / Int16sl * "index into :ref:`lump 26<lump_26>`",
+    'firstEdge' / Int32sl * "index into :ref:`lump 13<lump_13>`",
+    'numEdges' / Int16sl,
+    'texInfo' / Int16sl * "index into :ref:`lump 6<lump_6>`",
+    'dispInfo' / Int16sl * "index into :ref:`lump 26<lump_26>`",
     'surfaceFogVolumeID' / Int16sl,
     'styles' / Byte[4],
-    'lightofs' / Int32sl * "index into :ref:`lump 8<lump_8>`",
+    'lightOfs' / Int32sl * "index into :ref:`lump 8<lump_8>`",
     'area' / Float32l,
     'lightmapTextureMinsInLuxels' / Int32sl[2],
     'lightmapTextureSizeInLuxels' / Int32sl[2],
