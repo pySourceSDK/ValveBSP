@@ -3,10 +3,14 @@ from setuptools import setup, find_packages
 with open('README.md') as f:
     long_description = f.read()
 
+VERSION = '{{VERSION_PLACEHOLDER}}'
+if 'VERSION_PLACEHOLDER' in VERSION:
+    VERSION = '0.0.0'
+
 setup(
     name='valvebsp',
     packages=find_packages(exclude=["tests", "tests.*", '*docs*']),
-    version='{{VERSION_PLACEHOLDER}}',
+    version=VERSION,
     description='A library to parse .bsp files (level files for the Source engine).',
     long_description=long_description,
     long_description_content_type="text/markdown",
