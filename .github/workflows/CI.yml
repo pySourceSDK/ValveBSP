@@ -22,7 +22,7 @@ jobs:
 
     - name: Update version in setup.py
       run: >-
-        sed -i "s/{{VERSION_PLACEHOLDER}}/0.0.0/g" setup.py
+        sed -i "s/{{VERSION_PLACEHOLDER}}/0\.0\.0/g" setup.py
 
     - name: Install dependencies
       run: |
