@@ -1,3 +1,4 @@
 construct
 pyparsing
+pytest
 future
