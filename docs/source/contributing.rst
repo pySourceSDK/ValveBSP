@@ -3,7 +3,6 @@ Contributing
 
 Few things to know before diving in the code.
 
-
 Project Guidelines
 ------------------
 
@@ -17,11 +16,10 @@ To tinker with the code, it's recommended that you install the library from the 
 
 .. code-block:: bash
 
-   pip3 install --editable .
+   pip install --editable .
 
 
-This will allow you to import valvebsp in other projects normally while being able to mess with the code directly from the git folder. This way, you can make sure valvebsp will work as intended in the context of your project.
-
+This will allow you to install |proj_name| from the folder. This way, you can modify |proj_name| as you develop your own project around it.
 
 Documenting
 -----------
@@ -30,10 +28,11 @@ To build the Sphinx documentation, you need:
 
 .. code-block:: bash
 
-   pip install -U sphinx
-   pip install sphinx-autobuild
+   pip install -r docs/requirements.txt # one-time setup
 
-Then you can run sphinx-autobuild.sh in the docs/ directory. The documentation pages will be served on http://127.0.0.1:8000 by default.
+   sphinx-autobuild docs/source docs/build
+
+The documentation pages will be served on http://127.0.0.1:8000 by default.
 
 
 Testing
@@ -42,4 +41,6 @@ Tests can be ran from the root folder using:
 
 .. code-block:: bash
 
-   python3 tests/tests.py
+   pip install -r requirements.txt # one-time setup
+
+   pytest

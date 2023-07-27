@@ -1,6 +1,5 @@
 """
-Lump 22 - Portals ...or Prop Collision
-======================================
+.. Lump 22 - Portals ...or Prop Collision
 
 |lump_not_implemented|
 """

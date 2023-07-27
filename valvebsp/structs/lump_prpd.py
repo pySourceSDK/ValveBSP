@@ -1,6 +1,5 @@
 """
-Lump prpd - Prop Detail
-=======================
+.. Lump prpd - Prop Detail
 
 This lump is defined as a single :any:`DetailPropLump_t`
 """

@@ -1,6 +1,5 @@
 """
-Lump 0 - Entities
-=================
+.. Lump 0 - Entities
 
 This lump is simply one long string containing all entities in a format similar to vmf.
 

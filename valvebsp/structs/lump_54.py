@@ -1,6 +1,5 @@
 """
-Lump 54 - Worldlights HDR
-=========================
+.. Lump 54 - Worldlights HDR
 
 This lump contains an array of :any:`dworldlight_tV0` or :any:`dworldlight_tV1` (Version detection is automatic).
 It is the HDR version of :ref:`lump 15<lump_15>`."""

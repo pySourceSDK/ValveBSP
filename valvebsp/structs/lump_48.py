@@ -1,6 +1,5 @@
 """
-Lump 48 - Disp Tris
-===================
+.. Lump 48 - Disp Tris
 
 This lump contains an array of :any:`CDispTri`.
 """

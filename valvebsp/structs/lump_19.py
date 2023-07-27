@@ -1,6 +1,5 @@
 """
-Lump 19 - Brush Sides
-=====================
+.. Lump 19 - Brush Sides
 
 This lump contains an array of :any:`dbrushside_t`.
 

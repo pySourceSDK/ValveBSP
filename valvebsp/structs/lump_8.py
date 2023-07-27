@@ -1,6 +1,5 @@
 """
-Lump 8 - Lighting
-=================
+.. Lump 8 - Lighting
 
 This lump contains an array of :any:`ColorRGBExp32`. They represent individual luxels.
 """

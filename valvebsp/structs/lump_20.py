@@ -1,6 +1,5 @@
 """
-Lump 20 - Areas
-===============
+.. Lump 20 - Areas
 
 This lump contains an array of :any:`darea_t`.
 """

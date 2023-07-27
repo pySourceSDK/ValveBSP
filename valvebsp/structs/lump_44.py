@@ -1,6 +1,5 @@
 """
-Lump 44 - Texture Data String Table
-===================================
+.. Lump 44 - Texture Data String Table
 
 This lump contains an array of :any:`Int<int>`. They represents offsets in :ref:`lump_43<lump_43>`.
 

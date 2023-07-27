@@ -1,6 +1,5 @@
 """
-Lump 4 - Visibility
-===================
+.. Lump 4 - Visibility
 
 |lump_not_implemented|
 """

@@ -1,6 +1,5 @@
 """
-Lump 36 - Leaf Water Data
-=========================
+.. Lump 36 - Leaf Water Data
 
 This lump contains an array of :any:`dleafwaterdata_t`.
 """

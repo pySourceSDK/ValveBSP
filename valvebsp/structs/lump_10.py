@@ -1,6 +1,5 @@
 """
-Lump 10 - Leafs
-===============
+.. Lump 10 - Leafs
 
 This lump contains an array of :any:`dleaf_tV1` or :any:`dleaf_tV1` (Version detection is automatic).
 """
@@ -29,7 +28,8 @@ dleaf_tV0 = Aligned(4, Bitwise(Struct(
     'firstLeafFace' / Bytewise(Int16ul) * "index into :ref:`lump 16<lump_16>`",
     'numLeafFaces' / Bytewise(Int16ul),
 
-    'firstLeafBrush' / Bytewise(Int16ul) * "index into :ref:`lump 17<lump_17>`",
+    'firstLeafBrush' / Bytewise(Int16ul) *
+    "index into :ref:`lump 17<lump_17>`",
     'numLeafBrushes' / Bytewise(Int16ul),
     'leafWaterDataID' / Bytewise(Int16sl) *
     "index into :ref:`lump 36<lump_36>`",
@@ -51,9 +51,11 @@ dleaf_tV1 = Aligned(4, Bitwise(Struct(
     'firstLeafFace' / Bytewise(Int16ul) * "index into :ref:`lump 16<lump_16>`",
     'numLeafFaces' / Bytewise(Int16ul),
 
-    'firstLeafBrush' / Bytewise(Int16ul) * "index into :ref:`lump 17<lump_17>`",
+    'firstLeafBrush' / Bytewise(Int16ul) *
+    "index into :ref:`lump 17<lump_17>`",
     'numLeafBrushes' / Bytewise(Int16ul),
-    'leafWaterDataID' / Bytewise(Int16sl) * "index into :ref:`lump 36<lump_36>`"
+    'leafWaterDataID' / Bytewise(Int16sl) *
+    "index into :ref:`lump 36<lump_36>`"
 )))
 
 

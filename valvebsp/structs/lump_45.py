@@ -1,6 +1,5 @@
 """
-Lump 45 - Overlays
-==================
+.. Lump 45 - Overlays
 
 This lump contains an array of :any:`doverlay_t`.
 """

@@ -1,6 +1,5 @@
 """
-Lump 27 - Original Faces
-========================
+.. Lump 27 - Original Faces
 
 This lump contains an array of :any:`dface_t` (:ref:`as seen in lump_7<lump_7>`).
 """

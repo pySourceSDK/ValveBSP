@@ -1,6 +1,5 @@
 """
-Common Structures
-=================
+.. Common Structures
 
 These are reoccuring data structures that you'll see reused throughout Bsp.
 """
@@ -16,7 +15,8 @@ from construct import *  # NOQA: E402
 from valvebsp.constants import *  # NOQA: E402
 from valvebsp.exceptions import *  # NOQA: #402
 
-import collections
+import collections  # NOQA: E402
+
 try:
     Iterable = collections.abc.Iterable
 except AttributeError:

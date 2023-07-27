@@ -1,6 +1,5 @@
 """
-Lump 6 - Texture Info
-=====================
+.. Lump 6 - Texture Info
 
 This lump contains an array of :any:`texinfo_t`.
 """

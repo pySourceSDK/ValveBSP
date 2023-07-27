@@ -1,6 +1,5 @@
 """
-Lump 59 - Map Flags
-===================
+.. Lump 59 - Map Flags
 
 This lump contains a single :any:`flags_t`.
 """

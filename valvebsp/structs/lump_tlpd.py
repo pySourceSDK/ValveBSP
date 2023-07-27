@@ -1,6 +1,5 @@
 """
-Lump tlpd - Prop Detail Lighting
-================================
+.. Lump tlpd - Prop Detail Lighting
 
 This lump contains an array of :any:`DetailPropLightStyle_t`.
 In bsp, this array is prefixed by an integer representing its length.

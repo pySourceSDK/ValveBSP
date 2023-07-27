@@ -1,6 +1,5 @@
 """
-Lump 60 - Overlay Fades
-=======================
+.. Lump 60 - Overlay Fades
 
 This lump contains an array of :any:`doverlayfade_t`.
 """

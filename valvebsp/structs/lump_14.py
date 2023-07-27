@@ -1,6 +1,5 @@
 """
-Lump 14 - Models
-================
+.. Lump 14 - Models
 
 This lump contains an array of :any:`dmodel_t`.
 """

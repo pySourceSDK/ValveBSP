@@ -1,6 +1,5 @@
 """
-Lump 51 - Lightmap Pages ...or Leaf Ambient Index HDR
-=====================================================
+.. Lump 51 - Lightmap Pages ...or Leaf Ambient Index HDR
 
 This lump contains an array of :any:`dleafambientindex_t`.
 """

@@ -1,6 +1,5 @@
 """
-Lump 11 - Face Ids
-==================
+.. Lump 11 - Face Ids
 
 This lump contains an array of :any:`dfaceid_t`. This array matches the array of dface_t (:ref:`see lump_7<lump_7>`).
 """

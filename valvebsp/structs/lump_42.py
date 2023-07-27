@@ -1,6 +1,5 @@
 """
-Lump 42 - Cubemaps
-==================
+.. Lump 42 - Cubemaps
 
 This lump contains an array of :any:`dcubemapsample_t`.
 """

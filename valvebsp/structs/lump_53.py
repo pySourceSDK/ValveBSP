@@ -1,6 +1,5 @@
 """
-Lump 53 - Lighting HDR
-======================
+.. Lump 53 - Lighting HDR
 
 This lump contains an array of :any:`ColorRGBExp32`. They represent individual luxels.
 It is the HDR version of :ref:`lump 8<lump_8>`.

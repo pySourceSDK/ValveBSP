@@ -1,6 +1,5 @@
 """
-Lump 47 - Face Macro Texture Info
-=================================
+.. Lump 47 - Face Macro Texture Info
 
 This lump contains an array of :any:`Int<int>`. They are indices into :doc:`lump_44<lump_44>`.
 """

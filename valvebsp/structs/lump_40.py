@@ -1,6 +1,5 @@
 """
-Lump 40 - Pakfile
-=================
+.. Lump 40 - Pakfile
 
 This lump contains raw data. The data can be saved directly to the disc as a zip file.
 """

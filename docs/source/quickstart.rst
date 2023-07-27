@@ -8,7 +8,7 @@ Installation
 
 PyPI
 ~~~~
-ValveBSP is available on the Python Package Index. This makes installing it with pip as easy as:
+|proj_name| is available on the Python Package Index. This makes installing it with pip as easy as:
 
 .. code-block:: bash
 
@@ -34,7 +34,7 @@ and install it from the repo directory with:
 Usage
 -----
 
-Here's a few example usage of ValveBSP
+Here's a few example usage of |proj_name|
 
 Parsing
 ~~~~~~~

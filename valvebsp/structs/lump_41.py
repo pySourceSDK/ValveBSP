@@ -1,6 +1,5 @@
 """
-Lump 41 - Clip Portal Verts
-===========================
+.. Lump 41 - Clip Portal Verts
 
 This lump contains an array of verts represented as :any:`Vector`.
 """

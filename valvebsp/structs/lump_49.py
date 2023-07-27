@@ -1,6 +1,5 @@
 """
-Lump 49 - Phys Collide Surface ...or Lump Prop Blob
-===================================================
+.. Lump 49 - Phys Collide Surface ...or Lump Prop Blob
 
 |lump_not_implemented|
 """

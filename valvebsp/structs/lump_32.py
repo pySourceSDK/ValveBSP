@@ -1,6 +1,5 @@
 """
-Lump 32 - Disp Lightmap Alphas
-==============================
+.. Lump 32 - Disp Lightmap Alphas
 
 |lump_not_implemented|
 """

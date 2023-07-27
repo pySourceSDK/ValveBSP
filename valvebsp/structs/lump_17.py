@@ -1,6 +1,5 @@
 """
-Lump 17 - Leaf Brushes
-======================
+.. Lump 17 - Leaf Brushes
 
 This lump contains an array of :any:`Int<int>`. They are references to brush ids in :doc:`lump_18<lump_18>`.
 """

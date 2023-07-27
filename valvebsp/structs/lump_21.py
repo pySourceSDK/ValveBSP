@@ -1,6 +1,5 @@
 """
-Lump 21 - Area Portals
-======================
+.. Lump 21 - Area Portals
 
 This lump contains an array of :any:`dareaportal_t`.
 """

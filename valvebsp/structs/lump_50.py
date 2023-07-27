@@ -1,6 +1,5 @@
 """
-Lump 50 - Water Overlays
-========================
+.. Lump 50 - Water Overlays
 
 This lump contains an array of dwateroverlay_t, identical to :any:`doverlay_t`. (:ref:`as seen in lump_45<lump_45>`).
 """

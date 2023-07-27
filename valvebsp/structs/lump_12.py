@@ -1,6 +1,5 @@
 """
-Lump 12 - Edges
-===============
+.. Lump 12 - Edges
 
 This lump contains an array of :any:`dedge_t`.
 """

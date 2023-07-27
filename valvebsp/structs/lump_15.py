@@ -1,6 +1,5 @@
 """
-Lump 15 - Worldlights
-=====================
+.. Lump 15 - Worldlights
 
 This lump contains an array of :any:`dworldlight_tV0` or :any:`dworldlight_tV1` (Version detection is automatic).
 """

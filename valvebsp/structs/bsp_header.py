@@ -1,6 +1,5 @@
 """
-Header
-======
+.. Header
 
 The BSP file header is defined as a single :any:`dheader_t` (dheader_t variants are determined by :ref:`profile<profiles>`)
 """

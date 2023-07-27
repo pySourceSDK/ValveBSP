@@ -1,6 +1,5 @@
 """
-Lump 24 - Portal Verts ...or Prop Hull Verts
-============================================
+.. Lump 24 - Portal Verts ...or Prop Hull Verts
 
 |lump_not_implemented|
 """

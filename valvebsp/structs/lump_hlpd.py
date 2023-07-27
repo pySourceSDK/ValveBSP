@@ -1,6 +1,5 @@
 """
-Lump hlpd - Prop Detail Lighting HDR
-====================================
+.. Lump hlpd - Prop Detail Lighting HDR
 
 This lump is the HDR version of :ref:`lump tlpd<lump_tlpd>`, its structure is identical.
 """

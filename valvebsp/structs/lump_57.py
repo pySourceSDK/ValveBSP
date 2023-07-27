@@ -1,6 +1,5 @@
 """
-Lump 57 - XZIP Pakfile
-======================
+.. Lump 57 - XZIP Pakfile
 
 |lump_not_implemented|
 """

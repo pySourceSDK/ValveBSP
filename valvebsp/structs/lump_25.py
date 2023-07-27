@@ -1,6 +1,5 @@
 """
-Lump 25 - Cluster Portal ...or Prop Tris
-========================================
+.. Lump 25 - Cluster Portal ...or Prop Tris
 
 |lump_not_implemented|
 """

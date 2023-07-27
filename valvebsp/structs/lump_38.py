@@ -1,6 +1,5 @@
 """
-Lump 38 - Prim Verts
-====================
+.. Lump 38 - Prim Verts
 
 This lump contains an array of :any:`dprimvert_t`.
 """

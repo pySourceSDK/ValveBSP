@@ -1,12 +1,16 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/pySourceSDK/ValveBSP/blob/master/LICENSE.txt)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/valvebsp.svg)](https://pypi.python.org/pypi/valvebsp/)
+[![Platforms](https://img.shields.io/badge/platform-Linux,_MacOS,_Windows-blue)]()
 [![PyPI version fury.io](https://badge.fury.io/py/valvebsp.svg)](https://pypi.python.org/pypi/valvebsp/)
-[![alt text](https://github.com/pySourceSDK/ValveBSP/blob/master/docs/source/coverage.svg "coverage")]()
+[![GitHub Workflow Status (with event)](https://github.com/pySourceSDK/ValveBSP/actions/workflows/CI.yml/badge.svg)
+[![Test coverage](https://github.com/pySourceSDK/ValveBSP/blob/master/docs/source/coverage.svg "coverage")]()
+
 # ValveBSP
 
 ValveBSP is a Python library for parsing .bsp files for the Source Engine. It provides provides access to lump data.
 
 Full documentation: https://pysourcesdk.github.io/ValveBSP/
+<!--- start pypi omit -->
 
 ### Currently supported lumps
 
@@ -31,6 +35,7 @@ Full documentation: https://pysourcesdk.github.io/ValveBSP/
 | 14     | :heavy_check_mark: | 30     | :heavy_check_mark: | 46     | :heavy_check_mark: | 62     | :x:                |
 | 15     | :heavy_check_mark: | 31     | :heavy_check_mark: | 47     | :heavy_check_mark: | 63     | :x:                |
 
+<!--- end pypi omit -->
 ## Installation
 
 ### PyPI

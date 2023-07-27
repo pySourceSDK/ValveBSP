@@ -1,6 +1,5 @@
 """
-Lump 26 - Disp Info
-===================
+.. Lump 26 - Disp Info
 
 This lump contains an array of :any:`ddispinfo_t`
 """

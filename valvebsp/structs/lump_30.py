@@ -1,6 +1,5 @@
 """
-Lump 30 - Vert Normals
-======================
+.. Lump 30 - Vert Normals
 
 This lump contains an array of normals represented as :any:`Vector`. Three floats corresponding to pitch/yaw/roll.
 """

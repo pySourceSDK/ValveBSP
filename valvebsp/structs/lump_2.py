@@ -1,7 +1,5 @@
-
 """
-Lump 2 - Texture Data
-=====================
+.. Lump 2 - Texture Data
 
 This lump contains an array of :any:`dtexdata_t`.
 """

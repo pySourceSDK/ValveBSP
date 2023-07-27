@@ -1,6 +1,5 @@
 """
-Lump 9 - Occlusion
-==================
+.. Lump 9 - Occlusion
 
 This lump contains a single :any:`doccluder_t`, regrouping multiple :any:`doccluderdata_t` and :any:`doccluderpolydata_t`
 """

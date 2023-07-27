@@ -1,6 +1,5 @@
 """
-Lump 29 - Phys Collide
-======================
+.. Lump 29 - Phys Collide
 
 |lump_not_implemented|
 """

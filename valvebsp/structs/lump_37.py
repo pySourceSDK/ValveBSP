@@ -1,6 +1,5 @@
 """
-Lump 37 - Primitives
-====================
+.. Lump 37 - Primitives
 
 This lump contains an array of :any:`dprimitive_t`.
 """

@@ -1,6 +1,5 @@
 """
-Lump 28 - Phys Disp
-===================
+.. Lump 28 - Phys Disp
 
 This lump contains a single :any:`physdisps`. 'registry' and 'bytestreams' are of equal length. the length of each bytestream is determined by the corresponding length stated in the registry. The format of the bytestream is not currently known/implemented and will return raw bytes.
 """

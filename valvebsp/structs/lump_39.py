@@ -1,6 +1,5 @@
 """
-Lump 39 - Prim Indices
-======================
+.. Lump 39 - Prim Indices
 
 This lump contains an array of :any:`Int<int>`. TODO: improve documentation.
 """

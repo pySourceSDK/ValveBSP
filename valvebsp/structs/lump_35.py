@@ -1,6 +1,5 @@
 """
-Lump 35 - Game Lump
-===================
+.. Lump 35 - Game Lump
 
 This lump contains a single :any:`dgamelumpheader_t`. This is only the gamelump headers and not the gamelump data. for gamelump data, :ref:`see gamelumps<gamelumps>`.
 """

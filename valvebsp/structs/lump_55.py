@@ -1,6 +1,5 @@
 """
-Lump 55 - Leaf Ambient Lighting HDR
-===================================
+.. Lump 55 - Leaf Ambient Lighting HDR
 
 This lump contains an array of :any:`dleafambientlighting_t`.
 It is the HDR version of :ref:`lump 56<lump_56>`.

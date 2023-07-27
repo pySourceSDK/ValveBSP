@@ -1,6 +1,5 @@
 """
-Lump 46 - Leaf Minimun Distance To Water
-========================================
+.. Lump 46 - Leaf Minimun Distance To Water
 
 This lump contains an array of :any:`Int<int>`. TODO: improve documentation.
 """

@@ -1,6 +1,5 @@
 """
-Lump 7 - Faces
-==============
+.. Lump 7 - Faces
 
 This lump contains an array of :any:`dface_t`.
 """

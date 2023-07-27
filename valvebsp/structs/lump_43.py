@@ -1,6 +1,5 @@
 """
-Lump 43 - Texture Data String Data
-==================================
+.. Lump 43 - Texture Data String Data
 
 This lump contains an array of :any:`string<string>`. They are texture names used by the level.
 """

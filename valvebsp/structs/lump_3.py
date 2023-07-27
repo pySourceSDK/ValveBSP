@@ -1,6 +1,5 @@
 """
-Lump 3 - Vertexes
-=================
+.. Lump 3 - Vertexes
 
 This lump contains an array of :any:`Vector`, three floats corresponding to X/Y/Z coordinates. Vertexes are typically combined to form edges (:ref:`see lump_12<lump_12>`).
 """

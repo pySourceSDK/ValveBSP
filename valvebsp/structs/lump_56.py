@@ -1,6 +1,5 @@
 """
-Lump 56 - Leaf Ambient Lighting
-===============================
+.. Lump 56 - Leaf Ambient Lighting
 
 This lump contains an array of :any:`dleafambientlighting_t`.
 """

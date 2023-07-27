@@ -1,6 +1,5 @@
 """
-Lump 18 - Brushes
-=================
+.. Lump 18 - Brushes
 
 This lump contains an array of :any:`dbrush_t`.
 """

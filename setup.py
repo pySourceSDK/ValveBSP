@@ -1,7 +1,9 @@
 from setuptools import setup, find_packages
+import re
 
 with open('README.md') as f:
-    long_description = f.read()
+    re_omit = r'<!--- start pypi omit -->.*<!--- end pypi omit -->'
+    long_description = re.sub(re_omit, '', f.read(), flags=re.S)
 
 VERSION = '{{VERSION_PLACEHOLDER}}'
 if 'VERSION_PLACEHOLDER' in VERSION:

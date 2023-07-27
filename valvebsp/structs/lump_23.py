@@ -1,6 +1,5 @@
 """
-Lump 23 - Clusters ...or PropHulls
-==================================
+.. Lump 23 - Clusters ...or PropHulls
 
 |lump_not_implemented|
 """

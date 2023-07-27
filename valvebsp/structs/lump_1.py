@@ -1,6 +1,5 @@
 """
-Lump 1 - Planes
-===============
+.. Lump 1 - Planes
 
 This lump contains an array of :any:`dplane_t`.
 """

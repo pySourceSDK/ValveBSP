@@ -1,6 +1,5 @@
 """
-Lump 34 - Disp Lightmap Sample Positions
-========================================
+.. Lump 34 - Disp Lightmap Sample Positions
 
 This lump contains an array of :any:`Int<int>`. TODO: improve documentation.
 """

@@ -1,6 +1,5 @@
 """
-Lump prps - Prop Static
-=======================
+.. Lump prps - Prop Static
 
 This lump is defined as a single StaticPropLump_t that may come in different versions, in accordance with the gamelump.`
 """

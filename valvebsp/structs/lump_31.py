@@ -1,6 +1,5 @@
 """
-Lump 31 - Vert Normal Indices
-=============================
+.. Lump 31 - Vert Normal Indices
 
 This lump contains an array of :any:`Int<int>`. TODO: improve documentation.
 """

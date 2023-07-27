@@ -1,6 +1,5 @@
 """
-Lump 33 - Disp Verts
-====================
+.. Lump 33 - Disp Verts
 
 This lump contains an array of :any:`CDispVert`.
 """

@@ -7,8 +7,14 @@ Welcome to ValveBSP's documentation!
 .. image:: https://img.shields.io/pypi/pyversions/valvebsp.svg
    :target: https://pypi.python.org/pypi/valvebsp/
 
+.. image:: https://img.shields.io/badge/platform-Linux,_MacOS,_Windows-blue
+   :target: https://pypi.python.org/pypi/valvebsp/
+
 .. image:: https://badge.fury.io/py/valvebsp.svg
    :target: https://pypi.python.org/pypi/valvebsp/
+
+.. image:: https://github.com/pySourceSDK/ValveBSP/actions/workflows/CI.yml/badge.svg
+   :target: https://github.com/pySourceSDK/ValveBSP/actions
 
 .. image:: coverage.svg
 
@@ -22,6 +28,7 @@ Get yourself up and running quickly.
 
 .. toctree::
    :maxdepth: 2
+   :titlesonly:
 
    quickstart
 
@@ -32,6 +39,7 @@ If you are looking for information on a specific function, class or method, this
 
 .. toctree::
    :maxdepth: 2
+   :titlesonly:
 
    api_ref
 
@@ -40,6 +48,7 @@ Datastructures
 
 .. toctree::
    :maxdepth: 3
+   :titlesonly:
 
    datastructures
 
@@ -50,5 +59,6 @@ Few things to know before diving in the code.
 
 .. toctree::
    :maxdepth: 2
+   :titlesonly:
 
    contributing

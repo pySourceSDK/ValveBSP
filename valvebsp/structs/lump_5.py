@@ -1,6 +1,5 @@
 """
-Lump 5 - Nodes
-==============
+.. Lump 5 - Nodes
 
 This lump contains an array of :any:`dnode_t`.
 """

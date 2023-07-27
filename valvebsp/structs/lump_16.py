@@ -1,6 +1,5 @@
 """
-Lump 16 - Leaf Faces
-====================
+.. Lump 16 - Leaf Faces
 
 This lump contains an array of :any:`Int<int>`. They are references to face ids in :doc:`lump_7<lump_7>`.
 """

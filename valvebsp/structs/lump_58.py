@@ -1,6 +1,5 @@
 """
-Lump 58 - Faces HDR
-===================
+.. Lump 58 - Faces HDR
 
 This lump contains an array of :any:`dface_t`. It is the HDR version of :ref:`lump_8<lump_8>`.
 """

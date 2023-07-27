@@ -1,6 +1,5 @@
 """
-Lump 52 - Lightmap Page Infos ...or Leaf Ambient Index
-======================================================
+.. Lump 52 - Lightmap Page Infos ...or Leaf Ambient Index
 
 This lump contains an array of :any:`dleafambientindex_t` (:ref:`as seen in lump_51<lump_51>`).
 """
