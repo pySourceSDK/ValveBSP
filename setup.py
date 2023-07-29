@@ -11,7 +11,7 @@ if 'VERSION_PLACEHOLDER' in VERSION:
 
 setup(
     name='valvebsp',
-    packages=find_packages(exclude=["tests", "tests.*", '*docs*']),
+    packages=['valvebsp'],
     version=VERSION,
     description='A library to parse .bsp files (level files for the Source engine).',
     long_description=long_description,

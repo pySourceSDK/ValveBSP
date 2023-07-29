@@ -9,7 +9,7 @@ from builtins import str
 from future import standard_library
 standard_library.install_aliases()
 
-import collections
+import collections  # NOQA: #402
 from shutil import copyfile  # NOQA: #402
 
 from construct import *  # NOQA: #402

@@ -7,7 +7,7 @@
 
 # ValveBSP
 
-ValveBSP is a Python library for parsing .bsp files for the Source Engine. It provides provides access to lump data.
+ValveBSP is a python library for parsing and editing .BSP asset files associated with Valve's Source engine. It provides provides access to lump data in map files.
 
 Full documentation: https://pysourcesdk.github.io/ValveBSP/
 <!--- start pypi omit -->
