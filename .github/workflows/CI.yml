@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+     - 'v*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+
+  test:
+    name: Tests with tox + python 3.10
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox tox-gh-actions
+
+    - name: Test with tox
+      run: tox
+
+  test-full:
+    name: Full test suite
+    runs-on: ${{ matrix.platform }}
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.7', '3.8', '3.9', '3.10']
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install tox tox-gh-actions
+
+    - name: Test with tox
+      run: tox
+
+  build-n-publish:
+    name: Build and publish Python distributions to PyPI
+    runs-on: ubuntu-latest
+    needs: test-full
+    if: startsWith(github.event.ref, 'refs/tags/v')
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+
+    - name: Install pypa/setuptools
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install wheel
+        python -m pip install tox tox-gh-actions
+
+    - name: Extract tag name
+      id: tag
+      run: echo ::set-output name=TAG_NAME::$(echo $GITHUB_REF | cut -d / -f 3)
+
+    - name: Update version in setup.py
+      run: >-
+        sed -i "s/{{VERSION_PLACEHOLDER}}/${{ steps.tag.outputs.TAG_NAME }}/g" setup.py
+
+    - name: Build a binary wheel
+      run: >-
+        python setup.py sdist bdist_wheel
+
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1.8
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
+
+    - name: Sphinx Doc build
+      run: tox -e docs
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        publish_branch: gh-pages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/build
+        force_orphan: true
