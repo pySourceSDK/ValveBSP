@@ -34,7 +34,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -73,7 +75,7 @@ jobs:
         pip install sphinx-autodoc-construct
 
     - name: Sphinx docs to GitHub Pages
-      uses: uibcdf/action-sphinx-docs-to-gh-pages@main
+      uses: uibcdf/action-sphinx-docs-to-gh-pages@v2.0.0
       with:
         branch: master
         dir_docs: docs/source
