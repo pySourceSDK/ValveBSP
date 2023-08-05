@@ -42,7 +42,7 @@ jobs:
         python-version: '3.10'
 
     - name: Install pypa/setuptools
-      run: >-
+      run: |
         python -m
         python -m pip install --upgrade pip
         python -m pip install tox tox-gh-actions
