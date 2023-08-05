@@ -60,7 +60,7 @@ jobs:
         python setup.py sdist bdist_wheel
 
     - name: Publish distribution to PyPI
-      uses: pypa/gh-action-pypi-publish@master
+      uses: pypa/gh-action-pypi-publish@main
       with:
         password: ${{ secrets.PYPI_API_TOKEN }}
 
@@ -73,7 +73,7 @@ jobs:
         pip install sphinx-autodoc-construct
 
     - name: Sphinx docs to GitHub Pages
-      uses: uibcdf/action-sphinx-docs-to-gh-pages@v2.0.0
+      uses: uibcdf/action-sphinx-docs-to-gh-pages@main
       with:
         branch: master
         dir_docs: docs/source
