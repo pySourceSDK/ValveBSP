@@ -18,7 +18,7 @@ Welcome to ValveBSP's documentation!
    :target: https://pypi.python.org/pypi/valvebsp/
 
 .. CI status
-.. image:: https://github.com/pySourceSDK/ValveBSP/actions/workflows/tests.yml/badge.svg
+.. image:: https://github.com/pySourceSDK/ValveBSP/actions/workflows/CI.yml/badge.svg
    :target: https://github.com/pySourceSDK/ValveBSP/actions
 
 .. Coverage
