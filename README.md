@@ -2,12 +2,12 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/valvebsp.svg)](https://pypi.python.org/pypi/valvebsp/)
 [![Platforms](https://img.shields.io/badge/platform-Linux,_MacOS,_Windows-blue)]()
 [![PyPI version fury.io](https://badge.fury.io/py/valvebsp.svg)](https://pypi.python.org/pypi/valvebsp/)
-[![GitHub Workflow Status (with event)](https://github.com/pySourceSDK/ValveBSP/actions/workflows/CI.yml/badge.svg)]()
+[![GitHub Workflow Status (with event)](https://github.com/pySourceSDK/ValveBSP/actions/workflows/tests.yml/badge.svg)]()
 [![Test coverage](https://github.com/pySourceSDK/ValveBSP/blob/master/docs/source/coverage.svg "coverage")]()
 
 # ValveBSP
 
-ValveBSP is a python library for parsing and editing .BSP asset files associated with Valve's Source engine. It provides provides access to lump data in map files.
+ValveBSP is a Python library designed to parse and edit .BSP files, which are utilized for game level representation within Valve's Source engine. It provides provides access to lump data in map files.
 
 Full documentation: https://pysourcesdk.github.io/ValveBSP/
 <!--- start pypi omit -->

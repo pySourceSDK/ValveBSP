@@ -1,21 +1,27 @@
 Welcome to ValveBSP's documentation!
 ====================================
 
+.. license
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: https://github.com/pySourceSDK/ValveBSP/blob/master/LICENSE.txt
 
+.. Python versions
 .. image:: https://img.shields.io/pypi/pyversions/valvebsp.svg
    :target: https://pypi.python.org/pypi/valvebsp/
 
+.. Platforms
 .. image:: https://img.shields.io/badge/platform-Linux,_MacOS,_Windows-blue
    :target: https://pypi.python.org/pypi/valvebsp/
 
+.. Pypi version
 .. image:: https://badge.fury.io/py/valvebsp.svg
    :target: https://pypi.python.org/pypi/valvebsp/
 
-.. image:: https://github.com/pySourceSDK/ValveBSP/actions/workflows/CI.yml/badge.svg
+.. CI status
+.. image:: https://github.com/pySourceSDK/ValveBSP/actions/workflows/tests.yml/badge.svg
    :target: https://github.com/pySourceSDK/ValveBSP/actions
 
+.. Coverage
 .. image:: coverage.svg
 
 ValveBSP is a Python library for parsing .bsp files for the Source Engine. It provides ways to read, modify and write bsp files.
