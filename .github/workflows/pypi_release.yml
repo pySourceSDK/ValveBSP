@@ -65,7 +65,7 @@ jobs:
         password: ${{ secrets.PYPI_API_TOKEN }}
 
     - name: Generate coverage asset
-      run: tox -r coverage
+      run: tox -e coverage
 
     - name: install doc deps
       run: >-
