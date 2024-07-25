@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lump 37 - Primitives &#8212; ValveBSP 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-autodoc-construct.css?v=55f20c1d" />
+    <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lump 38 - Prim Verts" href="lump_38.html" />
+    <link rel="prev" title="Lump 36 - Leaf Water Data" href="lump_36.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="lump-37-primitives">
+<h1>Lump 37 - Primitives<a class="headerlink" href="#lump-37-primitives" title="Link to this heading">¶</a></h1>
+<blockquote id="lump-37">
+<div><p>This lump contains an array of <a class="reference internal" href="#dprimitive_t" title="dprimitive_t"><code class="xref any py py-data docutils literal notranslate"><span class="pre">dprimitive_t</span></code></a>.</p>
+</div></blockquote>
+<dl class="con struct">
+<dt class="sig sig-object con" id="dprimitive_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_37.</span></span><span class="sig-name descname"><span class="pre">dprimitive_t</span></span><a class="headerlink" href="#dprimitive_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="dprimitive_t.type">
+<span class="sig-name descname"><span class="pre">type</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#dprimitive_t.type" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents an integer Enum</caption><tr><td>0</td><td>PRIM_TRILIST</td></tr><tr><td>1</td><td>PRIM_TRISTRIP</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="dprimitive_t.firstIndex">
+<span class="sig-name descname"><span class="pre">firstIndex</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dprimitive_t.firstIndex" title="Link to this definition">¶</a></dt>
+<dd><p>index into <a class="reference internal" href="lump_39.html#lump-39"><span class="std std-ref">lump 39</span></a></p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="dprimitive_t.indexCount">
+<span class="sig-name descname"><span class="pre">indexCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dprimitive_t.indexCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="dprimitive_t.firstVert">
+<span class="sig-name descname"><span class="pre">firstVert</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dprimitive_t.firstVert" title="Link to this definition">¶</a></dt>
+<dd><p>index into <a class="reference internal" href="lump_38.html#lump-38"><span class="std std-ref">lump 38</span></a></p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="dprimitive_t.vertCount">
+<span class="sig-name descname"><span class="pre">vertCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#dprimitive_t.vertCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/pysourcesdk_bsp.png" alt="Logo of ValveBSP"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">ValveBSP</a></h1>
+
+
+
+<p class="blurb">A <a href="https://pysourcesdk.github.io/hub/">pySourceSDK</a> project</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api_ref.html">Api Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../datastructures.html">Data Structures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../header.html">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../common.html">Common Structures</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../lumps.html">Lumps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lump_0.html">Lump 0 - Entities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_1.html">Lump 1 - Planes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_2.html">Lump 2 - Texture Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_3.html">Lump 3 - Vertexes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_4.html">Lump 4 - Visibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_5.html">Lump 5 - Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_6.html">Lump 6 - Texture Info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_7.html">Lump 7 - Faces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_8.html">Lump 8 - Lighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_9.html">Lump 9 - Occlusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_10.html">Lump 10 - Leafs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_11.html">Lump 11 - Face Ids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_12.html">Lump 12 - Edges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_13.html">Lump 13 - Surfedges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_14.html">Lump 14 - Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_15.html">Lump 15 - Worldlights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_16.html">Lump 16 - Leaf Faces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_17.html">Lump 17 - Leaf Brushes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_18.html">Lump 18 - Brushes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_19.html">Lump 19 - Brush Sides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_20.html">Lump 20 - Areas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_21.html">Lump 21 - Area Portals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_22.html">Lump 22 - Portals …or Prop Collision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_23.html">Lump 23 - Clusters …or PropHulls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_24.html">Lump 24 - Portal Verts …or Prop Hull Verts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_25.html">Lump 25 - Cluster Portal …or Prop Tris</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_26.html">Lump 26 - Disp Info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_27.html">Lump 27 - Original Faces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_28.html">Lump 28 - Phys Disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_29.html">Lump 29 - Phys Collide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_30.html">Lump 30 - Vert Normals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_31.html">Lump 31 - Vert Normal Indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_32.html">Lump 32 - Disp Lightmap Alphas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_33.html">Lump 33 - Disp Verts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_34.html">Lump 34 - Disp Lightmap Sample Positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_35.html">Lump 35 - Game Lump</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_36.html">Lump 36 - Leaf Water Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lump 37 - Primitives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_38.html">Lump 38 - Prim Verts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_39.html">Lump 39 - Prim Indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_40.html">Lump 40 - Pakfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_41.html">Lump 41 - Clip Portal Verts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_42.html">Lump 42 - Cubemaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_43.html">Lump 43 - Texture Data String Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_44.html">Lump 44 - Texture Data String Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_45.html">Lump 45 - Overlays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_46.html">Lump 46 - Leaf Minimun Distance To Water</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_47.html">Lump 47 - Face Macro Texture Info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_48.html">Lump 48 - Disp Tris</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_49.html">Lump 49 - Phys Collide Surface …or Lump Prop Blob</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_50.html">Lump 50 - Water Overlays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_51.html">Lump 51 - Lightmap Pages …or Leaf Ambient Index HDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_52.html">Lump 52 - Lightmap Page Infos …or Leaf Ambient Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_53.html">Lump 53 - Lighting HDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_54.html">Lump 54 - Worldlights HDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_55.html">Lump 55 - Leaf Ambient Lighting HDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_56.html">Lump 56 - Leaf Ambient Lighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_57.html">Lump 57 - XZIP Pakfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_58.html">Lump 58 - Faces HDR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_59.html">Lump 59 - Map Flags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_60.html">Lump 60 - Overlay Fades</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_61.html">Lump 61 - Overlay System Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_62.html">Lump 62 - Phys Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_63.html">Lump 63 - Disp Multiblend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../gamelumps.html">Gamelumps</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../../datastructures.html">Data Structures</a><ul>
+  <li><a href="../lumps.html">Lumps</a><ul>
+      <li>Previous: <a href="lump_36.html" title="previous chapter">Lump 36 - Leaf Water Data</a></li>
+      <li>Next: <a href="lump_38.html" title="next chapter">Lump 38 - Prim Verts</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2021, Maxime Dupuis.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/datastructures/lumps/lump_37.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

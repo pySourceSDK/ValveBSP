@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lump prpd - Prop Detail &#8212; ValveBSP 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-autodoc-construct.css?v=55f20c1d" />
+    <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lump tlpd - Prop Detail Lighting" href="lump_tlpd.html" />
+    <link rel="prev" title="Lump prps - Prop Static" href="lump_prps.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="lump-prpd-prop-detail">
+<h1>Lump prpd - Prop Detail<a class="headerlink" href="#lump-prpd-prop-detail" title="Link to this heading">¶</a></h1>
+<blockquote id="lump-prpd">
+<div><p>This lump is defined as a single <a class="reference internal" href="#DetailPropLump_t" title="DetailPropLump_t"><code class="xref any py py-data docutils literal notranslate"><span class="pre">DetailPropLump_t</span></code></a></p>
+</div></blockquote>
+<dl class="con struct">
+<dt class="sig sig-object con" id="DetailPropLump_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prpd.</span></span><span class="sig-name descname"><span class="pre">DetailPropLump_t</span></span><a class="headerlink" href="#DetailPropLump_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="DetailPropLump_t.dictLump">
+<span class="sig-name descname"><span class="pre">dictLump</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">string</span></code></a><span class="pre">[]</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">a</span> <span class="pre">128</span> <span class="pre">bytes</span> <span class="pre">long</span> <span class="pre">padded</span> <span class="pre">string</span>&gt</span><a class="headerlink" href="#DetailPropLump_t.dictLump" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailPropLump_t.spritesLump">
+<span class="sig-name descname"><span class="pre">spritesLump</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#DetailSpriteLump_t" title="DetailSpriteLump_t"><code class="sig-prename descclassname"><span class="pre">DetailSpriteLump_t</span></code></a><span class="pre">[]</span><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailPropLump_t.spritesLump" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailPropLump_t.objectLump">
+<span class="sig-name descname"><span class="pre">objectLump</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="#DetailObjectLump_t" title="DetailObjectLump_t"><code class="sig-prename descclassname"><span class="pre">DetailObjectLump_t</span></code></a><span class="pre">[]</span><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailPropLump_t.objectLump" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="DetailObjectLump_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prpd.</span></span><span class="sig-name descname"><span class="pre">DetailObjectLump_t</span></span><a class="headerlink" href="#DetailObjectLump_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailObjectLump_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailObjectLump_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.detailModel">
+<span class="sig-name descname"><span class="pre">detailModel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.detailModel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.leaf">
+<span class="sig-name descname"><span class="pre">leaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.leaf" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.lighting">
+<span class="sig-name descname"><span class="pre">lighting</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#ColorRGBExp32" title="ColorRGBExp32"><code class="sig-prename descclassname"><span class="pre">ColorRGBExp32</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailObjectLump_t.lighting" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.lightStyles">
+<span class="sig-name descname"><span class="pre">lightStyles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.lightStyles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.lightStyleCount">
+<span class="sig-name descname"><span class="pre">lightStyleCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.lightStyleCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.swayAmount">
+<span class="sig-name descname"><span class="pre">swayAmount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.swayAmount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.shapeAngle">
+<span class="sig-name descname"><span class="pre">shapeAngle</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.shapeAngle" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.shapeSize">
+<span class="sig-name descname"><span class="pre">shapeSize</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.shapeSize" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.orientation">
+<span class="sig-name descname"><span class="pre">orientation</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.orientation" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents an integer Enum</caption><tr><td>0</td><td>DETAIL_PROP_ORIENT_NORMAL</td></tr><tr><td>1</td><td>DETAIL_PROP_ORIENT_SCREEN_ALIGNED</td></tr><tr><td>2</td><td>DETAIL_PROP_ORIENT_SCREEN_ALIGNED_VERTICAL</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.padding2">
+<span class="sig-name descname"><span class="pre">padding2</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="pre">[3]</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.padding2" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.type">
+<span class="sig-name descname"><span class="pre">type</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.type" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents an integer Enum</caption><tr><td>0</td><td>DETAIL_PROP_TYPE_MODEL</td></tr><tr><td>1</td><td>DETAIL_PROP_TYPE_SPRITE</td></tr><tr><td>2</td><td>DETAIL_PROP_TYPE_SHAPE_CROSS</td></tr><tr><td>3</td><td>DETAIL_PROP_TYPE_SHAPE_TRI</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.padding3">
+<span class="sig-name descname"><span class="pre">padding3</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="pre">[3]</span><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.padding3" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailObjectLump_t.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#DetailObjectLump_t.scale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="DetailSpriteLump_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prpd.</span></span><span class="sig-name descname"><span class="pre">DetailSpriteLump_t</span></span><a class="headerlink" href="#DetailSpriteLump_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="DetailSpriteLump_t.UL">
+<span class="sig-name descname"><span class="pre">UL</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector2D" title="Vector2D"><code class="sig-prename descclassname"><span class="pre">Vector2D</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailSpriteLump_t.UL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailSpriteLump_t.LR">
+<span class="sig-name descname"><span class="pre">LR</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector2D" title="Vector2D"><code class="sig-prename descclassname"><span class="pre">Vector2D</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailSpriteLump_t.LR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailSpriteLump_t.texUL">
+<span class="sig-name descname"><span class="pre">texUL</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector2D" title="Vector2D"><code class="sig-prename descclassname"><span class="pre">Vector2D</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailSpriteLump_t.texUL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="DetailSpriteLump_t.texLR">
+<span class="sig-name descname"><span class="pre">texLR</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector2D" title="Vector2D"><code class="sig-prename descclassname"><span class="pre">Vector2D</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#DetailSpriteLump_t.texLR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/pysourcesdk_bsp.png" alt="Logo of ValveBSP"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">ValveBSP</a></h1>
+
+
+
+<p class="blurb">A <a href="https://pysourcesdk.github.io/hub/">pySourceSDK</a> project</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api_ref.html">Api Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../datastructures.html">Data Structures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../header.html">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../common.html">Common Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lumps.html">Lumps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../gamelumps.html">Gamelumps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="lump_prps.html">Lump prps - Prop Static</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lump prpd - Prop Detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_tlpd.html">Lump tlpd - Prop Detail Lighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_hlpd.html">Lump hlpd - Prop Detail Lighting HDR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../../datastructures.html">Data Structures</a><ul>
+  <li><a href="../gamelumps.html">Gamelumps</a><ul>
+      <li>Previous: <a href="lump_prps.html" title="previous chapter">Lump prps - Prop Static</a></li>
+      <li>Next: <a href="lump_tlpd.html" title="next chapter">Lump tlpd - Prop Detail Lighting</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2021, Maxime Dupuis.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/datastructures/gamelumps/lump_prpd.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Common Structures &#8212; ValveBSP 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-autodoc-construct.css?v=55f20c1d" />
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lumps" href="lumps.html" />
+    <link rel="prev" title="Header" href="header.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="common-structures">
+<h1>Common Structures<a class="headerlink" href="#common-structures" title="Link to this heading">¶</a></h1>
+<blockquote id="common">
+<div><p>These are reoccuring data structures that you’ll see reused throughout Bsp.</p>
+</div></blockquote>
+<dl class="con struct">
+<dt class="sig sig-object con" id="ColorRGBExp32">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">ColorRGBExp32</span></span><a class="headerlink" href="#ColorRGBExp32" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="ColorRGBExp32.r">
+<span class="sig-name descname"><span class="pre">r</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#ColorRGBExp32.r" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="ColorRGBExp32.g">
+<span class="sig-name descname"><span class="pre">g</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#ColorRGBExp32.g" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="ColorRGBExp32.b">
+<span class="sig-name descname"><span class="pre">b</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#ColorRGBExp32.b" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="ColorRGBExp32.exponent">
+<span class="sig-name descname"><span class="pre">exponent</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">signed</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#ColorRGBExp32.exponent" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="color32">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">color32</span></span><a class="headerlink" href="#color32" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="color32.r">
+<span class="sig-name descname"><span class="pre">r</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#color32.r" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="color32.g">
+<span class="sig-name descname"><span class="pre">g</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#color32.g" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="color32.b">
+<span class="sig-name descname"><span class="pre">b</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#color32.b" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="color32.a">
+<span class="sig-name descname"><span class="pre">a</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#color32.a" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="Quaternion">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">Quaternion</span></span><a class="headerlink" href="#Quaternion" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="Quaternion.x">
+<span class="sig-name descname"><span class="pre">x</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Quaternion.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Quaternion.y">
+<span class="sig-name descname"><span class="pre">y</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Quaternion.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Quaternion.z">
+<span class="sig-name descname"><span class="pre">z</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Quaternion.z" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Quaternion.w">
+<span class="sig-name descname"><span class="pre">w</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Quaternion.w" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="QAngle">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">QAngle</span></span><a class="headerlink" href="#QAngle" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="QAngle.x">
+<span class="sig-name descname"><span class="pre">x</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#QAngle.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="QAngle.y">
+<span class="sig-name descname"><span class="pre">y</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#QAngle.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="QAngle.z">
+<span class="sig-name descname"><span class="pre">z</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#QAngle.z" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="RadianEuler">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">RadianEuler</span></span><a class="headerlink" href="#RadianEuler" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="RadianEuler.x">
+<span class="sig-name descname"><span class="pre">x</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#RadianEuler.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="RadianEuler.y">
+<span class="sig-name descname"><span class="pre">y</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#RadianEuler.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="RadianEuler.z">
+<span class="sig-name descname"><span class="pre">z</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#RadianEuler.z" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="Vector4D">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">Vector4D</span></span><a class="headerlink" href="#Vector4D" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="Vector4D.x">
+<span class="sig-name descname"><span class="pre">x</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector4D.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Vector4D.y">
+<span class="sig-name descname"><span class="pre">y</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector4D.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Vector4D.z">
+<span class="sig-name descname"><span class="pre">z</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector4D.z" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Vector4D.w">
+<span class="sig-name descname"><span class="pre">w</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector4D.w" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="Vector2D">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">Vector2D</span></span><a class="headerlink" href="#Vector2D" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="Vector2D.x">
+<span class="sig-name descname"><span class="pre">x</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector2D.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Vector2D.y">
+<span class="sig-name descname"><span class="pre">y</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector2D.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="Vector">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.common.</span></span><span class="sig-name descname"><span class="pre">Vector</span></span><a class="headerlink" href="#Vector" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="Vector.x">
+<span class="sig-name descname"><span class="pre">x</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Vector.y">
+<span class="sig-name descname"><span class="pre">y</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="Vector.z">
+<span class="sig-name descname"><span class="pre">z</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#Vector.z" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/pysourcesdk_bsp.png" alt="Logo of ValveBSP"/>
+            </a></p>
+<h1 class="logo"><a href="../index.html">ValveBSP</a></h1>
+
+
+
+<p class="blurb">A <a href="https://pysourcesdk.github.io/hub/">pySourceSDK</a> project</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api_ref.html">Api Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../datastructures.html">Data Structures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="header.html">Header</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Common Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumps.html">Lumps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gamelumps.html">Gamelumps</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../datastructures.html">Data Structures</a><ul>
+      <li>Previous: <a href="header.html" title="previous chapter">Header</a></li>
+      <li>Next: <a href="lumps.html" title="next chapter">Lumps</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2021, Maxime Dupuis.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../_sources/datastructures/common.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

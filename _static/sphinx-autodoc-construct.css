@@ -1,0 +1,31 @@
+.con.struct {
+    margin-bottom: 30px;
+}
+
+.con.subcon {
+    margin-bottom: 4px;
+}
+
+.con.enum {
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 0;
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 4px 10px;
+    margin-bottom: 3px;
+}
+
+.con.enum~p{
+    margin-top: 3px;
+}
+
+table {
+    background: red;
+}
+table.con.enum caption { text-align: left; }
+table.con.enum td { line-height: 1em; }
+table.con.enum th:nth-child(2):before,
+table.con.enum td:nth-child(2):before {
+    content: ': '
+}

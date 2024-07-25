@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lump prps - Prop Static &#8212; ValveBSP 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-autodoc-construct.css?v=55f20c1d" />
+    <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lump prpd - Prop Detail" href="lump_prpd.html" />
+    <link rel="prev" title="Gamelumps" href="../gamelumps.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="lump-prps-prop-static">
+<h1>Lump prps - Prop Static<a class="headerlink" href="#lump-prps-prop-static" title="Link to this heading">¶</a></h1>
+<blockquote id="lump-prps">
+<div><p>This lump is defined as a single StaticPropLump_t that may come in different versions, in accordance with the gamelump.`</p>
+</div></blockquote>
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV11_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV11_t</span></span><a class="headerlink" href="#StaticPropV11_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV11_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV11_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.FadeMinDist">
+<span class="sig-name descname"><span class="pre">FadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.FadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.FadeMaxDist">
+<span class="sig-name descname"><span class="pre">FadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.FadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV11_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.forcedFadeScale">
+<span class="sig-name descname"><span class="pre">forcedFadeScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.forcedFadeScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.minCPULevel">
+<span class="sig-name descname"><span class="pre">minCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.minCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.maxCPULevel">
+<span class="sig-name descname"><span class="pre">maxCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.maxCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.minGPULevel">
+<span class="sig-name descname"><span class="pre">minGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.minGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.maxGPULevel">
+<span class="sig-name descname"><span class="pre">maxGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.maxGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.diffuseModulation">
+<span class="sig-name descname"><span class="pre">diffuseModulation</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#color32" title="color32"><code class="sig-prename descclassname"><span class="pre">color32</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV11_t.diffuseModulation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.disableX360">
+<span class="sig-name descname"><span class="pre">disableX360</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">bool</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">bool</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.disableX360" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.flagsEx">
+<span class="sig-name descname"><span class="pre">flagsEx</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.flagsEx" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV11_t.uniformScale">
+<span class="sig-name descname"><span class="pre">uniformScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV11_t.uniformScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV10_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV10_t</span></span><a class="headerlink" href="#StaticPropV10_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV10_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV10_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.FadeMinDist">
+<span class="sig-name descname"><span class="pre">FadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.FadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.FadeMaxDist">
+<span class="sig-name descname"><span class="pre">FadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.FadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV10_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.forcedFadeScale">
+<span class="sig-name descname"><span class="pre">forcedFadeScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.forcedFadeScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.minCPULevel">
+<span class="sig-name descname"><span class="pre">minCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.minCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.maxCPULevel">
+<span class="sig-name descname"><span class="pre">maxCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.maxCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.minGPULevel">
+<span class="sig-name descname"><span class="pre">minGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.minGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.maxGPULevel">
+<span class="sig-name descname"><span class="pre">maxGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.maxGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.diffuseModulation">
+<span class="sig-name descname"><span class="pre">diffuseModulation</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#color32" title="color32"><code class="sig-prename descclassname"><span class="pre">color32</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV10_t.diffuseModulation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV10_t.flagsEx">
+<span class="sig-name descname"><span class="pre">flagsEx</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV10_t.flagsEx" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV9_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV9_t</span></span><a class="headerlink" href="#StaticPropV9_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV9_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV9_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.FadeMinDist">
+<span class="sig-name descname"><span class="pre">FadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.FadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.FadeMaxDist">
+<span class="sig-name descname"><span class="pre">FadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.FadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV9_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.forcedFadeScale">
+<span class="sig-name descname"><span class="pre">forcedFadeScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.forcedFadeScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.minCPULevel">
+<span class="sig-name descname"><span class="pre">minCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.minCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.maxCPULevel">
+<span class="sig-name descname"><span class="pre">maxCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.maxCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.minGPULevel">
+<span class="sig-name descname"><span class="pre">minGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.minGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.maxGPULevel">
+<span class="sig-name descname"><span class="pre">maxGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.maxGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.diffuseModulation">
+<span class="sig-name descname"><span class="pre">diffuseModulation</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#color32" title="color32"><code class="sig-prename descclassname"><span class="pre">color32</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV9_t.diffuseModulation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV9_t.disableX360">
+<span class="sig-name descname"><span class="pre">disableX360</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">bool</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">bool</span>&gt</span><a class="headerlink" href="#StaticPropV9_t.disableX360" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV8_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV8_t</span></span><a class="headerlink" href="#StaticPropV8_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV8_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV8_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.FadeMinDist">
+<span class="sig-name descname"><span class="pre">FadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.FadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.FadeMaxDist">
+<span class="sig-name descname"><span class="pre">FadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.FadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV8_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.forcedFadeScale">
+<span class="sig-name descname"><span class="pre">forcedFadeScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.forcedFadeScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.minCPULevel">
+<span class="sig-name descname"><span class="pre">minCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.minCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.maxCPULevel">
+<span class="sig-name descname"><span class="pre">maxCPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.maxCPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.minGPULevel">
+<span class="sig-name descname"><span class="pre">minGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.minGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.maxGPULevel">
+<span class="sig-name descname"><span class="pre">maxGPULevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV8_t.maxGPULevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV8_t.diffuseModulation">
+<span class="sig-name descname"><span class="pre">diffuseModulation</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#color32" title="color32"><code class="sig-prename descclassname"><span class="pre">color32</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV8_t.diffuseModulation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV7_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV7_t</span></span><a class="headerlink" href="#StaticPropV7_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV7_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV7_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.FadeMinDist">
+<span class="sig-name descname"><span class="pre">FadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.FadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.FadeMaxDist">
+<span class="sig-name descname"><span class="pre">FadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.FadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV7_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.forcedFadeScale">
+<span class="sig-name descname"><span class="pre">forcedFadeScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.forcedFadeScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.minDXLevel">
+<span class="sig-name descname"><span class="pre">minDXLevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.minDXLevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.maxDXLevel">
+<span class="sig-name descname"><span class="pre">maxDXLevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV7_t.maxDXLevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV7_t.diffuseModulation">
+<span class="sig-name descname"><span class="pre">diffuseModulation</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#color32" title="color32"><code class="sig-prename descclassname"><span class="pre">color32</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV7_t.diffuseModulation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV6_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV6_t</span></span><a class="headerlink" href="#StaticPropV6_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV6_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV6_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.FadeMinDist">
+<span class="sig-name descname"><span class="pre">FadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.FadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.FadeMaxDist">
+<span class="sig-name descname"><span class="pre">FadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.FadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV6_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.forcedFadeScale">
+<span class="sig-name descname"><span class="pre">forcedFadeScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.forcedFadeScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.minDXLevel">
+<span class="sig-name descname"><span class="pre">minDXLevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.minDXLevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV6_t.maxDXLevel">
+<span class="sig-name descname"><span class="pre">maxDXLevel</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV6_t.maxDXLevel" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV5_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV5_t</span></span><a class="headerlink" href="#StaticPropV5_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV5_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV5_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.fadeMinDist">
+<span class="sig-name descname"><span class="pre">fadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.fadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.fadeMaxDist">
+<span class="sig-name descname"><span class="pre">fadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.fadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV5_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV5_t.forcedFadeScale">
+<span class="sig-name descname"><span class="pre">forcedFadeScale</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV5_t.forcedFadeScale" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="con struct">
+<dt class="sig sig-object con" id="StaticPropV4_t">
+<em class="property"><span class="pre">struct</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">valvebsp.structs.lump_prps.</span></span><span class="sig-name descname"><span class="pre">StaticPropV4_t</span></span><a class="headerlink" href="#StaticPropV4_t" title="Link to this definition">¶</a></dt>
+<dd><dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV4_t.origin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.angles">
+<span class="sig-name descname"><span class="pre">angles</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#QAngle" title="QAngle"><code class="sig-prename descclassname"><span class="pre">QAngle</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV4_t.angles" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.propType">
+<span class="sig-name descname"><span class="pre">propType</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.propType" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.dict_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.firstLeaf">
+<span class="sig-name descname"><span class="pre">firstLeaf</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.firstLeaf" title="Link to this definition">¶</a></dt>
+<dd><p>refers to prps.leaf_lump</p>
+</dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.leafCount">
+<span class="sig-name descname"><span class="pre">leafCount</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">short</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.leafCount" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.solid">
+<span class="sig-name descname"><span class="pre">solid</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.solid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">unsigned</span> <span class="pre">char</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.flags" title="Link to this definition">¶</a></dt>
+<dd><table class="con enum"><caption>Represents a flags Enum</caption><tr><td>0x1</td><td>STATIC_PROP_FLAG_FADES</td></tr><tr><td>0x2</td><td>STATIC_PROP_USE_LIGHTING_ORIGIN</td></tr><tr><td>0x3</td><td>STATIC_PROP_NO_DRAW</td></tr><tr><td>0x4</td><td>STATIC_PROP_IGNORE_NORMALS</td></tr><tr><td>0x5</td><td>STATIC_PROP_NO_SHADOW</td></tr><tr><td>0x6</td><td>STATIC_PROP_SCREEN_SPACE_FADE_OBSOLETE</td></tr><tr><td>0x7</td><td>STATIC_PROP_NO_PER_VERTEX_LIGHTING</td></tr><tr><td>0x8</td><td>STATIC_PROP_NO_SELF_SHADOWING</td></tr></table></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.skin">
+<span class="sig-name descname"><span class="pre">skin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">int</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">long</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.skin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.fadeMinDist">
+<span class="sig-name descname"><span class="pre">fadeMinDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.fadeMinDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.fadeMaxDist">
+<span class="sig-name descname"><span class="pre">fadeMaxDist</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="sig-prename descclassname"><span class="pre">float</span></code></a><span class="sig-paren">)</span></code><span style="color: gray">&ltparsed from <span class="pre">float</span>&gt</span><a class="headerlink" href="#StaticPropV4_t.fadeMaxDist" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="con subcon">
+<dt class="sig sig-object con" id="StaticPropV4_t.lightingOrigin">
+<span class="sig-name descname"><span class="pre">lightingOrigin</span></span><code class="sig-prename descclassname"><span class="sig-paren">(</span><a class="reference internal" href="../common.html#Vector" title="Vector"><code class="sig-prename descclassname"><span class="pre">Vector</span></code></a><span class="sig-paren">)</span></code><a class="headerlink" href="#StaticPropV4_t.lightingOrigin" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/pysourcesdk_bsp.png" alt="Logo of ValveBSP"/>
+            </a></p>
+<h1 class="logo"><a href="../../index.html">ValveBSP</a></h1>
+
+
+
+<p class="blurb">A <a href="https://pysourcesdk.github.io/hub/">pySourceSDK</a> project</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quickstart</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api_ref.html">Api Reference</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../datastructures.html">Data Structures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../header.html">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../common.html">Common Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lumps.html">Lumps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../gamelumps.html">Gamelumps</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lump prps - Prop Static</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_prpd.html">Lump prpd - Prop Detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_tlpd.html">Lump tlpd - Prop Detail Lighting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lump_hlpd.html">Lump hlpd - Prop Detail Lighting HDR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../../datastructures.html">Data Structures</a><ul>
+  <li><a href="../gamelumps.html">Gamelumps</a><ul>
+      <li>Previous: <a href="../gamelumps.html" title="previous chapter">Gamelumps</a></li>
+      <li>Next: <a href="lump_prpd.html" title="next chapter">Lump prpd - Prop Detail</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2021, Maxime Dupuis.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/datastructures/gamelumps/lump_prps.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
