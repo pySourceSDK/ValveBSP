@@ -206,7 +206,7 @@ class Bsp(collectionsAbc.MutableMapping):
         :type index: str, int
         """
 
-        if index in self.lumps and self.lumps[index]:
+        if index in self.lumps and self.lumps[index] is not None:
             return self.lumps[index]
 
         lump_header = self._get_lump_header(index)
