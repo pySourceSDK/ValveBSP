@@ -27,10 +27,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install tox tox-gh-actions
+        python -m pip install tox
 
     - name: Test with tox
-      run: tox
+      run: tox -e py313
 
   test-full:
     name: Full test suite
@@ -52,10 +52,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install tox tox-gh-actions
+        python -m pip install tox
 
     - name: Test with tox
-      run: tox
+      shell: bash
+      run: tox -e py$(echo "${{ matrix.python-version }}" | tr -d .)
 
   build-n-publish:
     name: Build and publish Python distributions to PyPI
@@ -76,7 +77,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install build
-        python -m pip install tox tox-gh-actions
+        python -m pip install tox
 
     - name: Extract tag name
       id: tag
